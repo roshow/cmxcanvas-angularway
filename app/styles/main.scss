@@ -1,0 +1,41 @@
+ @import url(http://fonts.googleapis.com/css?family=IM+Fell+English);
+ body {
+    font-family: "IM Fell English" "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+ }
+.robin {
+    color: #000000;
+    font-size: 3em;
+    text-align: center;
+}
+
+#cmx-container {
+    cursor: pointer;
+    font-family: "IM Fell English";
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#thisCanvas {
+    width: 800px;
+    height: 450px;
+    margin: auto;
+    border: 2px solid #ddd;
+}
+.buttons  {
+    list-style:none;
+    font-size: 2em;
+    margin:5px auto;
+    width: 800px;
+}
+
+.buttons li {
+    border: 1px solid #999;
+    display: inline-block;
+    margin:auto;
+    width:300px;
+    text-align: center;
+}
