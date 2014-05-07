@@ -3,13 +3,13 @@
 angular.module('angularcmxApp')
   .controller('CmxCtrl', function ($scope, GetCmx) {
     $scope.myname = 'cmxcanvas.js';
-    $scope.cmxjson = {
-        name: 'rolando',
-        balls: 'big'
-    }
-    $scope.i = 0;
+    $scope.cmxCanvas = new CmxCanvas();
     GetCmx.then(function(data){
-        $scope.cmxjson = data.data.cmxJSON;
-        $scope.i++;
+        $scope.cmxData = data;
     });
-  });
+    $scope.next = function(){
+        $scope.cmxCanvas.next();
+        console.log($scope.cmxCanvas.loc);
+    };
+
+});

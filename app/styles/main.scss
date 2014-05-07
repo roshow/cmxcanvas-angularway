@@ -2,40 +2,76 @@
  body {
     font-family: "IM Fell English" "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
  }
-.robin {
-    color: #000000;
-    font-size: 3em;
-    text-align: center;
+#header {
+    font-size: 1.2em;
+    text-align: right;
+    color: #444;
 }
 
 #cmx-container {
+    position: relative;
     cursor: pointer;
-    font-family: "IM Fell English";
     text-align: center;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
-#thisCanvas {
+#cmx-container canvas {
     width: 800px;
     height: 450px;
     margin: auto;
     border: 2px solid #ddd;
 }
-.buttons  {
-    list-style:none;
-    font-size: 2em;
-    margin:5px auto;
-    width: 800px;
-}
 
+ul {
+    list-style:none;
+}
+.buttons  {
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    // width: 800px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // border: 2px solid blue;
+}
 .buttons li {
-    border: 1px solid #999;
+    // border: 1px solid #999;
     display: inline-block;
-    margin:auto;
-    width:300px;
+    margin:0;
+    padding: 0;
+    max-width:400px;
+    width: 48%;
+    height: 100%;
     text-align: center;
 }
+
+.tocDiv {
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+.clear {
+    clear:both;
+}
+.cmx-toc {
+    width: auto;
+    li {
+        display: inline-block;
+    }
+    .thumbnail {
+        height:125px;
+        width:auto;
+        // max-width:200px;
+        opacity: 0.4;
+        &:hover, &.reading {
+            opacity: 1;
+        }
+    }
+}
+
+
+    

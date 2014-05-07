@@ -1,7 +1,7 @@
 <div id='cmx-container'>
-    <canvas id="thisCanvas" height="450px" width="800px"></canvas>
+    <canvas cmx="cmxData.cmxJSON"></canvas>
     <ul class="buttons">
-        <li id="book-prev">previous</li>
-        <li id="book-next">next</li>
+        <li id="book-prev" ng-click="cmxCanvas.prev()"></li>
+        <li id="book-next" ng-click="next()"></li>
     </ul>
-</div>
+</div> 

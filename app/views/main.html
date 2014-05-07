@@ -1,4 +1,13 @@
-<div class="robin">
-  {{i}}
+<div id="header">
+  {{cmxCanvas.currentPanel}}
 </div>
-<rolls cmxjson="cmxjson">
+<!-- <cmxcanvas cmxjson="cmxjson" /> -->
+<section ng-include="'views/partials/cmxcanvas.html'"></section>
+<div class="tocDiv">
+<ul class="cmx-toc">
+    <li ng-repeat="panel in cmxData.cmxJSON" ng-click="cmxCanvas.goTo($index,0)">
+        <img ng-src="{{panel.src}}" class="thumbnail"/>
+    </li>
+</ul>
+<div class="clear"></div>
+</div>
