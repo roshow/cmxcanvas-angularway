@@ -1,13 +1,19 @@
 <div id="header">
   {{cmxCanvas.currentPanel}}
 </div>
-<!-- <cmxcanvas cmxjson="cmxjson" /> -->
-<section ng-include="'views/partials/cmxcanvas.html'"></section>
-<div class="tocDiv">
+
+<div id='cmx-container'>
+    <canvas cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas"></canvas>
+    <ul class="buttons">
+        <li id="book-prev" ng-click="prev()"></li>
+        <li id="book-next" ng-click="next()"></li>
+    </ul>
+</div> 
+
+<div class="tocDiv">    
 <ul class="cmx-toc">
     <li ng-repeat="panel in cmxData.cmxJSON" ng-click="cmxCanvas.goTo($index,0)">
         <img ng-src="{{panel.src}}" class="thumbnail"/>
     </li>
 </ul>
-<div class="clear"></div>
 </div>

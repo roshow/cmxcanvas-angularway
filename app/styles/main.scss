@@ -29,24 +29,19 @@ ul {
     font-size: 2em;
     margin: 0;
     padding: 0;
-    // width: 800px;
-    display: block;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    // border: 2px solid blue;
 }
 .buttons li {
-    // border: 1px solid #999;
     display: inline-block;
     margin:0;
     padding: 0;
     max-width:400px;
     width: 48%;
     height: 100%;
-    text-align: center;
 }
 
 .tocDiv {
