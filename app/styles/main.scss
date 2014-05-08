@@ -56,6 +56,13 @@ ul {
     width: auto;
     li {
         display: inline-block;
+        font-size: 2em;
+        height: 50px;
+        width: 50px;
+        border: 1px solid black;
+        line-height: 50px;
+        text-align: center;
+        margin: 5px;
     }
     .thumbnail {
         height:125px;

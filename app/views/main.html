@@ -1,7 +1,3 @@
-<div id="header">
-  {{cmxCanvas.currentPanel}}
-</div>
-
 <div id='cmx-container'>
     <canvas cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas"></canvas>
     <ul class="buttons">
@@ -13,7 +9,8 @@
 <div class="tocDiv">    
 <ul class="cmx-toc">
     <li ng-repeat="panel in cmxData.cmxJSON" ng-click="cmxCanvas.goTo($index,0)">
-        <img ng-src="{{panel.src}}" class="thumbnail"/>
+        <!-- <img ng-src="{{panel.src}}" class="thumbnail"/> -->
+        {{$index}}
     </li>
 </ul>
 </div>
