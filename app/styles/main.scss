@@ -2,6 +2,15 @@
  body {
     font-family: "IM Fell English" "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
  }
+
+ a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+        color: #aaa;
+    }
+ }
 #header {
     font-size: 1.2em;
     text-align: right;
@@ -52,17 +61,25 @@ ul {
 .clear {
     clear:both;
 }
+
+$selected: #dd0000;
 .cmx-toc {
     width: auto;
     li {
+        border: 1px solid #555;
+        color: #555;
+        cursor: pointer;
         display: inline-block;
         font-size: 2em;
         height: 50px;
-        width: 50px;
-        border: 1px solid black;
         line-height: 50px;
-        text-align: center;
         margin: 5px;
+        text-align: center;
+        width: 50px;
+        &.current-panel {
+            color: $selected;
+            border-color: $selected;
+        }
     }
     .thumbnail {
         height:125px;

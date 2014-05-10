@@ -6,11 +6,19 @@
     </ul>
 </div> 
 
+<h3>{{cmxData.series.name}} #{{cmxData.issue}}<br /><!--
+        -->{{cmxData.title}} by <!--
+        --><span ng-repeat="creator in cmxData.creators"><!--
+        --><span ng-if="$middle">, </span><!--
+        --><span ng-if="$last"> &amp; </span><!--
+        --><a ng-href="{{creator.url}}">{{creator.name}}</a><!--
+        --></span></h3>
+
 <div class="tocDiv">    
-<ul class="cmx-toc">
-    <li ng-repeat="panel in cmxData.cmxJSON" ng-click="cmxCanvas.goTo($index,0)">
-        <!-- <img ng-src="{{panel.src}}" class="thumbnail"/> -->
-        {{$index}}
-    </li>
-</ul>
+    <ul class="cmx-toc">
+        <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in cmxData.cmxJSON" ng-click="cmxCanvas.goTo($index,0)">
+            <!-- <img ng-src="{{panel.src}}" class="thumbnail"/> -->
+            {{$index}}
+        </li>
+    </ul>
 </div>

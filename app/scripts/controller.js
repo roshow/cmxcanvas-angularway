@@ -9,7 +9,6 @@ angular.module('angularcmxApp')
     });
     $scope.next = function(){
         $scope.cmxCanvas.next();
-        console.log($scope.cmxCanvas.loc);
     };
     $scope.prev = function(){
         $scope.cmxCanvas.prev();

@@ -17,7 +17,8 @@ angular.module('angularcmxApp')
             return model;
         }
         $http({
-            url: '/json/sov01Model.json',
+            // url: '/json/sov01Model.json',
+            url: 'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
             method: 'GET',
             transformResponse: function(data){
                 data = JSON.parse(data);
@@ -25,7 +26,7 @@ angular.module('angularcmxApp')
                 if (data.img){
                     data = resolveImgUrlsFromModel(data);
                 }
-                console.log(data);
+                // console.log(data);
                 return data;
             }
         }).success(function(data){
