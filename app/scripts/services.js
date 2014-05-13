@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
-    .factory('GetCmx', function($http, $q){
-        var def = $q.defer();
+    .factory('getCmx', function($http, $q){
         function resolveImgUrlsFromModel(model){
             var L1 = model.cmxJSON.length;
             for(var i = 0; i < L1; i++) {
@@ -16,17 +15,34 @@ angular.module('angularcmxApp')
             }
             return model;
         }
+        return function(cmxUrl){
+            var def = $q.defer();
+            $http({
+                url: cmxUrl || '/json/sov01Model.json',
+                // url: 'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
+                method: 'GET',
+                transformResponse: function(data){
+                    data = JSON.parse(data);
+                    data = data.data ? data.data[0] : data;
+                    if (data.img){
+                        data = resolveImgUrlsFromModel(data);
+                    }
+                    // console.log(data);
+                    return data;
+                }
+            }).success(function(data){
+                def.resolve(data);
+            });
+            return def.promise;
+        }
+    })
+    .factory('GetBooks', function($http, $q){
+        var def = $q.defer();
         $http({
-            // url: '/json/sov01Model.json',
-            url: 'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
+            url: 'http://cmxcanvasapi.herokuapp.com/cmx',
             method: 'GET',
             transformResponse: function(data){
-                data = JSON.parse(data);
-                data = data.data ? data.data[0] : data;
-                if (data.img){
-                    data = resolveImgUrlsFromModel(data);
-                }
-                // console.log(data);
+                data = JSON.parse(data).data;
                 return data;
             }
         }).success(function(data){

@@ -8,6 +8,10 @@ angular.module('angularcmxApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
+        templateUrl: 'views/library.html',
+        controller: 'LibraryCtrl'
+      })
+      .when('/cmx/:bookId', {
         templateUrl: 'views/main.html',
         controller: 'CmxCtrl'
       })

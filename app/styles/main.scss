@@ -48,15 +48,15 @@ ul {
     display: inline-block;
     margin:0;
     padding: 0;
-    max-width:400px;
+    max-width: 400px;
     width: 48%;
     height: 100%;
 }
 
 .tocDiv {
     width: 100%;
-    overflow-x: scroll;
-    white-space: nowrap;
+    // overflow-x: scroll;
+    // white-space: nowrap;
 }
 .clear {
     clear:both;
@@ -91,6 +91,20 @@ $selected: #dd0000;
         }
     }
 }
+
+#library {
+    li {
+        display: inline-block;
+        margin: 10px;
+    }
+   .library-thumb {
+        height: 250px;
+        width: 250px;
+        padding: 5px;
+        border: 2px solid black;
+    } 
+}
+
 
 
     

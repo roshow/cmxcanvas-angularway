@@ -6,12 +6,12 @@
     </ul>
 </div> 
 
-<h3>{{cmxData.series.name}} #{{cmxData.issue}}<br /><!--
-        -->{{cmxData.title}} by <!--
+<h3>{{cmxData.series.name}} #{{cmxData.issue}}: <!--
+        -->{{cmxData.title}} <br />by <!--
         --><span ng-repeat="creator in cmxData.creators"><!--
         --><span ng-if="$middle">, </span><!--
         --><span ng-if="$last"> &amp; </span><!--
-        --><a ng-href="{{creator.url}}">{{creator.name}}</a><!--
+        --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
         --></span></h3>
 
 <div class="tocDiv">    
