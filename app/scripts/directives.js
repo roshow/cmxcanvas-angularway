@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('angularcmxApp')
-    .directive('cmxcanvas', function(){
+    .directive('cmxcanvas', [ '$window', function($window){
         return {
             restrict: 'A',
             scope: {
                 cmx: '=cmxBook',
-                cmxcanvas: '=cmxcanvas'
+                cmxcanvas: '=cmxcanvas',
+                resizable: '='
             },
             templateUrl: 'views/partials/cmxcanvas.html',
             link: function(scope, element, attrs){
@@ -31,6 +32,25 @@ angular.module('angularcmxApp')
                         };
                     }
                 });
+
+                if (scope.resizable){
+
+                    var thisHeight = $window.innerHeight;
+                    canvasEl.style.zoom = thisHeight/canvasEl.height;
+
+                    $window.onresize = function(){
+                        var thisHeight = $window.innerHeight;
+                        var thisWidth = $window.innerWidth;
+                        // canvasEl.style.zoom = thisHeight/canvasEl.height;
+
+                        if (thisWidth/thisHeight >= 16/9){
+                            canvasEl.style.zoom = thisHeight/canvasEl.height;
+                        }
+                        else {
+                            canvasEl.style.zoom = thisWidth/canvasEl.width;
+                        }
+                    };
+                }
             }
         }
-    });
+    }]);

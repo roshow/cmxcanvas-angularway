@@ -25,8 +25,6 @@
     user-select: none;
 }
 #cmx-container canvas {
-    width: 800px;
-    height: 450px;
     margin: auto;
     border: 2px solid #ddd;
 }
@@ -105,6 +103,12 @@ $selected: #dd0000;
     } 
 }
 
-
+.embed {
+    // background-color: black;
+    #cmx-container canvas {
+        border: 0;
+        margin: 0;
+    }
+}
 
     
