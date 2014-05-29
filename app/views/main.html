@@ -1,5 +1,8 @@
 <div cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas"></div>
 
+<input type="text" ng-model="embedWidth" />
+<pre><code>&#60;iframe height="{{embedWidth*9/16}}" width="{{embedWidth}}" src="http://127.0.0.1:9000/#/embed/{{bookId}}" frameborder="0"&#62;&#60;/iframe&#62</code></pre>
+
 <h3>{{cmxData.series.name}} #{{cmxData.issue}}: <!--
         -->{{cmxData.title}} <br />by <!--
         --><span ng-repeat="creator in cmxData.creators"><!--

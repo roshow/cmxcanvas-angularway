@@ -7,11 +7,13 @@ angular.module('angularcmxApp')
             scope: {
                 cmx: '=cmxBook',
                 cmxcanvas: '=cmxcanvas',
-                resizable: '='
+                resize: '=',
+                responsive: '='
             },
             templateUrl: 'views/partials/cmxcanvas.html',
             link: function(scope, element, attrs){
                 // console.log(element.find('canvas'));
+                console.log(attrs.$attr.resize);
 
             // TO-DO: Make some sort of flag so I can put this directive on a canvas alone or a div for the everything, including the buttons.
             //  Or make them two directives.
@@ -33,23 +35,26 @@ angular.module('angularcmxApp')
                     }
                 });
 
-                if (scope.resizable){
+                if (attrs.$attr.resize){
+                    alert('resizing');
+                    var thisWidth = $window.innerWidth;
+                    canvasEl.style.zoom = thisWidth/canvasEl.width;
 
-                    var thisHeight = $window.innerHeight;
-                    canvasEl.style.zoom = thisHeight/canvasEl.height;
+                    if (attrs.$attr.responsive){
+                        alert('being responsive');
+                        angular.element($window).on('resize', function(){
+                            var thisHeight = $window.innerHeight;
+                            var thisWidth = $window.innerWidth;
+                            // canvasEl.style.zoom = thisHeight/canvasEl.height;
 
-                    $window.onresize = function(){
-                        var thisHeight = $window.innerHeight;
-                        var thisWidth = $window.innerWidth;
-                        // canvasEl.style.zoom = thisHeight/canvasEl.height;
-
-                        if (thisWidth/thisHeight >= 16/9){
-                            canvasEl.style.zoom = thisHeight/canvasEl.height;
-                        }
-                        else {
-                            canvasEl.style.zoom = thisWidth/canvasEl.width;
-                        }
-                    };
+                            if (thisWidth/thisHeight >= 16/9){
+                                canvasEl.style.zoom = thisHeight/canvasEl.height;
+                            }
+                            else {
+                                canvasEl.style.zoom = thisWidth/canvasEl.width;
+                            }
+                        });
+                    }
                 }
             }
         }
