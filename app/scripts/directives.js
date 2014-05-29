@@ -8,10 +8,13 @@ angular.module('angularcmxApp')
                 cmx: '=cmxBook',
                 cmxcanvas: '=cmxcanvas'
             },
-            // template: '<canvas></canvas>',
+            templateUrl: 'views/partials/cmxcanvas.html',
             link: function(scope, element, attrs){
-                // console.log(element);
-                var canvasEl = element[0];
+                // console.log(element.find('canvas'));
+
+            // TO-DO: Make some sort of flag so I can put this directive on a canvas alone or a div for the everything, including the buttons.
+            //  Or make them two directives.
+                var canvasEl = element.find('canvas')[0];
                 canvasEl.id = canvasEl.id || 'cmxcanvas';
                 canvasEl.height = 450;
                 canvasEl.width = 800;
@@ -19,6 +22,13 @@ angular.module('angularcmxApp')
                     // console.log(data);
                     if (angular.isArray(data)){
                         scope.cmxcanvas.load(data, canvasEl.id);
+                        scope.next = function(){
+                            scope.cmxcanvas.next();
+                        };
+                        scope.prev = function(){
+                            scope.cmxcanvas.prev();
+                            // console.log(scope.cmxCanvas.loc);
+                        };
                     }
                 });
             }

@@ -1,10 +1,4 @@
-<div id='cmx-container'>
-    <canvas cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas"></canvas>
-    <ul class="buttons">
-        <li id="book-prev" ng-click="prev()"></li>
-        <li id="book-next" ng-click="next()"></li>
-    </ul>
-</div> 
+<div cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas"></div>
 
 <h3>{{cmxData.series.name}} #{{cmxData.issue}}: <!--
         -->{{cmxData.title}} <br />by <!--

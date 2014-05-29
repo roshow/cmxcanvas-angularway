@@ -15,6 +15,10 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/main.html',
         controller: 'CmxCtrl'
       })
+      .when('/embed/:bookId', {
+        templateUrl: 'views/iframe.html',
+        controller: 'CmxCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
