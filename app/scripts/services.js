@@ -18,7 +18,7 @@ angular.module('angularcmxApp')
         return function(cmxUrl){
             var def = $q.defer();
             $http({
-                url: '/json/sov01Model.json',
+                url: cmxUrl || '/json/sov01Model.json',
                 // url: 'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
                 method: 'GET',
                 transformResponse: function(data){

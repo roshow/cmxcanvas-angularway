@@ -12,8 +12,6 @@ angular.module('angularcmxApp')
             },
             templateUrl: 'views/partials/cmxcanvas.html',
             link: function(scope, element, attrs){
-                // console.log(element.find('canvas'));
-                console.log(attrs.$attr.resize);
 
             // TO-DO: Make some sort of flag so I can put this directive on a canvas alone or a div for the everything, including the buttons.
             //  Or make them two directives.

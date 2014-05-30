@@ -1,0 +1,58 @@
+html {
+    background-color: #fff;
+    // overflow: hidden;
+}
+body {
+    margin: 0;
+}
+
+.embed-head {
+    height: 54px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2px;
+}
+.embed-foot {
+    height: 53px;
+}
+.embed-head, .embed-foot {
+
+    h3 {
+        font-size: 12px;
+        margin: 0;
+        padding: 10px 0px 10px 3%;
+    }
+}
+.embed-foot {
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    li {
+        vertical-align: top;
+    }
+    h3 {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+    .book-prev {
+        text-align: right;
+    }
+    .book-next {
+        text-align: left;
+    }
+}
+.embed {
+    #cmx-container {
+        background-color: white;
+        display: inline-block;
+        text-align: center;
+        canvas {
+            border: 0;
+            margin: 0;
+            // border: 2px solid red;
+        }
+    }
+    .buttons li {
+        max-width: none;
+        width: 49%;
+    }
+}
