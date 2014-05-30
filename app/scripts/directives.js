@@ -36,14 +36,12 @@ angular.module('angularcmxApp')
                 });
 
                 if (attrs.$attr.resize){
-                    alert('resizing');
                     var thisWidth = $window.innerWidth;
                     canvasEl.style.zoom = thisWidth/canvasEl.width;
 
                     if (attrs.$attr.responsive){
-                        alert('being responsive');
                         angular.element($window).on('resize', function(){
-                            var thisHeight = $window.innerHeight;
+                            var thisHeight = $window.innerHeight - 130;
                             var thisWidth = $window.innerWidth;
                             // canvasEl.style.zoom = thisHeight/canvasEl.height;
 
@@ -57,5 +55,5 @@ angular.module('angularcmxApp')
                     }
                 }
             }
-        }
+        };
     }]);

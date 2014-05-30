@@ -1,4 +1,18 @@
 <!-- build:css({.tmp,app}) styles/main.css -->
 <link rel="stylesheet" href="styles/embed.css">
 <!-- endbuild -->
-<div class="embed" cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas" resize></div>
+<div class="embed-head">
+    <h3>{{cmxData.series.name}} #{{cmxData.issue}}: <!--
+            -->{{cmxData.title}} <br />by <!--
+            --><span ng-repeat="creator in cmxData.creators"><!--
+            --><span ng-if="$middle">, </span><!--
+            --><span ng-if="$last"> &amp; </span><!--
+            --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
+            --></span></h3>
+</div>
+
+<div class="embed" cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas" resize responsive></div>
+
+<div class="embed-foot">
+    <h3>backward | forward</h3>
+</div>
