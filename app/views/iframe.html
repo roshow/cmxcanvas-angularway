@@ -14,5 +14,9 @@
 <div class="embed" cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas" resize responsive></div>
 
 <div class="embed-foot">
-    <h3><span ng-click="cmxCanvas.prev()">backward </span>|<span ng-click="cmxCanvas.next()"> forward</span></h3>
+    
+    <ul class="buttons">
+        <li class="book-prev" ng-click="cmxCanvas.prev()"><h3>backward |</h3></li>
+        <li class="book-next" ng-click="cmxCanvas.next()"><h3>forward</h3></li>
+    </ul>
 </div>
