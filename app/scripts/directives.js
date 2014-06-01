@@ -34,16 +34,17 @@ angular.module('angularcmxApp')
                 });
 
                 if (attrs.$attr.resize){
-                    var heightDiff = 110;
+                    var heightDiff = 109;
+                    var widthDiff = 2;
                     var thisHeight = $window.innerHeight - heightDiff;
-                    var thisWidth = $window.innerWidth;
+                    var thisWidth = $window.innerWidth - widthDiff;
                     canvasEl.style.zoom = thisHeight/canvasEl.height;
                     // canvasEl.style.zoom = thisWidth/canvasEl.width;
 
                     if (attrs.$attr.responsive){
                         angular.element($window).on('resize', function(){
                             var thisHeight = $window.innerHeight - heightDiff;
-                            var thisWidth = $window.innerWidth;
+                            var thisWidth = $window.innerWidth - widthDiff;
                             // canvasEl.style.zoom = thisHeight/canvasEl.height;
 
                             if (thisWidth/thisHeight >= 16/9){

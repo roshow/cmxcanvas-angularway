@@ -1,8 +1,8 @@
-<!-- build:css({.tmp,app}) styles/main.css -->
+<!-- build:css({.tmp,app}) styles/embed.css -->
 <link rel="stylesheet" href="styles/embed.css">
 <!-- endbuild -->
 <div class="embed-head">
-    <h3>{{cmxData.series.name}} #{{cmxData.issue}}: <!--
+    <h3>{{cmxData.series.name}} #{{cmxData.issue || '0'}}: <!--
             -->{{cmxData.title}} <br />by <!--
             --><span ng-repeat="creator in cmxData.creators"><!--
             --><span ng-if="$middle">, </span><!--
@@ -16,7 +16,7 @@
 <div class="embed-foot">
     
     <ul class="buttons">
-        <li class="book-prev" ng-click="cmxCanvas.prev()"><h3>backward |</h3></li>
+        <li class="book-prev" ng-click="cmxCanvas.prev()" ng-show="!angular.equals(cmxCanvas.currentIndex, [0,-1])"><h3>backward |</h3></li>
         <li class="book-next" ng-click="cmxCanvas.next()"><h3>forward</h3></li>
     </ul>
 </div>
