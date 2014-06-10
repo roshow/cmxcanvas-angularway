@@ -13,7 +13,7 @@ angular.module('angularcmxApp')
             $scope.cmxData = data;
         });
 
-        console.log($scope.cmxCanvas);
+        // console.log($scope.cmxCanvas);
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){

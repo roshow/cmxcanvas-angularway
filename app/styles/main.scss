@@ -51,6 +51,8 @@ ul {
     max-width: 400px;
     width: 49%;
     height: 100%;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .tocDiv {
