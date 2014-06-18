@@ -12,15 +12,29 @@ angular.module('angularcmxApp')
             },
             templateUrl: 'views/partials/cmxcanvas.html',
             link: function(scope, element, attrs){
+                console.log(attrs);
 
             // TO-DO: Make some sort of flag so I can put this directive on a canvas alone or a div for the everything, including the buttons.
             //  Or make them two directives.
+
                 var canvasEl = element.find('canvas')[0];
-                canvasEl.id = canvasEl.id || 'cmxcanvas';
-                canvasEl.height = 450;
-                canvasEl.width = 800;
+                canvasEl.id = 'cmxcanvas';
+
+                // canvasEl.height = attrs.height || 450;
+                // canvasEl.width= attrs.width || 800;
+
+                attrs.$observe('initHeight', function (newVal, oldVal){
+                    if (!oldVal){
+                        canvasEl.height = newVal || 450;
+                    }
+                });
+                attrs.$observe('initWidth', function (newVal, oldVal){
+                    if (!oldVal){
+                        canvasEl.width = newVal || 800;
+                    }
+                });
+
                 scope.$watch('cmx', function(data){
-                    // console.log(data);
                     if (angular.isArray(data)){
                         scope.cmxcanvas.load(data, canvasEl.id);
                         scope.next = function(){
@@ -28,7 +42,6 @@ angular.module('angularcmxApp')
                         };
                         scope.prev = function(){
                             scope.cmxcanvas.prev();
-                            // console.log(scope.cmxCanvas.loc);
                         };
                     }
                 });

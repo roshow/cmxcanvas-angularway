@@ -2,6 +2,7 @@
 
 angular.module('angularcmxApp')
     .factory('getCmx', function($http, $q){
+
         function resolveImgUrlsFromModel(model){
             var L1 = model.cmxJSON.length;
             for(var i = 0; i < L1; i++) {
@@ -15,10 +16,13 @@ angular.module('angularcmxApp')
             }
             return model;
         }
+        
         return function(cmxUrl){
+            cmxUrl = null;
             var def = $q.defer();
             $http({
-                url: cmxUrl || '/json/sov01Model.json',
+                url: '/json/rev03og.json',
+                // url: cmxUrl || '/json/sov01Model.json',
                 // url: 'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
                 method: 'GET',
                 transformResponse: function(data){
