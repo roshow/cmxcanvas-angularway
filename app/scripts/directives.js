@@ -5,8 +5,8 @@ angular.module('angularcmxApp')
         return {
             restrict: 'A',
             scope: {
-                cmx: '=cmxBook',
-                cmxcanvas: '=cmxcanvas'
+                cmxcanvas: '=',
+                cmxBook: '='
             },
             templateUrl: 'views/partials/cmxcanvas.html',
             link: function(scope, element, attr){
@@ -14,9 +14,8 @@ angular.module('angularcmxApp')
                 var canvasEl = element.find('canvas')[0];
                 canvasEl.id = 'cmxcanvas';
 
-                scope.$watch('cmx', function(newData, oldData){
+                scope.$watch('cmxBook', function(newData, oldData){
                     if (!angular.equals(newData, oldData)){
-
                         var viewInfo = newData.view || {};
 
                         if (attr.$attr.animateResize){
@@ -60,7 +59,7 @@ angular.module('angularcmxApp')
                 canvasEl.style.zoom = thisHeight/canvasEl.height;
                 // canvasEl.style.zoom = thisWidth/canvasEl.width;
 
-                if (attr.$attr.responsive){
+                if (attr.resizeCanvas === 'responsive'){
                     angular.element($window).on('resize', function(){
                         var thisHeight = $window.innerHeight - heightDiff;
                         var thisWidth = $window.innerWidth - widthDiff;

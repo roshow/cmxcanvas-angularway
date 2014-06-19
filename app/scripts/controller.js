@@ -10,7 +10,7 @@ angular.module('angularcmxApp')
         $scope.cmxCanvas = new CmxCanvas();
         $scope.urls = [
             'http://cmxcanvasapi.herokuapp.com/cmx/' + $routeParams.bookId,
-            '/json/sov01Model.json',
+            '/json/rev03Model.json',
             '/json/rev03og.json',
             'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
         ];
