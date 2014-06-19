@@ -12,6 +12,7 @@ angular.module('angularcmxApp')
             'http://cmxcanvasapi.herokuapp.com/cmx/' + $routeParams.bookId,
             '/json/rev03Model.json',
             '/json/rev03og.json',
+            '/json/sov01Model.json',
             'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
         ];
 
@@ -21,7 +22,7 @@ angular.module('angularcmxApp')
             });
         };
 
-        $scope.getUrl($scope.urls[1]);
+        $scope.getUrl($scope.urls[3]);
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
