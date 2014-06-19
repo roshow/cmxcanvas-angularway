@@ -5,8 +5,13 @@
         --><span ng-if="$last"> &amp; </span><!--
         --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
         --></span></h3>
+          
+<ul class="book-style">
+    <li ng-click="getUrl(urls[1])">digital</li>
+    <li ng-click="getUrl(urls[2])">original</li>
+</ul>
 
-<div cmx-book="cmxData.cmxJSON" cmxcanvas="cmxCanvas" init-height="{{cmxData.view.height}}" init-width="{{cmxData.view.width}}"></div>
+<div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
 
 <div class="tocDiv">    
     <ul class="cmx-toc">

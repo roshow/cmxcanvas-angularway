@@ -16,14 +16,11 @@ angular.module('angularcmxApp')
             }
             return model;
         }
-        
+
         return function(cmxUrl){
-            cmxUrl = null;
             var def = $q.defer();
             $http({
-                url: '/json/rev03og.json',
-                // url: cmxUrl || '/json/sov01Model.json',
-                // url: 'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
+                url: cmxUrl,
                 method: 'GET',
                 transformResponse: function(data){
                     data = JSON.parse(data);
@@ -31,7 +28,6 @@ angular.module('angularcmxApp')
                     if (data.img){
                         data = resolveImgUrlsFromModel(data);
                     }
-                    // console.log(data);
                     return data;
                 }
             }).success(function(data){

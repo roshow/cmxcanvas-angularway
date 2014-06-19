@@ -29,8 +29,8 @@
             "view": {
                 "height": "1200",
                 "width": "1000",
-                "panel": {
-                    "transition": "bounceback"
+                "move": {
+                    "transition": "slide"
                 }
             },
             "cmxJSON": [
