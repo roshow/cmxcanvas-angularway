@@ -22,7 +22,7 @@ angular.module('angularcmxApp')
             });
         };
 
-        $scope.getUrl($scope.urls[3]);
+        $scope.getUrl($scope.urls[0]);
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){

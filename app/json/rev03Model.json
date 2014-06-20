@@ -27,8 +27,8 @@
                 "url": "/images/rev03/"
             },
             "view": {
-                "panel": {
-                    "transition": "bounceback"
+                "move": {
+                    "transition": "slideAndFade"
                 }
             },
             "cmxJSON": [

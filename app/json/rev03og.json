@@ -27,10 +27,10 @@
                 "url": "/images/rev03og/"
             },
             "view": {
-                "height": "1200",
-                "width": "1000",
+                "height": "730",
+                "width": "600",
                 "move": {
-                    "transition": "slide"
+                    "transition": "slideAndFade"
                 }
             },
             "cmxJSON": [
