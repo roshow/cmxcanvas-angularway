@@ -1,32 +1,39 @@
 'use strict';
 
 angular.module('angularcmxApp')
-    .controller('CmxCtrl', ['$scope', '$routeParams', 'getCmx', function ($scope, $routeParams, getCmx) {
+    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
         
         $scope.bookId = $routeParams.bookId;
-
         $scope.embedWidth = '400';
-
         $scope.cmxCanvas = new CmxCanvas();
-        $scope.urls = [
-            'http://cmxcanvasapi.herokuapp.com/cmx/' + $routeParams.bookId,
-            '/json/rev03Model.json',
-            '/json/rev03og.json',
-            '/json/sov01Model.json',
-            'http://cmxcanvasapi.herokuapp.com/cmx/rev03',
-        ];
-
-        $scope.getUrl = function(url){
-            getCmx(url).then(function(data){
-                $scope.cmxData = data;
-            });
+        $scope.getUrl = function(bookId){
+            getABook(bookId).then(
+                function(data){
+                    $scope.cmxData = data;
+                },
+                function(error){
+                    $location.path('/');
+                }
+            );
         };
-
-        $scope.getUrl($scope.urls[0]);
+        $scope.getUrl($routeParams.bookId);
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
         GetBooks.then(function(data){
             $scope.books = data;
         });
+    }])
+    .controller('DemoCtrl', ['$scope', 'getABook', function ($scope, getABook) {
+        
+        $scope.cmxCanvas = new CmxCanvas();
+        $scope.getBook = function(bookId){
+            var url = '/json/';
+            bookId += (url ? '.json' : '');
+            getABook(bookId, url).then(function (data){
+                $scope.cmxData = data;
+            });
+        };
+        $scope.getBook('rev03dig');
+
     }]);

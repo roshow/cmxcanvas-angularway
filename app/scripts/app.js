@@ -20,6 +20,10 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/iframe.html',
         controller: 'CmxCtrl'
       })
+      .when('/demo', {
+        templateUrl: 'views/demo.html',
+        controller: 'DemoCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

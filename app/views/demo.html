@@ -6,6 +6,11 @@
         --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
         --></span></h3>
 
+<ul class="book-style">
+    <li ng-click="getBook('rev03dig')">digital</li>
+    <li ng-click="getBook('rev03og')">original</li>
+</ul>
+
 <div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
 
 <div class="tocDiv">    

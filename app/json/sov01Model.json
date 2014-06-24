@@ -4,7 +4,9 @@
     "published": 1,
     "title": "Giant Future Robot",
     "thumb": "http://roshow.net/public/images/cmxcanvas/sov01/sov01_thumb.jpg",
-    "img": {"url":"http://roshow.net/public/images/cmxcanvas/sov01/"},
+    "img": {
+        "url":"http://roshow.net/public/images/cmxcanvas/sov01/"
+    },
     "series": {
         "name": "Sovereign",
         "id": "sov"

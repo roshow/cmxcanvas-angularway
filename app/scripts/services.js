@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
-    .factory('getCmx', function($http, $q){
+    .factory('getABook', ['$http', '$q', function($http, $q){
 
         function resolveImgUrlsFromModel(model){
             var L1 = model.cmxJSON.length;
@@ -17,10 +17,11 @@ angular.module('angularcmxApp')
             return model;
         }
 
-        return function(cmxUrl){
+        return function(bookId, endpoint){
             var def = $q.defer();
+            console.log((endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId);
             $http({
-                url: cmxUrl,
+                url:  (endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId,
                 method: 'GET',
                 transformResponse: function(data){
                     data = JSON.parse(data);
@@ -30,12 +31,16 @@ angular.module('angularcmxApp')
                     }
                     return data;
                 }
-            }).success(function(data){
-                def.resolve(data);
-            });
+            })
+                .success(function(data){
+                    def.resolve(data);
+                }).
+                error(function(data) {
+                    def.reject(data);
+                });
             return def.promise;
-        }
-    })
+        };
+    }])
     .factory('GetBooks', function($http, $q){
         var def = $q.defer();
         $http({
@@ -45,8 +50,12 @@ angular.module('angularcmxApp')
                 data = JSON.parse(data).data;
                 return data;
             }
-        }).success(function(data){
-            def.resolve(data);
-        });
+        })
+            .success(function(data){
+                def.resolve(data);
+            }).
+            error(function(data) {
+                def.reject(data);
+            });
         return def.promise;
     });
