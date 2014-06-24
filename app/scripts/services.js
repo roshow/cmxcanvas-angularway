@@ -41,7 +41,7 @@ angular.module('angularcmxApp')
             return def.promise;
         };
     }])
-    .factory('GetBooks', function($http, $q){
+    .factory('GetBooks', ['$http', '$q', function($http, $q){
         var def = $q.defer();
         $http({
             url: 'http://cmxcanvasapi.herokuapp.com/cmx',
@@ -58,4 +58,4 @@ angular.module('angularcmxApp')
                 def.reject(data);
             });
         return def.promise;
-    });
+    }]);

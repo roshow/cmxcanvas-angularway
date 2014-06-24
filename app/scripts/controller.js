@@ -28,8 +28,9 @@ angular.module('angularcmxApp')
         
         $scope.cmxCanvas = new CmxCanvas();
         $scope.getBook = function(bookId){
-            var url = '/json/';
-            bookId += (url ? '.json' : '');
+            // var url = '/json/';
+            // bookId += (url ? '.json' : '');
+            var url;
             getABook(bookId, url).then(function (data){
                 $scope.cmxData = data;
             });
