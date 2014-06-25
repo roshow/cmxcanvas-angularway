@@ -1,0 +1,168 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "_id": "bethforever",
+            "issue": 35,
+            "published": 1,
+            "title": "Happy Birthday!",
+            "_thumb": "http://roshow.net/public/images/cmxcanvas/sov01/sov01_thumb.jpg",
+            "img": {
+                "url":"/images/bethforever/"
+            },
+            "series": {
+                "name": "Beth"
+            },
+            "creators": [
+                {
+                    "name": "Rolando",
+                    "credit": "with a little help from some friends"
+                }
+            ],
+            "view": {
+                "move": {
+                    "transition": "bounceback"
+                }
+            },
+            "cmxJSON": [
+                {
+                    "panel": 0,
+                    "src": "eddie1.jpg",
+                    "type": "panel",
+                    "popups": [
+                        {
+                            "src": "eddie1_p1.png",
+                            "type": "popup",
+                            "x": 68,
+                            "y": 193,
+                            "transition": "fadeIn"
+                        },
+                        {
+                            "src": "eddie1_p2.png",
+                            "type": "popup",
+                            "x": 523,
+                            "y": 20,
+                            "transition": "fadeIn"
+                        },
+                        {
+                            "src": "eddie1_p3.png",
+                            "type": "popup",
+                            "x": 506,
+                            "y": 193,
+                            "transition": "fadeIn"
+                        }
+                    ]
+                },
+                {
+                    "panel": 1,
+                    "src": "eddie2.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 2,
+                    "src": "sophie1.jpg",
+                    "type": "panel",
+                    "popups": [],
+                    "transition": "slideAndFade"
+                },
+                {
+                    "panel": 3,
+                    "src": "sophie2.jpg",
+                    "type": "panel",
+                    "popups": [],
+                    "transition": "slideAndFade"    
+                },
+                {
+                    "panel": 4,
+                    "src": "susan.jpg",
+                    "type": "panel",
+                    "popups": [
+                        {
+                            "src": "susan_p1.png",
+                            "type": "popup",
+                            "x": 522,
+                            "y": 3
+                        },
+                        {
+                            "src": "susan_p2.png",
+                            "type": "popup",
+                            "x": 565,
+                            "y": 115
+                        },
+                        {
+                            "src": "susan_p3.png",
+                            "type": "popup",
+                            "x": 0,
+                            "y": 0
+                        },
+                        {
+                            "src": "susan_p4.png",
+                            "type": "popup",
+                            "x": 275,
+                            "y": 156
+                        }
+                    ]
+                },
+                {
+                    "panel": 5,
+                    "src": "allie0.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 6,
+                    "src": "allie.jpg",
+                    "type": "panel",
+                    "popups": [
+                        {
+                            "src": "allie_p1.png",
+                            "type": "popup",
+                            "x": 25,
+                            "y": 17
+                        },
+                        {
+                            "src": "allie_p2.png",
+                            "type": "popup",
+                            "x": 17,
+                            "y": 329
+                        },
+                        {
+                            "src": "allie_p3.png",
+                            "type": "popup",
+                            "x": 563,
+                            "y": 317
+                        }
+                    ]
+                },
+                {
+                    "panel": 7,
+                    "src": "superbeth1.jpg",
+                    "type": "panel",
+                    "popups": [],
+                    "transition": "crossfade"
+                },
+                {
+                    "panel": 8,
+                    "src": "superbeth2.jpg",
+                    "type": "panel",
+                    "transition": "crossfade",
+                    "popups": [
+                        {
+                            "src": "superbeth2_p1.png",
+                            "type": "popup",
+                            "x": 430,
+                            "y": 362
+                        },
+                        {
+                            "src": "superbeth2_p2.png",
+                            "type": "popup",
+                            "x": 441,
+                            "y": 26
+                        }
+                    ]
+                }   
+            ]
+        }
+    ]
+}
