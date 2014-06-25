@@ -37,4 +37,17 @@ angular.module('angularcmxApp')
         };
         $scope.getBook('rev03dig');
 
-    }]);
+    }])
+    .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
+        
+        $scope.cmxCanvas = new CmxCanvas();
+        $scope.getBook = function(bookId){
+            var url = '/json/';
+            bookId += '.json';
+            getABook(bookId, url).then(function (data){
+                $scope.cmxData = data;
+            });
+        };
+        $scope.getBook('bethforever');
+
+    }]);;
