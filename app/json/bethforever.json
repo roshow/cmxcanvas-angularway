@@ -34,22 +34,19 @@
                             "src": "eddie1_p1.png",
                             "type": "popup",
                             "x": 68,
-                            "y": 193,
-                            "transition": "fadeIn"
+                            "y": 193
                         },
                         {
                             "src": "eddie1_p2.png",
                             "type": "popup",
                             "x": 523,
-                            "y": 20,
-                            "transition": "fadeIn"
+                            "y": 20
                         },
                         {
                             "src": "eddie1_p3.png",
                             "type": "popup",
                             "x": 506,
-                            "y": 193,
-                            "transition": "fadeIn"
+                            "y": 193
                         }
                     ]
                 },
@@ -63,7 +60,22 @@
                     "panel": 2,
                     "src": "sophie1.jpg",
                     "type": "panel",
-                    "popups": [],
+                    "popups": [
+                        {
+                            "src": "sophie1_p1.png",
+                            "type": "popup",
+                            "x": 13,
+                            "y": 252,
+                            "transition": "fadeIn"
+                        },
+                        {
+                            "src": "sophie1_p2.png",
+                            "type": "popup",
+                            "x": 367,
+                            "y": 252,
+                            "transition": "fadeIn"
+                        }
+                    ],
                     "transition": "slideAndFade"
                 },
                 {
@@ -100,7 +112,8 @@
                             "src": "susan_p4.png",
                             "type": "popup",
                             "x": 275,
-                            "y": 156
+                            "y": 156,
+                            "transition": "fadeIn"
                         }
                     ]
                 },
@@ -137,13 +150,19 @@
                 },
                 {
                     "panel": 7,
+                    "src": "ro.jpg",
+                    "type": "panel",
+                    "popups": [],
+                },
+                {
+                    "panel": 8,
                     "src": "superbeth1.jpg",
                     "type": "panel",
                     "popups": [],
                     "transition": "crossfade"
                 },
                 {
-                    "panel": 8,
+                    "panel": 9,
                     "src": "superbeth2.jpg",
                     "type": "panel",
                     "transition": "crossfade",
