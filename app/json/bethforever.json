@@ -129,7 +129,7 @@
                     "type": "panel",
                     "popups": [
                         {
-                            "src": "allie_p1.png",
+                            "src":2 "allie_p1.png",
                             "type": "popup",
                             "x": 25,
                             "y": 17
@@ -152,7 +152,7 @@
                     "panel": 7,
                     "src": "ro.jpg",
                     "type": "panel",
-                    "popups": [],
+                    "popups": []
                 },
                 {
                     "panel": 8,
