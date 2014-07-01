@@ -27,14 +27,15 @@ angular.module('angularcmxApp')
     .controller('DemoCtrl', ['$scope', 'getABook', function ($scope, getABook) {
         
         $scope.cmxCanvas = new CmxCanvas();
-        $scope.getBook = function(bookId){
+        $scope.getBook = function(bookId, url){
             // var url = '/json/';
-            // bookId += (url ? '.json' : '');
-            var url;
+            bookId += (url ? '.json' : '');
+            // var url;
             getABook(bookId, url).then(function (data){
                 $scope.cmxData = data;
             });
         };
-        $scope.getBook('rev03dig');
+        $scope.getBook('revengercollection01', '/json/');
+
 
     }]);
