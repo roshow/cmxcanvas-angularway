@@ -56,4 +56,17 @@ angular.module('angularcmxApp')
         };
         $scope.getUrl($routeParams.bookId);
 
+    }])
+    .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
+        var url;
+        $scope.cmxCanvas = new CmxCanvas();
+        $scope.getBook = function(bookId){
+            // var url = '/json/';
+            // bookId += '.json';
+            getABook(bookId, url).then(function (data){
+                $scope.cmxData = data;
+            });
+        };
+        $scope.getBook('bethforever');
+
     }]);
