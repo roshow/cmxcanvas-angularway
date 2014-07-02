@@ -38,4 +38,17 @@ angular.module('angularcmxApp')
         $scope.getBook('revengercollection01', '/json/');
 
 
-    }]);
+    }])
+    .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
+        var url;
+        $scope.cmxCanvas = new CmxCanvas();
+        $scope.getBook = function(bookId){
+            // var url = '/json/';
+            // bookId += '.json';
+            getABook(bookId, url).then(function (data){
+                $scope.cmxData = data;
+            });
+        };
+        $scope.getBook('bethforever');
+
+    }]);;

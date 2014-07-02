@@ -1,0 +1,13 @@
+<h3 class="cmx-credits">Beth #35
+<br />by Rolando (with a little help from some friends)</h3>
+
+<div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
+
+<div class="tocDiv">    
+    <ul class="cmx-toc">
+        <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in cmxData.cmxJSON" ng-click="cmxCanvas.goTo($index,0)">
+            <!-- <img ng-src="{{panel.src}}" class="thumbnail"/> -->
+            {{$index}}
+        </li>
+    </ul>
+</div>

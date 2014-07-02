@@ -24,6 +24,10 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/demo.html',
         controller: 'DemoCtrl'
       })
+      .when('/beth', {
+        templateUrl: 'views/beth.html',
+        controller: 'BethCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
