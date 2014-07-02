@@ -27,28 +27,33 @@ angular.module('angularcmxApp')
     .controller('DemoCtrl', ['$scope', 'getABook', function ($scope, getABook) {
         
         $scope.cmxCanvas = new CmxCanvas();
-        $scope.getBook = function(bookId, url){
-            // var url = '/json/';
-            bookId += (url ? '.json' : '');
-            // var url;
-            getABook(bookId, url).then(function (data){
-                $scope.cmxData = data;
-            });
-        };
-        $scope.getBook('revengercollection01', '/json/');
-
-
-    }])
-    .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
-        var url;
-        $scope.cmxCanvas = new CmxCanvas();
         $scope.getBook = function(bookId){
             // var url = '/json/';
-            // bookId += '.json';
+            // bookId += (url ? '.json' : '');
+            var url;
             getABook(bookId, url).then(function (data){
                 $scope.cmxData = data;
             });
         };
-        $scope.getBook('bethforever');
+        $scope.getBook('rev03dig');
 
-    }]);;
+    }])
+    .controller('DevCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
+        
+        $scope.bookId = $routeParams.bookId;
+        $scope.embedWidth = '400';
+        $scope.cmxCanvas = new CmxCanvas();
+        $scope.getUrl = function(bookId){
+            getABook(bookId += '.json', '/json/').then(
+                function(data){
+                    $scope.cmxData = data;
+                },
+                function(error){
+                    console.log(error);
+                    $location.path('/');
+                }
+            );
+        };
+        $scope.getUrl($routeParams.bookId);
+
+    }]);

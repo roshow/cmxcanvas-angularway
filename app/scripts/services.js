@@ -3,9 +3,11 @@
 angular.module('angularcmxApp')
     .factory('getABook', ['$http', '$q', function($http, $q){
 
-        function resolveImgUrlsFromModel(model){
+        function resolveImgUrlsAndOtherInconsistencies(model){
             var L1 = model.cmxJSON.length;
             for(var i = 0; i < L1; i++) {
+                /** Make sure panel numbers are there and match index (eventually you'll want to handle panel numbers on the API/DB level to assure maximum flexibility and so on). **/
+                model.cmxJSON[i].panel = i;
                 model.cmxJSON[i].src = model.img.url + model.cmxJSON[i].src;
                 if(model.cmxJSON[i].popups && model.cmxJSON[i].popups.length > 0) {
                     var L2 = model.cmxJSON[i].popups.length;
@@ -14,6 +16,7 @@ angular.module('angularcmxApp')
                     }
                 }
             }
+            console.log(model);
             return model;
         }
 
@@ -27,7 +30,7 @@ angular.module('angularcmxApp')
                     data = JSON.parse(data);
                     data = data.data ? data.data[0] : data;
                     if (data.img){
-                        data = resolveImgUrlsFromModel(data);
+                        data = resolveImgUrlsAndOtherInconsistencies(data);
                     }
                     return data;
                 }
