@@ -30,6 +30,7 @@
                 "height": "750",
                 "width": "600",
                 "backgroundColor": "#000",
+                "backgroundTextColor": "#fff",
                 "move": {
                     "transition": "slideAndFade"
                 }

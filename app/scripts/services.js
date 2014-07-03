@@ -16,13 +16,13 @@ angular.module('angularcmxApp')
                     }
                 }
             }
-            console.log(model);
+            // console.log(model);
             return model;
         }
 
         return function(bookId, endpoint){
             var def = $q.defer();
-            console.log((endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId);
+            // console.log((endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId);
             $http({
                 url:  (endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId,
                 method: 'GET',

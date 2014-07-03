@@ -39,12 +39,16 @@ angular.module('angularcmxApp')
 
     }])
     .controller('DevCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
-        
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
         $scope.cmxCanvas = new CmxCanvas();
         $scope.getUrl = function(bookId){
-            getABook(bookId += '.json', '/json/').then(
+            var url;
+            if ($routeParams.api !== "1"){
+                bookId += '.json';
+                url = '/json/';
+            }
+            getABook(bookId, url).then(
                 function(data){
                     $scope.cmxData = data;
                 },

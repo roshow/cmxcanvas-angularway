@@ -24,7 +24,7 @@
             ],
             "img": {
                 "_url": "http://roshow.net/public/images/cmxcanvas/rev03/",
-                "url": "/images/rev03/"
+                "url": "/images/rev03dig/"
             },
             "view": {
                 "move": {
@@ -33,52 +33,38 @@
             },
             "cmxJSON": [
                 {
-                    "panel": 0,
-                    "cmx_id": "rev03",
                     "src": "panel01.png",
                     "type": "panel",
-                    "transition": "jumpcut",
+                    "transition": "crossfade",
                     "popups": []
                 },
                 {
-                    "panel": 1,
-                    "cmx_id": "rev03",
                     "src": "panel02.png",
                     "type": "panel",
-                    "transition": "jumpcut",
+                    "transition": "crossfade",
                     "popups": []
                 },
                 {
-                    "panel": 2,
-                    "cmx_id": "rev03",
                     "src": "panel03.jpg",
                     "type": "panel",
-                    "transition": "jumpcut",
+                    "transition": "crossfade",
                     "popups": []
                 },
                 {
-                    "panel": 3,
-                    "cmx_id": "rev03",
                     "src": "panel04.jpg",
                     "type": "panel",
-                    "transition": "jumpcut",
+                    "transition": "crossfade",
                     "popups": []
                 },
                 {
-                    "panel": 4,
-                    "cmx_id": "rev03",
                     "src": "panel05.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 5,
-                    "cmx_id": "rev03",
                     "src": "panel06.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 6,
-                    "cmx_id": "rev03",
                     "src": "panel07.jpg",
                     "type": "panel",
                     "popups": [
@@ -91,8 +77,6 @@
                     ]
                 },
                 {
-                    "panel": 7,
-                    "cmx_id": "rev03",
                     "src": "panel08.jpg",
                     "type": "panel",
                     "popups": [
@@ -105,44 +89,30 @@
                     ]
                 },
                 {
-                    "panel": 8,
-                    "cmx_id": "rev03",
                     "src": "panel09.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 9,
-                    "cmx_id": "rev03",
                     "src": "panel10.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 10,
-                    "cmx_id": "rev03",
                     "src": "panel11.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 11,
-                    "cmx_id": "rev03",
                     "src": "panel12.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 12,
-                    "cmx_id": "rev03",
                     "src": "panel13.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 13,
-                    "cmx_id": "rev03",
                     "src": "panel14.jpg",
                     "type": "panel"
                 },
                 {
-                    "panel": 14,
-                    "cmx_id": "rev03",
                     "src": "panel15.jpg",
                     "type": "panel",
                     "popups": [
@@ -155,8 +125,6 @@
                     ]
                 },
                 {
-                    "panel": 15,
-                    "cmx_id": "rev03",
                     "src": "panel16.png",
                     "type": "panel",
                     "popups": [
@@ -170,8 +138,6 @@
                     ]
                 },
                 {
-                    "panel": 16,
-                    "cmx_id": "rev03",
                     "src": "panel17.jpg",
                     "type": "panel",
                     "popups": [
@@ -196,8 +162,6 @@
                     ]
                 },
                 {
-                    "panel": 17,
-                    "cmx_id": "rev03",
                     "src": "panel18.png",
                     "type": "panel",
                     "popups": [
@@ -211,15 +175,11 @@
                     ]
                 },
                 {
-                    "panel": 18,
-                    "cmx_id": "rev03",
                     "src": "panel19.jpg",
                     "type": "panel",
                     "popups": []
                 },
                 {
-                    "panel": 19,
-                    "cmx_id": "rev03",
                     "src": "panel20.jpg",
                     "type": "panel",
                     "popups": [
@@ -233,8 +193,6 @@
                     ]
                 },
                 {
-                    "panel": 20,
-                    "cmx_id": "rev03",
                     "src": "panel21.jpg",
                     "type": "panel",
                     "popups": [
@@ -253,32 +211,24 @@
                     ]
                 },
                 {
-                    "panel": 21,
-                    "cmx_id": "rev03",
                     "src": "panel22.jpg",
                     "type": "panel",
-                    "transition": "jumpcut"
+                    "transition": "crossfade"
                 },
                 {
-                    "panel": 22,
-                    "cmx_id": "rev03",
                     "src": "panel23.jpg",
                     "type": "panel",
-                    "transition": "jumpcut"
+                    "transition": "crossfade"
                 },
                 {
-                    "panel": 23,
-                    "cmx_id": "rev03",
                     "src": "panel24.jpg",
                     "type": "panel",
-                    "transition": "jumpcut"
+                    "transition": "crossfade"
                 },
                 {
-                    "panel": 24,
-                    "cmx_id": "rev03",
                     "src": "panel25.jpg",
                     "type": "panel",
-                    "transition": "jumpcut",
+                    "transition": "crossfade",
                     "popups": [
                         {
                             "src": "panel25p01.png",
@@ -295,11 +245,9 @@
                     ]
                 },
                 {
-                    "panel": 25,
-                    "cmx_id": "rev03",
                     "src": "panel26.jpg",
                     "type": "panel",
-                    "transition": "jumpcut",
+                    "transition": "crossfade",
                     "popups": [
                         {
                             "src": "panel26p01.png",
@@ -310,22 +258,16 @@
                     ]
                 },
                 {
-                    "panel": 26,
-                    "cmx_id": "rev03",
                     "src": "panel27.jpg",
                     "type": "panel",
                     "popups": []
                 },
                 {
-                    "panel": 27,
-                    "cmx_id": "rev03",
                     "src": "panel28.jpg",
                     "type": "panel",
                     "popups": []
                 },
                 {
-                    "panel": 28,
-                    "cmx_id": "rev03",
                     "src": "panel29.jpg",
                     "type": "panel",
                     "popups": [
@@ -346,8 +288,6 @@
                     ]
                 },
                 {
-                    "panel": 29,
-                    "cmx_id": "rev03",
                     "src": "panel30.jpg",
                     "type": "panel",
                     "popups": [
@@ -360,16 +300,102 @@
                     ]
                 },
                 {
-                    "panel": 30,
-                    "cmx_id": "rev03",
                     "src": "panel31.jpg",
                     "type": "panel",
-                    "transition": "jumpcut",
+                    "transition": "crossfade",
                     "popups": []
                 },
                 {
-                    "panel": 31,
-                    "cmx_id": "rev03",
+                    "src": "panel32.jpg",
+                    "type": "panel",
+                    "transition": "bounceback",
+                    "popups": [
+                        {
+                            "src": "panel32p01.png",
+                            "type": "popup",
+                            "transition": "fadeIn",
+                            "x": 44,
+                            "y": 0
+                        }
+                    ]
+                },
+                {
+                    "src": "panel33.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "src": "panel34.jpg",
+                    "type": "panel",
+                    "popups": [
+                        {
+                            "src": "panel34p01.png",
+                            "type": "popup",
+                            "x": 229,
+                            "y": 226
+                        }
+                    ]
+                },
+                {
+                    "src": "panel35.jpg",
+                    "type": "panel",
+                    "popups": [
+                        {
+                            "src": "panel35p01.png",
+                            "type": "popup",
+                            "x": 470,
+                            "y": 166
+                        }
+                    ]
+                },
+                {
+                    "src": "panel36.jpg",
+                    "type": "panel",
+                    "transition": "bounceback",
+                    "popups": []
+                },
+                {
+                    "src": "panel37.png",
+                    "type": "panel",
+                    "popups": [
+                        {
+                            "src": "panel37p01.jpg",
+                            "type": "popup",
+                            "transition": "fadeIn",
+                            "x": 410,
+                            "y": 58
+                        }
+                    ]
+                },
+                {
+                    "src": "panel38.png",
+                    "type": "panel",
+                    "transition": "crossfade",
+                    "popups": [
+                        {
+                            "src": "panel38p01.jpg",
+                            "type": "popup",
+                            "transition": "fadeIn",
+                            "x": 410,
+                            "y": 58
+                        }
+                    ]
+                },
+                {
+                    "src": "panel39.png",
+                    "type": "panel",
+                    "transition": "crossfade",
+                    "popups": [
+                        {
+                            "src": "panel39p01.jpg",
+                            "type": "popup",
+                            "transition": "fadeIn",
+                            "x": 410,
+                            "y": 58
+                        }
+                    ]
+                },
+                {
                     "src": "tbc.png",
                     "type": "panel",
                     "popups": []

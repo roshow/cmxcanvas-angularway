@@ -29,6 +29,7 @@
             "view": {
                 "height": "1200",
                 "width": "900",
+                "backgroundTextColor": "#ff0000",
                 "move": {
                     "transition": "slideAndFade"
                 }
