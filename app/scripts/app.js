@@ -28,6 +28,11 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/beth.html',
         controller: 'BethCtrl'
       })
+
+      .when('/dev/:bookId', {
+        templateUrl: 'views/main.html',
+        controller: 'DevCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

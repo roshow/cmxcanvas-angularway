@@ -1,0 +1,263 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "_id": "revcollection01",
+            "issue": 1,
+            "published": 0,
+            "title": "Walk of Shame, Family Tied and Clusterf**k",
+            "thumb": "http://roshow.net/public/images/cmxcanvas/revorigin/revorigin_thumb.jpg",
+            "img": {
+                "url": "/images/revcollection01/"
+            },
+            "series": {
+                "name": "Revenger Collection",
+                "id": "revcollection"
+            },
+            "creators": [
+                {
+                    "name": "Michael Powell",
+                    "credit": "Artist",
+                    "url": "http://michaelpowellart.tumblr.com"
+                },
+                {
+                    "name": "Rolando Garcia",
+                    "credit": "Writer",
+                    "url": "http://roshow.net"
+                }
+            ],
+            "view": {
+                "height": "1200",
+                "width": "900",
+                "backgroundTextColor": "#ff0000",
+                "move": {
+                    "transition": "slideAndFade"
+                }
+            },
+            "cmxJSON": [
+                {
+                    "panel": 0,
+                    "src": "2011-05-25.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 1,
+                    "src": "2011-06-01.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 2,
+                    "src": "2011-06-08.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 3,
+                    "src": "2011-06-15.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 4,
+                    "src": "2011-06-22.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 5,
+                    "src": "2011-06-29.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 6,
+                    "src": "2011-07-06.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 7,
+                    "src": "2011-07-13.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 8,
+                    "src": "2011-07-20.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 9,
+                    "src": "2011-07-27.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 10,
+                    "src": "2011-10-19.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 11,
+                    "src": "2011-10-26.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 12,
+                    "src": "2011-11-02.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 13,
+                    "src": "2011-11-09.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 14,
+                    "src": "2011-11-16.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 15,
+                    "src": "2011-11-23.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 16,
+                    "src": "2011-12-07.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 17,
+                    "src": "2011-12-14.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 18,
+                    "src": "2011-12-21-1.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 19,
+                    "src": "2011-12-21-2.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 27,
+                    "src": "2012-06-27.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 28,
+                    "src": "2013-07-30.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 29,
+                    "src": "2013-07-31.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 30,
+                    "src": "2013-08-01.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 31,
+                    "src": "2013-08-06.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 32,
+                    "src": "2013-08-07.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 33,
+                    "src": "2013-08-08.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 34,
+                    "src": "2013-08-13.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 35,
+                    "src": "2013-08-14.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 36,
+                    "src": "2013-08-15.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 37,
+                    "src": "2013-08-20.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 38,
+                    "src": "2013-08-21.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 39,
+                    "src": "2013-08-22.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 40,
+                    "src": "2013-08-27.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 41,
+                    "src": "2013-08-28.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 42,
+                    "src": "2013-08-29.jpg",
+                    "type": "panel",
+                    "popups": []
+                },
+                {
+                    "panel": 43,
+                    "src": "2013-08-30.jpg",
+                    "type": "panel",
+                    "popups": []
+                }
+            ]
+        }
+    ]
+}

@@ -11,7 +11,9 @@ angular.module('angularcmxApp')
         templateUrl: 'views/partials/cmxcanvas.html',
         link: function(scope, element, attr){
 
-            var canvasEl = element.find('canvas')[0];
+            var $canvasEl = element.find('canvas'),
+                canvasEl = $canvasEl[0];
+            
             canvasEl.id = 'cmxcanvas';
 
             scope.$watch('cmxBook', function(newData, oldData){
@@ -39,7 +41,11 @@ angular.module('angularcmxApp')
                         canvasEl.width = (viewInfo.width || 800);
                         scope.cmxcanvas.load(newData, canvasEl.id);
                     }
-                        
+                    
+                    if (viewInfo.backgroundColor){
+                        $canvasEl.css('background-color', viewInfo.backgroundColor);
+                    }
+                    
                 }
             });
         }

@@ -38,6 +38,29 @@ angular.module('angularcmxApp')
         $scope.getBook('rev03dig');
 
     }])
+    .controller('DevCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
+        $scope.bookId = $routeParams.bookId;
+        $scope.embedWidth = '400';
+        $scope.cmxCanvas = new CmxCanvas();
+        $scope.getUrl = function(bookId){
+            var url;
+            if ($routeParams.api !== "1"){
+                bookId += '.json';
+                url = '/json/';
+            }
+            getABook(bookId, url).then(
+                function(data){
+                    $scope.cmxData = data;
+                },
+                function(error){
+                    console.log(error);
+                    $location.path('/');
+                }
+            );
+        };
+        $scope.getUrl($routeParams.bookId);
+
+    }])
     .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
         var url;
         $scope.cmxCanvas = new CmxCanvas();
@@ -50,4 +73,4 @@ angular.module('angularcmxApp')
         };
         $scope.getBook('bethforever');
 
-    }]);;
+    }]);
