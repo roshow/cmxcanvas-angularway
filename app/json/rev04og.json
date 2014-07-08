@@ -75,6 +75,11 @@
                     "src": "rev0408.jpg",
                     "type": "panel",
                     "popups": []
+                },
+                {
+                    "src": "rev0409.jpg",
+                    "type": "panel",
+                    "popups": []
                 }
             ]
         }
