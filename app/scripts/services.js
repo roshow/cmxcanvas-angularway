@@ -3,37 +3,15 @@
 angular.module('angularcmxApp')
     .factory('getABook', ['$http', '$q', function($http, $q){
 
-        function resolveImgUrlsAndOtherInconsistencies(model){
-            var L1 = model.cmxJSON.length;
-            for(var i = 0; i < L1; i++) {
-                /** Make sure panel numbers are there and match index (eventually you'll want to handle panel numbers on the API/DB level to assure maximum flexibility and so on). **/
-                model.cmxJSON[i].panel = i;
-                model.cmxJSON[i].src = model.img.url + model.cmxJSON[i].src;
-                if(model.cmxJSON[i].popups && model.cmxJSON[i].popups.length > 0) {
-                    var L2 = model.cmxJSON[i].popups.length;
-                    for(var j = 0; j < L2; j++) {
-                        model.cmxJSON[i].popups[j].src = model.img.url + model.cmxJSON[i].popups[j].src;
-                    }
-                }
-            }
-            // console.log(model);
-            return model;
-        }
-
         return function(bookId, endpoint){
             var def = $q.defer();
-            // console.log((endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId);
             $http({
                 url:  (endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId,
                 method: 'GET',
-                transformResponse: function(data){
-                    data = JSON.parse(data);
-                    data = data.data ? data.data[0] : data;
-                    if (data.img){
-                        data = resolveImgUrlsAndOtherInconsistencies(data);
-                    }
-                    return data;
-                }
+                // transformResponse: function(res){
+                //     res = angular.fromJson(res);
+                //     return res.data ? res.data[0] : res;
+                // }
             })
                 .success(function(data){
                     def.resolve(data);
@@ -49,10 +27,6 @@ angular.module('angularcmxApp')
         $http({
             url: 'http://cmxcanvasapi.herokuapp.com/cmx',
             method: 'GET',
-            transformResponse: function(data){
-                data = JSON.parse(data).data;
-                return data;
-            }
         })
             .success(function(data){
                 def.resolve(data);

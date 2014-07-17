@@ -8,10 +8,10 @@ angular.module('angularcmxApp')
         $scope.cmxCanvas = new CmxCanvas();
         $scope.getUrl = function(bookId){
             getABook(bookId).then(
-                function(data){
-                    $scope.cmxData = data;
+                function (data){
+                    $scope.cmxData = data.data[0];
                 },
-                function(error){
+                function (error){
                     $location.path('/');
                 }
             );
@@ -20,8 +20,8 @@ angular.module('angularcmxApp')
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
-        GetBooks.then(function(data){
-            $scope.books = data;
+        GetBooks.then(function (data){
+            $scope.books = data.data;
         });
     }])
     .controller('DemoCtrl', ['$scope', 'getABook', function ($scope, getABook) {
