@@ -8,10 +8,10 @@ angular.module('angularcmxApp')
             $http({
                 url:  (endpoint || 'http://cmxcanvasapi.herokuapp.com/cmx/') + bookId,
                 method: 'GET',
-                // transformResponse: function(res){
-                //     res = angular.fromJson(res);
-                //     return res.data ? res.data[0] : res;
-                // }
+                transformResponse: function(res){
+                    res = angular.fromJson(res);
+                    return res.data ? res.data[0] : res;
+                }
             })
                 .success(function(data){
                     def.resolve(data);
@@ -27,6 +27,9 @@ angular.module('angularcmxApp')
         $http({
             url: 'http://cmxcanvasapi.herokuapp.com/cmx',
             method: 'GET',
+            transformResponse: function(res){
+                return angular.fromJson(res).data;
+            }
         })
             .success(function(data){
                 def.resolve(data);

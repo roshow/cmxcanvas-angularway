@@ -9,7 +9,7 @@ angular.module('angularcmxApp')
         $scope.getUrl = function(bookId){
             getABook(bookId).then(
                 function (data){
-                    $scope.cmxData = data.data[0];
+                    $scope.cmxData = data;
                 },
                 function (error){
                     $location.path('/');
@@ -21,7 +21,7 @@ angular.module('angularcmxApp')
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
         GetBooks.then(function (data){
-            $scope.books = data.data;
+            $scope.books = data;
         });
     }])
     .controller('DemoCtrl', ['$scope', 'getABook', function ($scope, getABook) {
