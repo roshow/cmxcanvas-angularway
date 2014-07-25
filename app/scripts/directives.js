@@ -16,10 +16,13 @@ angular.module('angularcmxApp')
             
             canvasEl.id = 'cmxcanvas';
 
-            scope.$watch('cmxBook', function(newData, oldData){
+            scope.$watch('cmxBook', function (newData, oldData){
                 if (!angular.equals(newData, oldData)){
+                    if (scope.cmxcanvas.currentView){
+                        /** TODO: Something about currentView.panel not setting TOC buttons correctly on load unless I do it this way **/
+                        scope.cmxcanvas.currentView.panel = 0;
+                    }
                     var viewInfo = newData.view || {};
-
                     if (attr.$attr.animateResize){
                         var lenAnim = 400,
                             height = angular.copy(canvasEl.height),
@@ -27,15 +30,15 @@ angular.module('angularcmxApp')
                             deltaH = (viewInfo.height || 450) - height,
                             deltaW = (viewInfo.width || 800) - width;
 
-                        roquestAnim(function(timePassed){
+                        roquestAnim(function (timePassed){
                             var sinPart = Math.sin(timePassed*(Math.PI/2)/lenAnim);
                             canvasEl.height = height + (deltaH * sinPart);
                             canvasEl.width = width + (deltaW * sinPart);
                         }, lenAnim).then(function (){
+                            /** TODO: Use the promise to only have on ,load, not this one AND the one beneath it **/
                             scope.cmxcanvas.load(newData, canvasEl.id);
                         });
                     }
-
                     else {
                         canvasEl.height = (viewInfo.height || 450);
                         canvasEl.width = (viewInfo.width || 800);
