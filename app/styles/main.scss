@@ -70,6 +70,11 @@ ul {
 }
 
 $selected: #dd0000;
+
+.current-panel {
+    color: $selected !important;
+    border-color: $selected !important;
+}
 .cmx-toc {
     width: auto;
     li {

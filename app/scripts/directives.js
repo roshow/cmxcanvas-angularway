@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
-.directive('cmxcanvas', function(){
+.directive('cmxcanvas', [ function (){
     return {
         restrict: 'A',
         scope: {
@@ -53,7 +53,7 @@ angular.module('angularcmxApp')
             });
         }
     };
-})
+}])
 .directive('resizeCanvas', ['$window', function($window){
     return {
         restrict: 'A',
@@ -83,5 +83,5 @@ angular.module('angularcmxApp')
                 });
             }
         }
-    }
+    };
 }]);

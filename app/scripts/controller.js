@@ -33,6 +33,7 @@ angular.module('angularcmxApp')
             // bookId += (url ? '.json' : '');
             getABook(bookId, url).then(function (data){
                 $scope.cmxData = data;
+                console.log($scope.cmxData.id);
             });
         };
         $scope.getBook('rev03dig');
