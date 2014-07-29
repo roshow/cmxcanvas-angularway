@@ -20,10 +20,6 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/iframe.html',
         controller: 'CmxCtrl'
       })
-      .when('/demo', {
-        templateUrl: 'views/demo.html',
-        controller: 'DemoCtrl'
-      })
       .when('/beth', {
         templateUrl: 'views/beth.html',
         controller: 'BethCtrl'

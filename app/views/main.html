@@ -6,11 +6,15 @@
         --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
         --></span></h3>
 
+<ul class="book-style" ng-if="cmxData.versions">
+    <li ng-repeat="version in cmxData.versions"  ng-class="{ 'current-panel': cmxData.id === version.id }" ng-click="getBook(version.id)">{{version.format}}</li>
+</ul>
+
 <div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
 
 <div class="tocDiv">    
     <ul class="cmx-toc">
-        <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in cmxData.cmxJSON" ng-click="cmxCanvas.goTo($index,0)">
+        <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in cmxData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
             <!-- <img ng-src="{{panel.src}}" class="thumbnail"/> -->
             {{$index}}
         </li>

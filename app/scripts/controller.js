@@ -6,7 +6,7 @@ angular.module('angularcmxApp')
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
         $scope.cmxCanvas = new CmxCanvas();
-        $scope.getUrl = function(bookId){
+        $scope.getBook = function(bookId){
             getABook(bookId).then(
                 function (data){
                     $scope.cmxData = data;
@@ -16,28 +16,13 @@ angular.module('angularcmxApp')
                 }
             );
         };
-        $scope.getUrl($routeParams.bookId);
+        $scope.getBook($routeParams.bookId);
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
         GetBooks.then(function (data){
             $scope.books = data;
         });
-    }])
-    .controller('DemoCtrl', ['$scope', 'getABook', function ($scope, getABook) {
-        
-        $scope.cmxCanvas = new CmxCanvas();
-        $scope.getBook = function(bookId){
-            var url;
-            // url = '/json/';
-            // bookId += (url ? '.json' : '');
-            getABook(bookId, url).then(function (data){
-                $scope.cmxData = data;
-                console.log($scope.cmxData.id);
-            });
-        };
-        $scope.getBook('rev03dig');
-
     }])
     .controller('DevCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
         $scope.bookId = $routeParams.bookId;

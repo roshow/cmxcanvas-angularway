@@ -6,7 +6,7 @@
         --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
         --></span></h3>
 
-<ul class="book-style">
+<ul class="book-style" ng-if="cmxData.versions">
     <li ng-repeat="version in cmxData.versions"  ng-class="{ 'current-panel': cmxData.id === version.id }" ng-click="getBook(version.id)">{{version.format}}</li>
 </ul>
 
