@@ -1,10 +1,10 @@
 <div class="book-info">
     <h3 class="cmx-credits">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
-            -->{{cmxData.title}} <br />by <!--
+            -->{{cmxData.title}} <br /><!--
             --><span ng-repeat="creator in cmxData.creators"><!--
-            --><span ng-if="$middle">, </span><!--
-            --><span ng-if="$last"> &amp; </span><!--
-            --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
+                --><a ng-href="{{creator.url}}">{{creator.credit}}: {{creator.name}}</a><!--
+                --><span ng-if="$first">,  </span><!--
+                --><span ng-if="$middle">,  </span><!--
             --></span></h3>
 
     <ul class="book-style" ng-if="cmxData.formats">
@@ -15,11 +15,11 @@
 
 <div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
 
-<div class="tocDiv">    
+
+<!-- <div class="tocDiv">    
     <ul class="cmx-toc">
         <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in cmxData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
-            <!-- <img ng-src="{{panel.src}}" class="thumbnail"/> -->
             {{$index}}
         </li>
     </ul>
-</div>
+</div> -->
