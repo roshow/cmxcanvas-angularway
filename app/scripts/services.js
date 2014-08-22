@@ -9,16 +9,23 @@ apiHost = 'http://0.0.0.0:5000';
 angular.module('angularcmxApp')
     .factory('getABook', ['$http', '$q', function($http, $q){
 
-        return function(bookId, endpoint){
+        return function(bookId, format){
             var def = $q.defer();
-            $http({
-                url:  (endpoint || apiHost + '/cmx/') + bookId,
+            var reqObj = {
+                url:  (apiHost + '/books/') + bookId,
                 method: 'GET',
                 transformResponse: function(res){
                     res = angular.fromJson(res);
                     return res.data ? res.data[0] : res;
                 }
-            })
+            };
+            if (format){
+                reqObj.params = {
+                    format: format
+                };
+            }
+            console.log('hello geetaa a boog');
+            $http(reqObj)
                 .success(function(data){
                     def.resolve(data);
                 }).
@@ -31,7 +38,7 @@ angular.module('angularcmxApp')
     .factory('GetBooks', ['$http', '$q', function($http, $q){
         var def = $q.defer();
         $http({
-            url: apiHost + '/cmx',
+            url: apiHost + '/books',
             method: 'GET',
             transformResponse: function(res){
                 return angular.fromJson(res).data;

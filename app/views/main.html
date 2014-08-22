@@ -1,14 +1,17 @@
-<h3 class="cmx-credits">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
-        -->{{cmxData.title}} <br />by <!--
-        --><span ng-repeat="creator in cmxData.creators"><!--
-        --><span ng-if="$middle">, </span><!--
-        --><span ng-if="$last"> &amp; </span><!--
-        --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
-        --></span></h3>
+<div class="book-info">
+    <h3 class="cmx-credits">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
+            -->{{cmxData.title}} <br />by <!--
+            --><span ng-repeat="creator in cmxData.creators"><!--
+            --><span ng-if="$middle">, </span><!--
+            --><span ng-if="$last"> &amp; </span><!--
+            --><a ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a><!--
+            --></span></h3>
 
-<ul class="book-style" ng-if="cmxData.versions">
-    <li ng-repeat="version in cmxData.versions"  ng-class="{ 'current-panel': cmxData.id === version.id }" ng-click="getBook(version.id)">{{version.format}}</li>
-</ul>
+    <ul class="book-style" ng-if="cmxData.formats">
+        <li ng-repeat="format in cmxData.formats"  ng-class="{ 'current-panel': cmxData.view.id === format.view_id }" ng-click="getBook(cmxData.id, format.format)">{{format.format}}</li>
+    </ul>
+    <div style="clear:both;"></div>
+</div>
 
 <div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
 

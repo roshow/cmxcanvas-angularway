@@ -6,8 +6,8 @@ angular.module('angularcmxApp')
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
         $scope.cmxCanvas = new CmxCanvas();
-        $scope.getBook = function(bookId){
-            getABook(bookId).then(
+        $scope.getBook = function(bookId, format){
+            getABook(bookId, format).then(
                 function (data){
                     $scope.cmxData = data;
                 },

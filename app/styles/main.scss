@@ -12,7 +12,11 @@
         color: #aaa;
     }
  }
-
+.top-container {
+    max-width: 80%;
+    min-width: 700px;
+    margin: auto;
+}
 .blackcanvas {
     background-color: #000;
 }
@@ -33,7 +37,8 @@
 #cmx-container canvas {
     margin: auto;
     border: 2px solid #ccc;
-    vertical-align: bottom
+    vertical-align: bottom;
+    max-width:700px;
 }
 
 ul {
@@ -106,6 +111,7 @@ $selected: #dd0000;
 
 ul.book-style {
     text-align: right;
+    float: right;
     li {
         border: 1px solid #555;
         color: #555;
@@ -135,6 +141,7 @@ ul.book-style {
 .cmx-credits {
     padding-left: 40px;
     font-size: 1em;
+    float: left;
 }
 
     
