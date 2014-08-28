@@ -1,3 +1,4 @@
+<div class="top-container">
 <div class="book-info">
     <h3 class="cmx-credits">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
             -->{{cmxData.title}} <br /><!--
@@ -8,7 +9,7 @@
             --></span></h3>
 
     <ul class="book-style" ng-if="cmxData.formats">
-        <li ng-repeat="format in cmxData.formats"  ng-class="{ 'current-panel': cmxData.view.id === format.view_id }" ng-click="getBook(cmxData.id, format.format)">{{format.format}}</li>
+        <li class="btn-format" ng-if="cmxData.formats.length > 1" ng-repeat="format in cmxData.formats"  ng-class="{ 'current-panel': cmxData.view.id === format.view_id }" ng-click="getBook(cmxData.id, format.format)">{{format.format}}</li>
     </ul>
     <div style="clear:both;"></div>
 </div>
@@ -23,3 +24,5 @@
         </li>
     </ul>
 </div> -->
+
+</div>
