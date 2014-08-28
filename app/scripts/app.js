@@ -8,7 +8,7 @@ angular.module('angularcmxApp', [
 ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/books', {
         templateUrl: 'views/library.html',
         controller: 'LibraryCtrl'
       })
@@ -16,13 +16,13 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/main.html',
         controller: 'CmxCtrl'
       })
+      .when('/books/:bookId', {
+        templateUrl: 'views/main.html',
+        controller: 'CmxCtrl'
+      })
       .when('/embed/:bookId', {
         templateUrl: 'views/iframe.html',
         controller: 'CmxCtrl'
-      })
-      .when('/demo', {
-        templateUrl: 'views/demo.html',
-        controller: 'DemoCtrl'
       })
       .when('/beth', {
         templateUrl: 'views/beth.html',
@@ -34,6 +34,6 @@ angular.module('angularcmxApp', [
         controller: 'DevCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/books'
       });
   });

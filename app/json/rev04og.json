@@ -1,15 +1,13 @@
 {
     "code": 200,
+    "parseOptions": {},
     "data": [
         {
-            "_id": "rev04",
+            "_id": "rev04og",
             "issue": 4,
             "published": 0,
             "title": "Nice Threads",
             "thumb": "http://roshow.net/public/images/cmxcanvas/revorigin/revorigin_thumb.jpg",
-            "img": {
-                "url": "/images/rev04og/"
-            },
             "series": {
                 "name": "Revenger",
                 "id": "rev"
@@ -38,46 +36,55 @@
             "cmxJSON": [
                 {
                     "src": "rev0401.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0402.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0403.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0404.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0405.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0406.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0407.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0408.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "src": "rev0409.jpg",
+                    "path": "/images/rev04og/",
                     "type": "panel",
                     "popups": []
                 }

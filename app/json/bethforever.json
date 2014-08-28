@@ -1,5 +1,6 @@
 {
     "code": 200,
+    "parseOptions": {},
     "data": [
         {
             "_id": "bethforever",
@@ -7,9 +8,6 @@
             "published": 1,
             "title": "Happy Birthday!",
             "_thumb": "http://roshow.net/public/images/cmxcanvas/sov01/sov01_thumb.jpg",
-            "img": {
-                "url":"/images/bethforever/"
-            },
             "series": {
                 "name": "Beth"
             },
@@ -28,22 +26,26 @@
                 {
                     "panel": 0,
                     "src": "eddie1.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": [
                         {
                             "src": "eddie1_p1.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 68,
                             "y": 193
                         },
                         {
                             "src": "eddie1_p2.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 523,
                             "y": 20
                         },
                         {
                             "src": "eddie1_p3.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 506,
                             "y": 193
@@ -53,16 +55,19 @@
                 {
                     "panel": 1,
                     "src": "eddie2.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "panel": 2,
                     "src": "sophie1.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": [
                         {
                             "src": "sophie1_p1.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 13,
                             "y": 252,
@@ -70,6 +75,7 @@
                         },
                         {
                             "src": "sophie1_p2.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 367,
                             "y": 252,
@@ -81,35 +87,41 @@
                 {
                     "panel": 3,
                     "src": "sophie2.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": [],
-                    "transition": "slideAndFade"    
+                    "transition": "slideAndFade"
                 },
                 {
                     "panel": 4,
                     "src": "susan.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": [
                         {
                             "src": "susan_p1.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 522,
                             "y": 3
                         },
                         {
                             "src": "susan_p2.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 565,
                             "y": 115
                         },
                         {
                             "src": "susan_p3.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 0,
                             "y": 0
                         },
                         {
                             "src": "susan_p4.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 275,
                             "y": 156,
@@ -120,28 +132,33 @@
                 {
                     "panel": 5,
                     "src": "allie0.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "panel": 6,
                     "src": "allie.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": [
                         {
-                            "src":2 "allie_p1.png",
+                            "src": "allie_p1.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 25,
                             "y": 17
                         },
                         {
                             "src": "allie_p2.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 17,
                             "y": 329
                         },
                         {
                             "src": "allie_p3.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 563,
                             "y": 317
@@ -151,12 +168,14 @@
                 {
                     "panel": 7,
                     "src": "ro.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": []
                 },
                 {
                     "panel": 8,
                     "src": "superbeth1.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "popups": [],
                     "transition": "crossfade"
@@ -164,23 +183,26 @@
                 {
                     "panel": 9,
                     "src": "superbeth2.jpg",
+                    "path":"/images/bethforever/",
                     "type": "panel",
                     "transition": "crossfade",
                     "popups": [
                         {
                             "src": "superbeth2_p1.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 430,
                             "y": 362
                         },
                         {
                             "src": "superbeth2_p2.png",
+                            "path":"/images/bethforever/",
                             "type": "popup",
                             "x": 441,
                             "y": 26
                         }
                     ]
-                }   
+                }
             ]
         }
     ]

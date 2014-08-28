@@ -1,7 +1,13 @@
  @import url(http://fonts.googleapis.com/css?family=IM+Fell+English);
  @import url(http://fonts.googleapis.com/css?family=Lato:300);
+
  body {
-    font-family: Lato "IM Fell English" "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+    font-weight: normal;
+ }
+
+ .appcontainer {
+    font-family: "Lato" "IM Fell English" "Big Caslon","Book Antiqua","Palatino Linotype",Georgia,serif;
+    // font-weight: 700;
  }
 
  a {
@@ -12,13 +18,21 @@
         color: #aaa;
     }
  }
-
+.top-container {
+    max-width: 80%;
+    min-width: 700px;
+    margin: auto;
+}
+.btn-format {
+    margin: 0;
+    font-size: 12px;
+}
 .blackcanvas {
     background-color: #000;
 }
 
 #header {
-    font-size: 1.2em;
+    font-size: 1.4em;
     text-align: right;
     color: #444;
 }
@@ -33,7 +47,8 @@
 #cmx-container canvas {
     margin: auto;
     border: 2px solid #ccc;
-    vertical-align: bottom
+    vertical-align: bottom;
+    max-width:700px;
 }
 
 ul {
@@ -70,6 +85,11 @@ ul {
 }
 
 $selected: #dd0000;
+
+.current-panel {
+    color: $selected !important;
+    border-color: $selected !important;
+}
 .cmx-toc {
     width: auto;
     li {
@@ -101,12 +121,13 @@ $selected: #dd0000;
 
 ul.book-style {
     text-align: right;
+    float: right;
     li {
         border: 1px solid #555;
         color: #555;
         cursor: pointer;
         display: inline-block;
-        font-size: 1.25em;
+        font-size: 1em;
         padding: 5px;
         line-height: 1em;
         margin: 5px;
@@ -128,8 +149,9 @@ ul.book-style {
 }
 
 .cmx-credits {
-    padding-left: 40px;
-    font-size: 1em;
+    // padding-left: 40px;
+    font-size: 15px;
+    float: left;
 }
 
     
