@@ -1,7 +1,16 @@
  @import url(http://fonts.googleapis.com/css?family=IM+Fell+English);
+ // @import url(http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica);
+ @import url(http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:400,400italic);
  @import url(http://fonts.googleapis.com/css?family=Lato:300);
+ @import url(http://fonts.googleapis.com/css?family=Francois+One);
+ @import url(http://fonts.googleapis.com/css?family=Roboto:100,400,700,300,100,500,900);
+ // @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
+ @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300,200);
+
  body {
-    font-family: Lato "IM Fell English" "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+    // font-family: Lato "IM Fell English" "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+    font-family: Lato "IM Fell English" "Big Caslon","Book Antiqua","Palatino Linotype",Georgia,serif;
+    font-weight: bold;
  }
 
  a {
@@ -17,12 +26,16 @@
     min-width: 700px;
     margin: auto;
 }
+.btn-format {
+    margin: 0;
+    font-size: 12px;
+}
 .blackcanvas {
     background-color: #000;
 }
 
 #header {
-    font-size: 1.2em;
+    font-size: 1.4em;
     text-align: right;
     color: #444;
 }
@@ -117,7 +130,7 @@ ul.book-style {
         color: #555;
         cursor: pointer;
         display: inline-block;
-        font-size: 1.25em;
+        font-size: 1em;
         padding: 5px;
         line-height: 1em;
         margin: 5px;
@@ -140,7 +153,7 @@ ul.book-style {
 
 .cmx-credits {
     padding-left: 40px;
-    font-size: 1em;
+    font-size: 15px;
     float: left;
 }
 

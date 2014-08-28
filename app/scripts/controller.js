@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
-    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
+    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'GetABook', function ($scope, $routeParams, $location, getABook) {
         
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
@@ -16,11 +16,13 @@ angular.module('angularcmxApp')
                 }
             );
         };
-        $scope.getBook($routeParams.bookId);
+
+        $scope.getBook($routeParams.bookId, $routeParams.format);
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
         GetBooks.then(function (data){
+            console.log(data);
             $scope.books = data;
         });
     }])

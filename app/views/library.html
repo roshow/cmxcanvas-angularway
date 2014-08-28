@@ -1,9 +1,10 @@
 <div id="library">
     <ul>
-        <li ng-repeat="book in books | filter: { published: 1 }">
-            <a ng-href="#/cmx/{{book._id}}">
+        <li ng-repeat="book in books | filter: { published: true }">
+            <a ng-href="#/books/{{book.id}}">
                 <img class="library-thumb" ng-src="{{book.thumb}}" />
             </a>
+            <h3>{{book.title}}</h3>
         </li>
     </ul>
 </div>

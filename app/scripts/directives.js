@@ -1,3 +1,5 @@
+/*globals CmxCanvas, roquestAnim */
+
 'use strict';
 
 angular.module('angularcmxApp')
@@ -47,10 +49,16 @@ angular.module('angularcmxApp')
                     
                     if (viewInfo.backgroundColor){
                         $canvasEl.css('background-color', viewInfo.backgroundColor);
-                    }
-                    
+                    }                 
                 }
             });
+            scope.changed = {};
+            scope.changed.next = function(){
+                console.log(scope.cmxcanvas.next());
+            };
+            scope.changed.prev = function(){
+                console.log(scope.cmxcanvas.prev());
+            };
         }
     };
 }])
@@ -65,14 +73,17 @@ angular.module('angularcmxApp')
             var widthDiff = 2;
             var thisHeight = $window.innerHeight - heightDiff;
             var thisWidth = $window.innerWidth - widthDiff;
-            canvasEl.style.zoom = thisHeight/canvasEl.height;
-            // canvasEl.style.zoom = thisWidth/canvasEl.width;
+            if (thisWidth/thisHeight >= 16/9){
+                canvasEl.style.zoom = thisHeight/canvasEl.height;
+            }
+            else {
+                canvasEl.style.zoom = thisWidth/canvasEl.width;
+            }
 
             if (attr.resizeCanvas === 'responsive'){
                 angular.element($window).on('resize', function(){
                     var thisHeight = $window.innerHeight - heightDiff;
                     var thisWidth = $window.innerWidth - widthDiff;
-                    // canvasEl.style.zoom = thisHeight/canvasEl.height;
 
                     if (thisWidth/thisHeight >= 16/9){
                         canvasEl.style.zoom = thisHeight/canvasEl.height;

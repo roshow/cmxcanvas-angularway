@@ -7,7 +7,7 @@ var apiHost;
 apiHost = 'http://0.0.0.0:5000';
 
 angular.module('angularcmxApp')
-    .factory('getABook', ['$http', '$q', function($http, $q){
+    .factory('GetABook', ['$http', '$q', function($http, $q){
 
         return function(bookId, format){
             var def = $q.defer();
