@@ -1,16 +1,13 @@
  @import url(http://fonts.googleapis.com/css?family=IM+Fell+English);
- // @import url(http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica);
- @import url(http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:400,400italic);
  @import url(http://fonts.googleapis.com/css?family=Lato:300);
- @import url(http://fonts.googleapis.com/css?family=Francois+One);
- @import url(http://fonts.googleapis.com/css?family=Roboto:100,400,700,300,100,500,900);
- // @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
- @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300,200);
 
  body {
-    // font-family: Lato "IM Fell English" "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
-    font-family: Lato "IM Fell English" "Big Caslon","Book Antiqua","Palatino Linotype",Georgia,serif;
-    font-weight: bold;
+    font-weight: normal;
+ }
+
+ .appcontainer {
+    font-family: "Lato" "IM Fell English" "Big Caslon","Book Antiqua","Palatino Linotype",Georgia,serif;
+    // font-weight: 700;
  }
 
  a {
@@ -152,7 +149,7 @@ ul.book-style {
 }
 
 .cmx-credits {
-    padding-left: 40px;
+    // padding-left: 40px;
     font-size: 15px;
     float: left;
 }
