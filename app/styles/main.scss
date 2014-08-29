@@ -1,13 +1,13 @@
  @import url(http://fonts.googleapis.com/css?family=IM+Fell+English);
  @import url(http://fonts.googleapis.com/css?family=Lato:300);
+ @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800);
 
  body {
     font-weight: normal;
  }
 
  .appcontainer {
-    font-family: "Lato" "IM Fell English" "Big Caslon","Book Antiqua","Palatino Linotype",Georgia,serif;
-    // font-weight: 700;
+    font-family: "Alegreya Sans";
  }
 
  a {
@@ -150,8 +150,13 @@ ul.book-style {
 
 .cmx-credits {
     // padding-left: 40px;
-    font-size: 15px;
+    font-size: 16px;
     float: left;
+    font-weight: normal;
+    .issue-name {
+        font-weight: 800;
+        font-size: 18px;
+    }
 }
 
     

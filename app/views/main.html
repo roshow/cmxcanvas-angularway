@@ -1,7 +1,7 @@
 <div class="top-container">
 <div class="book-info">
-    <h3 class="cmx-credits">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
-            -->{{cmxData.title}} <br /><!--
+    <h3 class="cmx-credits"><span class="issue-name">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
+            -->{{cmxData.title}}</span><br /><!--
             --><span ng-repeat="creator in cmxData.creators"><!--
                 --><a ng-href="{{creator.url}}">{{creator.credit}}: {{creator.name}}</a><!--
                 --><span ng-if="$first">,  </span><!--
