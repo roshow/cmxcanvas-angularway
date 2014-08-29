@@ -2,6 +2,7 @@
 
 'use strict';
 
+var crazy;
 angular.module('angularcmxApp')
 .directive('cmxcanvas', [ function (){
     return {
@@ -46,6 +47,7 @@ angular.module('angularcmxApp')
                         canvasEl.width = (viewInfo.width || 800);
                         scope.cmxcanvas.load(newData, canvasEl.id);
                     }
+                    crazy = scope.cmxcanvas;
                     
                     if (viewInfo.backgroundColor){
                         $canvasEl.css('background-color', viewInfo.backgroundColor);

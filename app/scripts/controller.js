@@ -6,6 +6,17 @@ angular.module('angularcmxApp')
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
         $scope.cmxCanvas = new CmxCanvas();
+        
+        $scope.superPowerPanelChange = function(direction){
+            return direction;
+        };
+
+        // $scope.watch('cmxCanvas.wasFirst', function (nval){
+        //     if (nval === true){
+        //         console.log('wasFirst!');
+        //     }
+        // });
+
         $scope.getBook = function(bookId, format){
             getABook(bookId, format).then(
                 function (data){
