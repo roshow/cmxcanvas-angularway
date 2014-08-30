@@ -3,18 +3,9 @@
 angular.module('angularcmxApp')
     .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'GetABook', function ($scope, $routeParams, $location, getABook) {
         
-        $scope.canvasbook = new CmxCanvas();
-        
+                
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
-
-        // $scope.$watch('canvasbook.currentView', function (newval, oldval){
-        //     console.log(arguments);
-        // });
-
-        $scope.customNext = function(){
-            alert('dick');
-        }
 
         $scope.getBook = function(bookId, format){
             getABook(bookId, format).then(
@@ -26,6 +17,10 @@ angular.module('angularcmxApp')
                 }
             );
         };
+
+        $scope.$watch('currentView', function (n,o){
+            console.log(n);
+        });
 
         $scope.getBook($routeParams.bookId, $routeParams.format);
 
