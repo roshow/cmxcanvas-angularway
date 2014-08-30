@@ -28,8 +28,15 @@
     margin: auto;
 }
 .btn-format {
-    margin: 0;
-    font-size: 12px;
+    border: 1px solid #555;
+    color: #555;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    padding: 5px;
+    line-height: 1em;
+    margin: 5px;
+    text-align: center;
 }
 .blackcanvas {
     background-color: #000;
@@ -39,6 +46,30 @@
     font-size: 1.4em;
     text-align: right;
     color: #444;
+}
+
+.canvas-wrapper {
+    position: relative;
+    .canvas-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;        
+        color: #fff;
+        background: #000;
+        opacity: 0.85;
+
+        .btn-format {
+            color: #fff;
+            border: 3px solid #fff;
+            font-weight: bold;
+            a, a:hover {
+                color: #fff;
+            }
+        }
+    }
 }
 
 #cmx-container {
@@ -126,17 +157,6 @@ $selected: #dd0000;
 ul.book-style {
     text-align: right;
     float: right;
-    li {
-        border: 1px solid #555;
-        color: #555;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 1em;
-        padding: 5px;
-        line-height: 1em;
-        margin: 5px;
-        text-align: center;
-    }
 }
 
 #library {

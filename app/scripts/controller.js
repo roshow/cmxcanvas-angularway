@@ -3,7 +3,6 @@
 angular.module('angularcmxApp')
     .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'GetABook', function ($scope, $routeParams, $location, getABook) {
         
-                
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
 
@@ -23,6 +22,15 @@ angular.module('angularcmxApp')
         });
 
         $scope.getBook($routeParams.bookId, $routeParams.format);
+
+        $scope.hideOverlay = function(){
+            if ($scope.currentView === 'wasFirst'){
+                $scope.currentView = 'firstPanel';
+            }
+            else if ($scope.currentView === 'wasLast'){
+                $scope.currentView = 'lastPanel';
+            }
+        };
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){

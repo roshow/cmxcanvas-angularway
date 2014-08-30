@@ -16,7 +16,6 @@ angular.module('angularcmxApp')
             
             scope.canvasbook = new CmxCanvas();
 
-            scope.canvasbook.previous = scope.canvasbook.prev;
             var moving = false;
             scope.changepanel = function(direction){
                 var view = scope.canvasbook[direction]();
