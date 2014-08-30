@@ -4,22 +4,35 @@
 
 var crazy;
 angular.module('angularcmxApp')
-.directive('cmxcanvas', [ function (){
+.directive('canvasbook', ['$location', function ($location){
     return {
-        restrict: 'A',
+        restrict: 'E',
         scope: {
-            cmxcanvas: '=',
-            cmxBook: '='
+            next: '&',
+            previous: '&',
+            bookData: '=',
+            cmxcanvas: '='
         },
         templateUrl: 'views/partials/cmxcanvas.html',
         link: function(scope, element, attr){
+            
+            scope.cmxcanvas.previous = scope.cmxcanvas.prev;
+            scope.changepanel = function(direction){
+                if (attr.$attr[direction]){
+                    scope[direction]();
+                }
+                else {
+                    console.log('using cmxcanvas');
+                    scope.cmxcanvas[direction]();
+                }
+            };
 
             var $canvasEl = element.find('canvas'),
                 canvasEl = $canvasEl[0];
             
             canvasEl.id = 'cmxcanvas';
 
-            scope.$watch('cmxBook', function (newData, oldData){
+            scope.$watch('bookData', function (newData, oldData){
                 if (!angular.equals(newData, oldData)){
                     if (scope.cmxcanvas.currentView){
                         /** TODO: Something about currentView.panel not setting TOC buttons correctly on load unless I do it this way **/

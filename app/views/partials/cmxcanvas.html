@@ -1,7 +1,7 @@
-<div id="cmx-container" ng-swipe-right="cmxcanvas.prev()" ng-swipe-left="cmxcanvas.next()">
+<div id="cmx-container" ng-swipe-right="changepanel('previous')" ng-swipe-left="changepanel('next')">
     <canvas height="450" width="800"></canvas>
     <ul class="buttons">
-        <li class="book-prev" ng-click="cmxcanvas.prev()"></li>
-        <li class="book-next" ng-click="cmxcanvas.next()"></li>
+        <li class="book-prev" ng-click="changepanel('previous')"></li>
+        <li class="book-next" ng-click="changepanel('next')"></li>
     </ul>
 </div> 
