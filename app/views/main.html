@@ -20,14 +20,13 @@
         
         <canvasbook book-data="bookData" current-view="currentView" animate-resize></canvasbook>
         
-        <div class="canvas-overlay" ng-show="currentView === 'wasFirst' || currentView === 'wasLast'">
+        <div ng-click="hideOverlay()" class="canvas-overlay" ng-show="currentView === 'wasFirst' || currentView === 'wasLast'">
             <div class="btn-format" ng-show="currentView === 'wasFirst'">
                 <a ng-href="/#/books/{{bookData.series.previous}}">read previous</a>
             </div>
             <div class="btn-format" ng-show="currentView === 'wasLast'">
                 <a ng-href="/#/books/{{bookData.series.next}}">read next</a>
             </div>
-            <div class="btn-format" ng-click="hideOverlay()">close</div class="btn-format">
         </div>
     </div>
 
