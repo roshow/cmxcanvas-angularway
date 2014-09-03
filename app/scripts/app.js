@@ -4,7 +4,8 @@ angular.module('angularcmxApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngTouch'
+  'ngTouch',
+  'ngAnimate'
 ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -50,6 +50,8 @@
 
 .canvas-wrapper {
     position: relative;
+    max-width: 704px;
+    margin: auto;
     .canvas-overlay {
         position: absolute;
         top: 0;
@@ -61,14 +63,17 @@
         background: #000;
         opacity: 0.85;
 
-        .btn-format {
-            margin-top: 50px;
-            color: #fff;
-            border: 3px solid #fff;
-            font-size: 22px;
+        .calltoaction {
+            margin-top: 100px;
+            font-size: 24px;
             font-weight: bold;
-            a, a:hover {
+            .btn-format {
                 color: #fff;
+                border: 3px solid #fff;
+                font-size: 22px;
+                a, a:hover {
+                    color: #fff;
+                }
             }
         }
     }
@@ -197,5 +202,23 @@ ul.book-style {
         font-size: 18px;
     }
 }
+
+.my-elm {
+  -webkit-transition:0.25s linear all;
+  transition:0.25s linear all;
+  opacity:1;
+}
+
+.my-elm.ng-hide {
+  opacity:0;
+}
+
+.my-elm.ng-hide-add, .my-elm.ng-hide-remove {
+  /* this needs to be here to make it visible during the animation
+     since the .ng-hide class is already on the element rendering
+     it as hidden. */
+  display:block!important;
+}
+
 
     

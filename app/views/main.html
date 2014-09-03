@@ -20,14 +20,19 @@
         
         <canvasbook book-data="bookData" current-view="currentView" animate-resize></canvasbook>
         
-        <div ng-click="hideOverlay()" class="canvas-overlay" ng-show="currentView === 'wasFirst' || currentView === 'wasLast'">
-            <div class="btn-format" ng-show="currentView === 'wasFirst'">
-                <a ng-href="/#/books/{{bookData.series.previous}}">read previous</a>
-            </div>
-            <div class="btn-format" ng-show="currentView === 'wasLast'">
-                <a ng-href="/#/books/{{bookData.series.next}}">read next</a>
+        <div class="my-elm" ng-show="currentView === 'wasFirst' || currentView === 'wasLast'">
+            <div ng-click="hideOverlay()" class="canvas-overlay" >
+                <div class="calltoaction" ng-show="currentView === 'wasFirst'">
+                    Previous Issue: {{veryTempBookIdHash[bookData.series.previous]}}<br />
+                    <a class="btn-format" ng-href="/#/books/{{bookData.series.previous}}">read now</a>
+                </div>
+                <div class="calltoaction" ng-show="currentView === 'wasLast'">
+                    Next Issue: {{veryTempBookIdHash[bookData.series.next]}}<br />
+                    <a class="btn-format" ng-href="/#/books/{{bookData.series.next}}">read now</a>
+                </div>
             </div>
         </div>
+
     </div>
 
 
