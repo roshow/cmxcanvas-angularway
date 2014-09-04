@@ -17,9 +17,6 @@ angular.module('angularcmxApp')
             );
         };
 
-        $scope.$watch('currentView', function (n,o){
-            console.log(n);
-        });
 
         $scope.getBook($routeParams.bookId, $routeParams.format);
 
@@ -42,7 +39,6 @@ angular.module('angularcmxApp')
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
         GetBooks.then(function (data){
-            console.log(data);
             $scope.books = data;
         });
     }])
