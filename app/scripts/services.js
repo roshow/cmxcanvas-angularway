@@ -24,7 +24,6 @@ angular.module('angularcmxApp')
                     format: format
                 };
             }
-            console.log('hello geetaa a boog');
             $http(reqObj)
                 .success(function(data){
                     def.resolve(data);

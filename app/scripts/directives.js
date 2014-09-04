@@ -2,27 +2,45 @@
 
 'use strict';
 
+var crazy;
 angular.module('angularcmxApp')
-.directive('cmxcanvas', [ function (){
+.directive('canvasbook', [ function (){
     return {
-        restrict: 'A',
+        restrict: 'E',
         scope: {
-            cmxcanvas: '=',
-            cmxBook: '='
+            bookData: '=',
+            currentView: '='
         },
         templateUrl: 'views/partials/cmxcanvas.html',
         link: function(scope, element, attr){
+            
+            scope.canvasbook = new CmxCanvas();
+
+            var moving = false;
+            scope.changepanel = function(direction){
+                var view = scope.canvasbook[direction]();
+                if (view.then){
+                    view.then(function (view){
+                        if (view !== 'moving'){
+                            scope.currentView = view;
+                        }
+                    });
+                }
+                else {
+                    scope.currentView = view; 
+                }
+            };
 
             var $canvasEl = element.find('canvas'),
                 canvasEl = $canvasEl[0];
             
-            canvasEl.id = 'cmxcanvas';
+            canvasEl.id = 'canvasbook';
 
-            scope.$watch('cmxBook', function (newData, oldData){
+            scope.$watch('bookData', function (newData, oldData){
                 if (!angular.equals(newData, oldData)){
-                    if (scope.cmxcanvas.currentView){
+                    if (scope.canvasbook.currentView){
                         /** TODO: Something about currentView.panel not setting TOC buttons correctly on load unless I do it this way **/
-                        scope.cmxcanvas.currentView.panel = 0;
+                        scope.canvasbook.currentView.panel = 0;
                     }
                     var viewInfo = newData.view || {};
                     if (attr.$attr.animateResize){
@@ -38,14 +56,15 @@ angular.module('angularcmxApp')
                             canvasEl.width = width + (deltaW * sinPart);
                         }, lenAnim).then(function (){
                             /** TODO: Use the promise to only have on ,load, not this one AND the one beneath it **/
-                            scope.cmxcanvas.load(newData, canvasEl.id);
+                            scope.canvasbook.load(newData, canvasEl.id);
                         });
                     }
                     else {
                         canvasEl.height = (viewInfo.height || 450);
                         canvasEl.width = (viewInfo.width || 800);
-                        scope.cmxcanvas.load(newData, canvasEl.id);
+                        scope.canvasbook.load(newData, canvasEl.id);
                     }
+                    crazy = scope.canvasbook;
                     
                     if (viewInfo.backgroundColor){
                         $canvasEl.css('background-color', viewInfo.backgroundColor);
@@ -54,10 +73,10 @@ angular.module('angularcmxApp')
             });
             scope.changed = {};
             scope.changed.next = function(){
-                console.log(scope.cmxcanvas.next());
+                console.log(scope.canvasbook.next());
             };
             scope.changed.prev = function(){
-                console.log(scope.cmxcanvas.prev());
+                console.log(scope.canvasbook.prev());
             };
         }
     };

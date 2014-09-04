@@ -5,11 +5,11 @@ angular.module('angularcmxApp')
         
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
-        $scope.cmxCanvas = new CmxCanvas();
+
         $scope.getBook = function(bookId, format){
             getABook(bookId, format).then(
                 function (data){
-                    $scope.cmxData = data;
+                    $scope.bookData = data;
                 },
                 function (error){
                     $location.path('/');
@@ -17,12 +17,28 @@ angular.module('angularcmxApp')
             );
         };
 
+
         $scope.getBook($routeParams.bookId, $routeParams.format);
+
+        $scope.hideOverlay = function(){
+            if ($scope.currentView === 'wasFirst'){
+                $scope.currentView = 'firstPanel';
+            }
+            else if ($scope.currentView === 'wasLast'){
+                $scope.currentView = 'lastPanel';
+            }
+        };
+
+        $scope.veryTempBookIdHash = {
+            'sov01': 'Sovereign #1',
+            'rev01': 'Revenger #1',
+            'rev02': 'Revenger #2',
+            'rev03': 'Revenger #3'
+        };
 
     }])
     .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
         GetBooks.then(function (data){
-            console.log(data);
             $scope.books = data;
         });
     }])

@@ -1,28 +1,47 @@
 <div class="top-container">
-<div class="book-info">
-    <h3 class="cmx-credits">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
-            -->{{cmxData.title}} <br /><!--
-            --><span ng-repeat="creator in cmxData.creators"><!--
-                --><a ng-href="{{creator.url}}">{{creator.credit}}: {{creator.name}}</a><!--
-                --><span ng-if="$first">,  </span><!--
-                --><span ng-if="$middle">,  </span><!--
-            --></span></h3>
+    <div class="book-info">
 
-    <ul class="book-style" ng-if="cmxData.formats">
-        <li class="btn-format" ng-if="cmxData.formats.length > 1" ng-repeat="format in cmxData.formats"  ng-class="{ 'current-panel': cmxData.view.id === format.view_id }" ng-click="getBook(cmxData.id, format.format)">{{format.format}}</li>
-    </ul>
-    <div style="clear:both;"></div>
-</div>
+        <h3 class="cmx-credits"><span class="issue-name">{{bookData.series.name}} #{{bookData.issue}}: 
+                {{bookData.title}}</span><br />
+                <span ng-repeat="creator in bookData.creators">
+                    <a ng-href="{{creator.url}}">{{creator.credit}}: {{creator.name}}</a>
+                    <span ng-if="$first || $middle">,</span>
+                </span>
+        </h3>
 
-<div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
+        <ul class="book-style" ng-if="bookData.formats">
+            <li class="btn-format" ng-if="bookData.formats.length > 1" ng-repeat="format in bookData.formats"  ng-class="{ 'current-panel': bookData.view.id === format.view_id }" ng-click="getBook(bookData.id, format.format)">{{format.format}}</li>
+        </ul>
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div class="canvas-wrapper">
+        
+        <canvasbook book-data="bookData" current-view="currentView" animate-resize></canvasbook>
+        
+        <div class="my-elm" ng-show="currentView === 'wasFirst' || currentView === 'wasLast'">
+            <div ng-click="hideOverlay()" class="canvas-overlay" >
+                <div class="calltoaction" ng-show="currentView === 'wasFirst'">
+                    Previous Issue: {{veryTempBookIdHash[bookData.series.previous]}}<br />
+                    <a class="btn-format" ng-href="/#/books/{{bookData.series.previous}}">read now</a>
+                </div>
+                <div class="calltoaction" ng-show="currentView === 'wasLast'">
+                    Next Issue: {{veryTempBookIdHash[bookData.series.next]}}<br />
+                    <a class="btn-format" ng-href="/#/books/{{bookData.series.next}}">read now</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
-<!-- <div class="tocDiv">    
-    <ul class="cmx-toc">
-        <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in cmxData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
-            {{$index}}
-        </li>
-    </ul>
-</div> -->
+    <!-- <div class="tocDiv">    
+        <ul class="cmx-toc">
+            <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in bookData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
+                {{$index}}
+            </li>
+        </ul>
+    </div> -->
 
 </div>

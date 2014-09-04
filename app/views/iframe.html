@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="styles/embed.css">
 <!-- endbuild -->
 <div class="embed-head">
-        <h3>{{cmxData.series.name}} #{{cmxData.issue || '0'}}: <!--
-            -->{{cmxData.title}} <br />by <!--
-            --><span ng-repeat="creator in cmxData.creators"><!--
+        <h3>{{bookData.series.name}} #{{bookData.issue || '0'}}: <!--
+            -->{{bookData.title}} <br />by <!--
+            --><span ng-repeat="creator in bookData.creators"><!--
             --><span ng-if="$middle">, </span><!--
             --><span ng-if="$last"> &amp; </span><!--
             --><a ng-href="{{creator.url}}" target="_blank">{{creator.name}} ({{creator.credit}})</a><!--
@@ -12,7 +12,8 @@
     <h3 ng-hide="true"><a ng-click="getUrl(urls[1])">sov01</a> | <a ng-click="getUrl(urls[2])">rev03og</a></h3>
 </div>
 
-<div class="embed" cmx-book="cmxData" cmxcanvas="cmxCanvas" resize-canvas="responsive"></div>
+<canvasbook class="embed" book-data="bookData" current-view="currentView" resize-canvas="responsive"></canvasbook>
+
 
 <div class="embed-foot">
     
