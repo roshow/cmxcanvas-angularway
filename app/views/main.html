@@ -27,8 +27,8 @@
                     <a class="btn-format" ng-href="/#/books/{{books[previousBook].id}}">read now</a>
                 </div>
                 <div class="calltoaction" ng-show="currentView === 'wasLast'">
-                    Next Issue: {{veryTempBookIdHash[bookData.series.next]}}<br />
-                    <a class="btn-format" ng-href="/#/books/{{bookData.series.next}}">read now</a>
+                    Next Issue: {{books[nextBook].series.name}} #{{books[nextBook].issue}}<br />
+                    <a class="btn-format" ng-href="/#/books/{{books[nextBook].id}}">read now</a>
                 </div>
             </div>
         </div>

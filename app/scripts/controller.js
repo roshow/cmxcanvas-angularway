@@ -45,13 +45,6 @@ angular.module('angularcmxApp')
             }
         };
 
-        $scope.veryTempBookIdHash = {
-            'sov01': 'Sovereign #1',
-            'rev01': 'Revenger #1',
-            'rev02': 'Revenger #2',
-            'rev03': 'Revenger #3'
-        };
-
     }])
     .controller('LibraryCtrl', ['$scope','GetBooks','bookList', function ($scope, GetBooks, bookList){
         GetBooks(bookList || false).then(function (data){
@@ -84,13 +77,6 @@ angular.module('angularcmxApp')
             else if ($scope.currentView === 'wasLast'){
                 $scope.currentView = 'lastPanel';
             }
-        };
-
-        $scope.veryTempBookIdHash = {
-            'sov01': 'Sovereign #1',
-            'rev01': 'Revenger #1',
-            'rev02': 'Revenger #2',
-            'rev03': 'Revenger #3'
         };
 
     }])
