@@ -2,7 +2,7 @@
 
 angular.module('angularcmxApp')
     .value('bookList', ['rev01', 'rev02', 'sov01', 'rev03']) // Adding this as a value here for ease during development. Should move to app,js eventually.
-    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'myCache', 'GetABook', 'GetBooks', 'bookList', function ($scope, $routeParams, $location, myCache, getABook, GetBooks, bookList) {
+    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'myCache', 'GetABook', 'GetBooks', 'bookList', function ($scope, $routeParams, $location, myCache, getABook, getBooks, bookList) {
         
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
@@ -13,7 +13,7 @@ angular.module('angularcmxApp')
                     $scope.bookData = data;
                     $scope.currentBook = bookList.indexOf(data.id);
                     var plusone = $scope.currentBook + 1,
-                        minusone = $scope.currentBook - 1
+                        minusone = $scope.currentBook - 1;
                     $scope.nextBook = (plusone === bookList.length) ? 0 : plusone;
                     $scope.previousBook = (minusone < 0) ? bookList.length - 1 : minusone;
                 },
@@ -28,7 +28,7 @@ angular.module('angularcmxApp')
         // Temporary way of making sure each book detail has all bookListData
         var bookListInfo = myCache.get('bookListData');
         if (!bookListInfo){
-            GetBooks(bookList || false).then(function (data){
+            getBooks(bookList || false).then(function (data){
                 $scope.books = data;
             });
         }
@@ -46,8 +46,8 @@ angular.module('angularcmxApp')
         };
 
     }])
-    .controller('LibraryCtrl', ['$scope','GetBooks','bookList', function ($scope, GetBooks, bookList){
-        GetBooks(bookList || false).then(function (data){
+    .controller('LibraryCtrl', ['$scope','GetBooks','bookList', function ($scope, getBooks, bookList){
+        getBooks(bookList || false).then(function (data){
             $scope.books = data;
         });
     }])
