@@ -17,8 +17,7 @@ angular.module('angularcmxApp')
                 transformResponse: function(res){
                     res = angular.fromJson(res);
                     return res.data ? res.data[0] : res;
-                },
-                cache: true
+                }
             };
             if (format){
                 reqObj.params = {
@@ -44,8 +43,7 @@ angular.module('angularcmxApp')
                 method: 'GET',
                 transformResponse: function(res){
                     return angular.fromJson(res).data;
-                },
-                cache: true
+                }
             };
             if (bookList){
                 reqObj.params = {
