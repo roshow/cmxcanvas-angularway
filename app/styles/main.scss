@@ -3,6 +3,7 @@
 
  body {
     font-weight: normal;
+    margin: 0;
  }
 
 .clearfix {
@@ -213,10 +214,27 @@ ul.book-style {
 }
 
 .my-elm.ng-hide-add, .my-elm.ng-hide-remove {
-  /* this needs to be here to make it visible during the animation
-     since the .ng-hide class is already on the element rendering
-     it as hidden. */
   display:block!important;
+}
+
+.topnav {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 50px;
+    h2 {
+        display: inline-block;
+        margin: 0
+    }
+    ul {
+        float: right;
+        margin: 0;
+    }
+    li {
+        display: inline-block;
+        font-size: 1em;
+        padding: 0 10px;
+        line-height: 24px;
+    }
 }
 
 

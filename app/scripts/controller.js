@@ -6,24 +6,28 @@ angular.module('angularcmxApp')
         
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
+        $scope.bookData = {};
 
         $scope.getBook = function(bookId, format){
-            getABook(bookId, format).then(
+            return getABook(bookId, format).then(
                 function (data){
                     $scope.bookData = data;
-                    $scope.currentBook = bookList.indexOf(data.id);
-                    var plusone = $scope.currentBook + 1,
-                        minusone = $scope.currentBook - 1;
-                    $scope.nextBook = (plusone === bookList.length) ? 0 : plusone;
-                    $scope.previousBook = (minusone < 0) ? bookList.length - 1 : minusone;
+                    return data;
                 },
                 function (error){
-                    $location.path('/');
+                    return $location.path('/');
                 }
             );
         };
 
-        $scope.getBook($routeParams.bookId, $routeParams.format);
+        $scope.getBook($routeParams.bookId, $routeParams.format).then(function (data){
+            $scope.selectABook = data.id;
+            $scope.currentBook = bookList.indexOf(data.id);
+            var plusone = $scope.currentBook + 1,
+                minusone = $scope.currentBook - 1;
+            $scope.nextBook = (plusone === bookList.length) ? 0 : plusone;
+            $scope.previousBook = (minusone < 0) ? bookList.length - 1 : minusone;
+        });
 
         // Temporary way of making sure each book detail has all bookListData
         var bookListInfo = myCache.get('bookListData');
@@ -45,6 +49,11 @@ angular.module('angularcmxApp')
             }
         };
 
+        $scope.$watch('selectABook', function (newVal, oldVal){
+            if (newVal && newVal !== $scope.bookData.id){
+                $location.path('/books/' + newVal);
+            }
+        });
     }])
     .controller('LibraryCtrl', ['$scope','GetBooks','bookList', function ($scope, getBooks, bookList){
         getBooks(bookList || false).then(function (data){
@@ -78,7 +87,6 @@ angular.module('angularcmxApp')
                 $scope.currentView = 'lastPanel';
             }
         };
-
     }])
     .controller('DevCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
         $scope.bookId = $routeParams.bookId;
@@ -101,7 +109,6 @@ angular.module('angularcmxApp')
             );
         };
         $scope.getUrl($routeParams.bookId);
-
     }])
     .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
         var url;
@@ -112,5 +119,4 @@ angular.module('angularcmxApp')
             });
         };
         $scope.getBook('bethforever');
-
     }]);
