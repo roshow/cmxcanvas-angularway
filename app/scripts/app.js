@@ -23,7 +23,7 @@ angular.module('angularcmxApp', [
       })
       .when('/embed/:bookId', {
         templateUrl: 'views/iframe.html',
-        controller: 'CmxCtrl'
+        controller: 'EmbedCtrl'
       })
       .when('/beth', {
         templateUrl: 'views/beth.html',
