@@ -2,9 +2,10 @@
 
 (function(){
 
-var apiHost;
-apiHost = 'http://cmxcanvasapi.herokuapp.com';
-// apiHost = 'http://0.0.0.0:5000';
+var apiHost, bookList;
+
+// apiHost = 'http://cmxcanvasapi.herokuapp.com';
+apiHost = 'http://0.0.0.0:5000';
 
 angular.module('angularcmxApp')
     .factory('GetABook', ['$http', '$q', function($http, $q){
@@ -35,21 +36,46 @@ angular.module('angularcmxApp')
         };
     }])
     .factory('GetBooks', ['$http', '$q', function($http, $q){
-        var def = $q.defer();
-        $http({
-            url: apiHost + '/books',
-            method: 'GET',
-            transformResponse: function(res){
-                return angular.fromJson(res).data;
+        // var def = $q.defer();
+        // $http({
+        //     url: apiHost + '/books',
+        //     method: 'GET',
+        //     params: ,
+        //     transformResponse: function(res){
+        //         return angular.fromJson(res).data;
+        //     }
+        // })
+        //     .success(function(data){
+        //         def.resolve(data);
+        //     }).
+        //     error(function(data) {
+        //         def.reject(data);
+        //     });
+        // return def.promise;
+
+        return function(bookList){
+            var def = $q.defer();
+            var reqObj = {
+                url: apiHost + '/books',
+                method: 'GET',
+                transformResponse: function(res){
+                    return angular.fromJson(res).data;
+                }
+            };
+            if (bookList){
+                reqObj.params = {
+                    ids: bookList.join(',')
+                };
             }
-        })
-            .success(function(data){
-                def.resolve(data);
-            }).
-            error(function(data) {
-                def.reject(data);
-            });
-        return def.promise;
+            $http(reqObj)
+                .success(function(data){
+                    def.resolve(data);
+                }).
+                error(function(data) {
+                    def.reject(data);
+                });
+            return def.promise;
+        };
     }]);
 
 }());

@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
+    .value('bookList', ['rev01', 'rev02', 'sov01', 'rev03']) // Adding this as a value here for ease during development. Should move to app,js eventually.
     .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'GetABook', function ($scope, $routeParams, $location, getABook) {
         
         $scope.bookId = $routeParams.bookId;
@@ -37,8 +38,8 @@ angular.module('angularcmxApp')
         };
 
     }])
-    .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
-        GetBooks.then(function (data){
+    .controller('LibraryCtrl', ['$scope','GetBooks','bookList', function ($scope, GetBooks, bookList){
+        GetBooks(bookList || false).then(function (data){
             $scope.books = data;
         });
     }])
@@ -69,8 +70,6 @@ angular.module('angularcmxApp')
         var url;
         $scope.cmxCanvas = new CmxCanvas();
         $scope.getBook = function(bookId){
-            // var url = '/json/';
-            // bookId += '.json';
             getABook(bookId, url).then(function (data){
                 $scope.cmxData = data;
             });
