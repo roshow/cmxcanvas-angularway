@@ -7,6 +7,9 @@ angular.module('angularcmxApp', [
   'ngTouch',
   'ngAnimate'
 ])
+  .factory('myCache', function($cacheFactory) {
+    return $cacheFactory('myData');
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/books', {

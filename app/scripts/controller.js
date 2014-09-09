@@ -2,7 +2,7 @@
 
 angular.module('angularcmxApp')
     .value('bookList', ['rev01', 'rev02', 'sov01', 'rev03']) // Adding this as a value here for ease during development. Should move to app,js eventually.
-    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'GetABook', function ($scope, $routeParams, $location, getABook) {
+    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'myCache', 'GetABook', 'GetBooks', 'bookList', function ($scope, $routeParams, $location, myCache, getABook, GetBooks, bookList) {
         
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
@@ -18,8 +18,18 @@ angular.module('angularcmxApp')
             );
         };
 
-
         $scope.getBook($routeParams.bookId, $routeParams.format);
+
+        // Temporary way of making sure each book detail has all bookListData
+        var bookListInfo = myCache.get('bookListData');
+        if (!bookListInfo){
+            GetBooks(bookList || false).then(function (data){
+                $scope.books = data;
+            });
+        }
+        else if (!$scope.books){
+            $scope.books = bookListInfo;
+        }
 
         $scope.hideOverlay = function(){
             if ($scope.currentView === 'wasFirst'){

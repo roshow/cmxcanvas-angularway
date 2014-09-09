@@ -18,7 +18,8 @@ angular.module('angularcmxApp')
                 transformResponse: function(res){
                     res = angular.fromJson(res);
                     return res.data ? res.data[0] : res;
-                }
+                },
+                cache: true
             };
             if (format){
                 reqObj.params = {
@@ -35,23 +36,7 @@ angular.module('angularcmxApp')
             return def.promise;
         };
     }])
-    .factory('GetBooks', ['$http', '$q', function($http, $q){
-        // var def = $q.defer();
-        // $http({
-        //     url: apiHost + '/books',
-        //     method: 'GET',
-        //     params: ,
-        //     transformResponse: function(res){
-        //         return angular.fromJson(res).data;
-        //     }
-        // })
-        //     .success(function(data){
-        //         def.resolve(data);
-        //     }).
-        //     error(function(data) {
-        //         def.reject(data);
-        //     });
-        // return def.promise;
+    .factory('GetBooks', ['$http', '$q', 'myCache', function($http, $q, myCache){
 
         return function(bookList){
             var def = $q.defer();
@@ -60,7 +45,8 @@ angular.module('angularcmxApp')
                 method: 'GET',
                 transformResponse: function(res){
                     return angular.fromJson(res).data;
-                }
+                },
+                cache: true
             };
             if (bookList){
                 reqObj.params = {
@@ -69,6 +55,7 @@ angular.module('angularcmxApp')
             }
             $http(reqObj)
                 .success(function(data){
+                    myCache.put('bookListData', data);
                     def.resolve(data);
                 }).
                 error(function(data) {
