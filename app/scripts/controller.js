@@ -11,6 +11,11 @@ angular.module('angularcmxApp')
             getABook(bookId, format).then(
                 function (data){
                     $scope.bookData = data;
+                    $scope.currentBook = bookList.indexOf(data.id);
+                    var plusone = $scope.currentBook + 1,
+                        minusone = $scope.currentBook - 1
+                    $scope.nextBook = (plusone === bookList.length) ? 0 : plusone;
+                    $scope.previousBook = (minusone < 0) ? bookList.length - 1 : minusone;
                 },
                 function (error){
                     $location.path('/');
