@@ -395,7 +395,8 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'imagemin:dist'
   ]);
 
   grunt.registerTask('default', [
