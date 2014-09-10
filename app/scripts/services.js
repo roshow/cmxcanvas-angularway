@@ -64,6 +64,20 @@ angular.module('angularcmxApp')
                 });
             return def.promise;
         };
+    }])
+    .factory('GetLibrary', ['$q', 'myCache', 'GetBooks', function($q, myCache, getBooks){
+
+        return function(bookList){
+            var bookListInfo = myCache.get('bookListData');
+            if (!bookListInfo){
+                return getBooks(bookList || false);
+            }
+            else {
+                var def = $q.defer();
+                def.resolve(bookListInfo);
+                return def.promise;
+            }
+        };
     }]);
 
 }());
