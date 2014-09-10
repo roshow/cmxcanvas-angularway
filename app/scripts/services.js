@@ -3,7 +3,7 @@
 (function(){
 
 var apiHost;
-apiHost = 'http://cmxcanvasapi.herokuapp.com';
+apiHost = 'http://canvasbookapi.herokuapp.com';
 // apiHost = 'http://0.0.0.0:5000';
 
 angular.module('angularcmxApp')
