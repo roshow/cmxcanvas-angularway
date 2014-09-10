@@ -42,7 +42,11 @@ angular.module('angularcmxApp')
                 url: apiHost + '/books',
                 method: 'GET',
                 transformResponse: function(res){
-                    return angular.fromJson(res).data;
+                    res = angular.fromJson(res).data;
+                    for (var i = 0, l = res.length; i < l; i++){
+                        res[i].fullTitle = res[i].series.name + ' #' + res[i].issue;
+                    }
+                    return res;
                 }
             };
             if (bookList){
