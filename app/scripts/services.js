@@ -3,7 +3,7 @@
 (function(){
 
 var apiHost;
-apiHost = 'http://cmxcanvasapi.herokuapp.com';
+apiHost = 'http://canvasbookapi.herokuapp.com';
 // apiHost = 'http://0.0.0.0:5000';
 
 angular.module('angularcmxApp')
@@ -63,6 +63,20 @@ angular.module('angularcmxApp')
                     def.reject(data);
                 });
             return def.promise;
+        };
+    }])
+    .factory('GetLibrary', ['$q', 'myCache', 'GetBooks', function($q, myCache, getBooks){
+
+        return function(bookList){
+            var bookListInfo = myCache.get('bookListData');
+            if (!bookListInfo){
+                return getBooks(bookList || false);
+            }
+            else {
+                var def = $q.defer();
+                def.resolve(bookListInfo);
+                return def.promise;
+            }
         };
     }]);
 
