@@ -1,12 +1,10 @@
 <ng-include src="'/views/partials/topnav.html'"></ng-include>
 <div class="top-container">
     <div class="book-info">
-        <h3 class="cmx-credits"><span class="issue-name">{{bookData.series.name}} #{{bookData.issue}}: 
-                {{bookData.title}}</span><br />
-                <span ng-repeat="creator in bookData.creators">
-                    <a ng-href="{{creator.url}}">{{creator.credit}}: {{creator.name}}</a>
-                    <span ng-if="$first || $middle">,</span>
-                </span>
+        <h3 class="cmx-credits">
+            <span class="issue-name">{{bookData.series.name}} #{{bookData.issue}}: {{bookData.title}}</span>
+            <br />
+            <a ng-repeat="creator in bookData.creators" ng-href="{{creator.url}}"><span ng-if="$middle || $last">, </span>{{creator.credit}}: {{creator.name}}</a>
         </h3>
 
         <ul class="book-style" ng-if="bookData.formats">
