@@ -37,7 +37,7 @@ angular.module('angularcmxApp')
             canvasEl.id = 'canvasbook';
 
             scope.$watch('bookData', function (newData, oldData){
-                if (!angular.equals(newData, oldData)){
+                if (newData){
                     if (scope.canvasbook.currentView){
                         /** TODO: Something about currentView.panel not setting TOC buttons correctly on load unless I do it this way **/
                         scope.canvasbook.currentView.panel = 0;
