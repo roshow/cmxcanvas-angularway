@@ -1,4 +1,4 @@
-<ng-include src="'/views/partials/topnav.html'"></ng-include>
+<ng-include src="'views/partials/topnav.html'"></ng-include>
 <div class="top-container">
     <div class="book-info">
         <h3 class="cmx-credits">
@@ -22,11 +22,11 @@
             <div ng-click="hideOverlay()" class="canvas-overlay" >
                 <div class="calltoaction" ng-show="currentView === 'wasFirst'">
                     Previous Issue: {{books[previousBook].series.name}} #{{books[previousBook].issue}}<br />
-                    <a class="btn-format" ng-href="/#/books/{{books[previousBook].id}}">read now</a>
+                    <a class="btn-format" ng-href="#/books/{{books[previousBook].id}}">read now</a>
                 </div>
                 <div class="calltoaction" ng-show="currentView === 'wasLast'">
                     Next Issue: {{books[nextBook].series.name}} #{{books[nextBook].issue}}<br />
-                    <a class="btn-format" ng-href="/#/books/{{books[nextBook].id}}">read now</a>
+                    <a class="btn-format" ng-href="#/books/{{books[nextBook].id}}">read now</a>
                 </div>
             </div>
         </div>
