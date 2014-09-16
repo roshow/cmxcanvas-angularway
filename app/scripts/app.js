@@ -39,6 +39,6 @@ angular.module('angularcmxApp', [
         controller: 'DevCtrl'
       })
       .otherwise({
-        redirectTo: '/books'
+        redirectTo: '/books/cj00'
       });
   });
