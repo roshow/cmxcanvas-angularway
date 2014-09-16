@@ -1,14 +1,4 @@
-<div class="topnav">
-    <h2>REVENGERcomic.com</h2>
-    <ul>
-        <li>More Books: 
-            <select
-              ng-model="selectABook"
-              ng-options="book.id as book.fullTitle for book in books" >
-            </select>
-        </li>
-    </ul>
-</div>
+<ng-include src="'/views/partials/topnav.html'"></ng-include>
 <div class="top-container">
     <div class="book-info">
         <h3 class="cmx-credits"><span class="issue-name">{{bookData.series.name}} #{{bookData.issue}}: 
