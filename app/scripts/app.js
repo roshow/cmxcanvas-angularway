@@ -5,7 +5,8 @@ angular.module('angularcmxApp', [
   'ngSanitize',
   'ngRoute',
   'ngTouch',
-  'ngAnimate'
+  'ngAnimate',
+  'ui.bootstrap'
 ])
   .factory('myCache', function($cacheFactory) {
     return $cacheFactory('myData');

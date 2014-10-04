@@ -12,6 +12,10 @@
 
  .appcontainer {
     font-family: "Alegreya Sans";
+
+    .navbar {
+        margin-bottom: 0;
+    }
  }
 
  a {
@@ -161,11 +165,6 @@ $selected: #dd0000;
     }
 }
 
-ul.book-style {
-    text-align: right;
-    float: right;
-}
-
 #library {
     li {
         display: inline-block;
@@ -192,16 +191,27 @@ ul.book-style {
    
 }
 
-.cmx-credits {
-    // padding-left: 40px;
-    font-size: 16px;
-    float: left;
-    font-weight: normal;
-    .issue-name {
-        font-weight: 800;
-        font-size: 18px;
+.book-info {
+    .cmx-credits {
+        // padding-left: 40px;
+        font-size: 16px;
+        float: left;
+        margin: 16px 0;
+        font-weight: normal;
+        .issue-name {
+            font-weight: 800;
+            font-size: 18px;
+        }
+    }
+
+    ul {
+        margin: 16px 0;
+        font-size: 16px;
+        text-align: right;
+        float: right;
     }
 }
+
 
 .my-elm {
   -webkit-transition:0.25s linear all;
