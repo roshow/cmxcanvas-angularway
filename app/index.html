@@ -13,10 +13,74 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <style type="text/css">
+
+      /* Sticky footer styles
+      -------------------------------------------------- */
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+       /* min-height: 100%;
+        height: auto !important;*/
+        height: 100%;
+        overflow: scroll;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+        width: 100%;
+      }
+      #footer {
+        background-color: rgba(200,200,200,0.8);
+        position: absolute;
+        bottom: 0px;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+     /* @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }*/
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+
+    </style>
 
   <body ng-app="angularcmxApp">
 
+    <div id="wrap">
     <div class="appcontainer" ng-view=""></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+      </div>
+    </div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
