@@ -1,9 +1,10 @@
 <div class="footer-wrap">
     <div id="footer">
         <div class="container">
-          <button type="button" ng-init="footCollapsed = true" ng-click="footCollapsed = !footCollapsed">
-            toggle
-          </button>
+          <div class="btn-moreinfo pull-right" ng-init="footCollapsed = false" ng-click="footCollapsed = !footCollapsed">
+            <span ng-show="!footCollapsed" class="glyphicon glyphicon-info-sign uncollapsed"></span>
+            <span ng-show="footCollapsed" class="glyphicon glyphicon-info-sign"></span>
+          </div>
         </div>
         <div class="container-color">
         <div class="container footer-content">
@@ -15,7 +16,7 @@
                 </h3>
 
                 <ul class="book-style" ng-if="bookData.formats">
-                    <li class="btn-format" ng-if="bookData.formats.length > 1" ng-repeat="format in bookData.formats"  ng-class="{ 'current-panel': bookData.view.id === format.view_id }" ng-click="getBook(bookData.id, format.format)">{{format.format}}</li>
+                    <li class="btn btn-default" ng-if="bookData.formats.length > 1" ng-repeat="format in bookData.formats"  ng-class="{ 'current-panel': bookData.view.id === format.view_id }" ng-click="getBook(bookData.id, format.format)">{{format.format}}</li>
                 </ul>
                 <div class="clearfix"></div>
         </div>

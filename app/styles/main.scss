@@ -1,278 +1,274 @@
-  html,
-  body {
-    height: 100%;
-    /* The html and body elements cannot have any padding or margin. */
-  }
+html, body {
+  height: 100%;  
+  /* The html and body elements cannot have any padding or margin. */
+}
 
+.btn-default {
+  background-color: transparent;
+  border: 1px solid #555;
+  font-size: 1em;
+  margin-left: 5px;
+}
+
+.appcontainer {
+  height: 100%;
+}
+#wrap {
+  height: 100%;
+  // height: 100vh;
+  padding-bottom: 70px;
+  overflow: scroll;
+  .top-container {
+    margin-top: 30px;
+  }
+}
+#footer {
+  /*height: 60px;*/
   
-  .appcontainer {
-    height: 100%;
-  }
-  #wrap {
-    height: 100%;
-    padding-bottom: 70px;
-    /*height: 100vh;*/
-    overflow: scroll;
-  }
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
 
-  #footer {
-    /*height: 60px;*/
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    .container-color {
-        background-color: rgba(200,200,200,0.8);
+  .btn-moreinfo {
+    height: 45px;
+    width: 45px;
+    font-size: 26px;
+    color: #bbb;
+    text-align: center;
+    span {
+      vertical-align: middle;
+    }
+    .uncollapsed {
+      color: #000;
     }
   }
 
- @import url(http://fonts.googleapis.com/css?family=Lato:300);
- @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800);
-
- body {
-    font-weight: normal;
-    margin: 0;
- }
-
+  .container-color {
+    background-color: rgba(200, 200, 200, 0.9);
+  }
+}
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800);
+body {
+  font-weight: normal;
+  margin: 0;
+}
 .clearfix {
-    clear: both;
+  clear: both;
 }
-
- .appcontainer {
-    font-family: "Alegreya Sans";
-
-    .navbar {
-        margin-bottom: 0;
-    }
- }
-
- a {
-    color: black;
-    text-decoration: none;
-
-    &:hover {
-        color: #aaa;
-    }
- }
+.appcontainer {
+  font-family: "Alegreya Sans";
+  .navbar {
+    margin-bottom: 0;
+  }
+}
+a {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    color: #aaa;
+  }
+}
 .top-container {
-    max-width: 700px;
-    margin: auto;
+  max-width: 700px;
+  margin: auto;
 }
-
 .btn-format {
+  background-color: transparent;
+  border: 1px solid #555;
+  color: #555;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  padding: 5px;
+  line-height: 1em;
+  margin: 5px;
+  text-align: center;
+}
+.blackcanvas {
+  background-color: #000;
+}
+#header {
+  font-size: 1.4em;
+  text-align: right;
+  color: #444;
+}
+.canvas-wrapper {
+  position: relative;
+  max-width: 704px;
+  margin: auto;
+  .canvas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    opacity: 0.85;
+    .calltoaction {
+      margin-top: 100px;
+      font-size: 24px;
+      font-weight: bold;
+      .btn-format {
+        color: #fff;
+        border: 3px solid #fff;
+        font-size: 22px;
+        a, a:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+#cmx-container {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+#cmx-container canvas {
+  margin: auto;
+  border: 2px solid #ccc;
+  vertical-align: bottom;
+  max-width: 700px;
+}
+ul {
+  list-style: none;
+}
+.buttons {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.buttons li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  max-width: 400px;
+  width: 49%;
+  height: 100%;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+.tocDiv {
+  width: 100%;
+  // overflow-x: scroll;
+  // white-space: nowrap;
+}
+.clear {
+  clear: both;
+}
+$selected: #dd0000;
+.current-panel {
+  color: $selected !important;
+  border-color: $selected !important;
+}
+.cmx-toc {
+  width: auto;
+  li {
     border: 1px solid #555;
     color: #555;
     cursor: pointer;
     display: inline-block;
-    font-size: 1em;
-    padding: 5px;
-    line-height: 1em;
+    font-size: 2em;
+    height: 50px;
+    line-height: 50px;
     margin: 5px;
     text-align: center;
-}
-.blackcanvas {
-    background-color: #000;
-}
-
-#header {
-    font-size: 1.4em;
-    text-align: right;
-    color: #444;
-}
-
-.canvas-wrapper {
-    position: relative;
-    max-width: 704px;
-    margin: auto;
-    .canvas-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: center;        
-        color: #fff;
-        background: #000;
-        opacity: 0.85;
-
-        .calltoaction {
-            margin-top: 100px;
-            font-size: 24px;
-            font-weight: bold;
-            .btn-format {
-                color: #fff;
-                border: 3px solid #fff;
-                font-size: 22px;
-                a, a:hover {
-                    color: #fff;
-                }
-            }
-        }
+    width: 50px;
+    &.current-panel {
+      color: $selected;
+      border-color: $selected;
     }
-}
-
-#cmx-container {
-    position: relative;
-    cursor: pointer;
-    text-align: center;
-    -webkit-touch-callout: none;
-    user-select: none;
-}
-#cmx-container canvas {
-    margin: auto;
-    border: 2px solid #ccc;
-    vertical-align: bottom;
-    max-width:700px;
-}
-
-ul {
-    list-style:none;
-}
-.buttons  {
-    font-size: 2em;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-.buttons li {
-    display: inline-block;
-    margin:0;
-    padding: 0;
-    max-width: 400px;
-    width: 49%;
-    height: 100%;
-    -webkit-touch-callout: none;
-    user-select: none;
-}
-
-.tocDiv {
-    width: 100%;
-    // overflow-x: scroll;
-    // white-space: nowrap;
-}
-.clear {
-    clear:both;
-}
-
-$selected: #dd0000;
-
-.current-panel {
-    color: $selected !important;
-    border-color: $selected !important;
-}
-.cmx-toc {
+  }
+  .thumbnail {
+    height: 125px;
     width: auto;
-    li {
-        border: 1px solid #555;
-        color: #555;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 2em;
-        height: 50px;
-        line-height: 50px;
-        margin: 5px;
-        text-align: center;
-        width: 50px;
-        &.current-panel {
-            color: $selected;
-            border-color: $selected;
-        }
+    // max-width:200px;
+    opacity: 0.4;
+    &:hover, &.reading {
+      opacity: 1;
     }
-    .thumbnail {
-        height:125px;
-        width:auto;
-        // max-width:200px;
-        opacity: 0.4;
-        &:hover, &.reading {
-            opacity: 1;
-        }
-    }
+  }
 }
-
 #library {
-    li {
-        display: inline-block;
-        margin: 2px;
-        padding: 8px;
-        border: 2px solid black;
-        width: 30%;
-        min-width: 325px;
-        font-weight: bold;
-        font-size: 18px;
-        vertical-align: top;
-        .book-title {
-            display: inline;
-        }
-        .library-thumb {
-            height: 175px;
-            width: 175px;
-            margin-right: 15px;
-            padding: 5px;
-            // border: 2px solid black;
-            float: left;
-        } 
+  li {
+    display: inline-block;
+    margin: 2px;
+    padding: 8px;
+    border: 2px solid black;
+    width: 30%;
+    min-width: 325px;
+    font-weight: bold;
+    font-size: 18px;
+    vertical-align: top;
+    .book-title {
+      display: inline;
     }
-   
+    .library-thumb {
+      height: 175px;
+      width: 175px;
+      margin-right: 15px;
+      padding: 5px;
+      // border: 2px solid black;
+      float: left;
+    }
+  }
 }
-
 .book-info {
-    .cmx-credits {
-        // padding-left: 40px;
-        font-size: 16px;
-        float: left;
-        margin: 16px 0;
-        font-weight: normal;
-        .issue-name {
-            font-weight: 800;
-            font-size: 18px;
-        }
+  .cmx-credits {
+    // padding-left: 40px;
+    font-size: 16px;
+    float: left;
+    margin: 16px 0;
+    font-weight: normal;
+    .issue-name {
+      font-weight: 800;
+      font-size: 18px;
     }
-
-    ul {
-        margin: 16px 0;
-        font-size: 16px;
-        text-align: right;
-        float: right;
-    }
+  }
+  ul {
+    margin: 16px 0;
+    font-size: 16px;
+    text-align: right;
+    float: right;
+  }
 }
-
-
 .my-elm {
-  -webkit-transition:0.25s linear all;
-  transition:0.25s linear all;
-  opacity:1;
+  -webkit-transition: 0.25s linear all;
+  transition: 0.25s linear all;
+  opacity: 1;
 }
-
 .my-elm.ng-hide {
-  opacity:0;
+  opacity: 0;
 }
-
 .my-elm.ng-hide-add, .my-elm.ng-hide-remove {
-  display:block!important;
+  display: block!important;
 }
-
 .topnav {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 50px;
-    h2 {
-        display: inline-block;
-        margin: 0
-    }
-    ul {
-        float: right;
-        margin: 0;
-    }
-    li {
-        display: inline-block;
-        font-size: 1em;
-        padding: 0 10px;
-        line-height: 24px;
-    }
+  background-color: #000;
+  color: #fff;
+  padding: 10px 50px;
+  h2 {
+    display: inline-block;
+    margin: 0
+  }
+  ul {
+    float: right;
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+    font-size: 1em;
+    padding: 0 10px;
+    line-height: 24px;
+  }
 }
-
-
-    
