@@ -38,6 +38,10 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/main.html',
         controller: 'DevCtrl'
       })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
       .otherwise({
         redirectTo: '/books'
       });
