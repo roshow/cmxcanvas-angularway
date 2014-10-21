@@ -3,7 +3,7 @@
 angular.module('angularcmxApp')
     .value('bookList', ['rev01', 'rev02', 'sov01', 'rev03']) // Adding this as a value here for ease during development. Should move to app,js eventually.
     // .value('bookList', false)
-    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'myCache', 'GetABook', 'GetLibrary', 'bookList', function ($scope, $routeParams, $location, myCache, getABook, getLibrary, bookList) {
+    .controller('BookCtrl', ['$scope', '$routeParams', '$location', 'myCache', 'GetABook', 'GetLibrary', 'bookList', function ($scope, $routeParams, $location, myCache, getABook, getLibrary, bookList) {
         
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';

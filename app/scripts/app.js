@@ -19,11 +19,11 @@ angular.module('angularcmxApp', [
       })
       .when('/cmx/:bookId', {
         templateUrl: 'views/main.html',
-        controller: 'CmxCtrl'
+        controller: 'BookCtrl'
       })
       .when('/books/:bookId', {
         templateUrl: 'views/main.html',
-        controller: 'CmxCtrl'
+        controller: 'BookCtrl'
       })
       .when('/embed/:bookId', {
         templateUrl: 'views/iframe.html',
