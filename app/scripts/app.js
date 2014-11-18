@@ -11,18 +11,19 @@ angular.module('angularcmxApp', [
   .factory('myCache', function($cacheFactory) {
     return $cacheFactory('myData');
   })
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://roshow.net/**']);
     $routeProvider
       .when('/books', {
-        templateUrl: 'views/library.html',
+        templateUrl: 'http://roshow.net/captainjonessq/views/library.html',
         controller: 'LibraryCtrl'
       })
       .when('/cmx/:bookId', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'http://roshow.net/captainjonessq/views/main.html',
         controller: 'CmxCtrl'
       })
       .when('/books/:bookId', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'http://roshow.net/captainjonessq/views/main.html',
         controller: 'CmxCtrl'
       })
       .when('/embed/:bookId', {

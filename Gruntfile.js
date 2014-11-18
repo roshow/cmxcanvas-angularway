@@ -396,7 +396,7 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin',
-    'imagemin:dist'
+    // 'imagemin:dist'
   ]);
 
   grunt.registerTask('default', [

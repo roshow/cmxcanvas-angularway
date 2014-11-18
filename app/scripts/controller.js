@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
-    .value('bookList', ['cj00', 'cj01']) // Adding this as a value here for ease during development. Should move to app,js eventually.
+    .value('bookList', ['cj00', 'cj01', 'cj02', 'cj03', 'cj04', 'cj05', 'cj06', 'cj07']) // Adding this as a value here for ease during development. Should move to app,js eventually.
     // .value('bookList', false)
     .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'myCache', 'GetABook', 'GetLibrary', 'bookList', function ($scope, $routeParams, $location, myCache, getABook, getLibrary, bookList) {
         
