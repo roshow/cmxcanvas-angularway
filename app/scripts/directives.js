@@ -4,14 +4,14 @@
 
 var crazy;
 angular.module('angularcmxApp')
-.directive('canvasbook', [ function (){
+.directive('canvasbook', [ 'templateStrings', function (templateStrings){
     return {
         restrict: 'E',
         scope: {
             bookData: '=',
             currentView: '='
         },
-        templateUrl: 'http://roshow.net/captainjonessq/views/partials/cmxcanvas.html',
+        template: templateStrings.canvas,
         link: function(scope, element, attr){
             
             scope.canvasbook = new CmxCanvas();
@@ -64,7 +64,6 @@ angular.module('angularcmxApp')
                         canvasEl.width = (viewInfo.width || 800);
                         scope.canvasbook.load(newData, canvasEl.id);
                     }
-                    crazy = scope.canvasbook;
                     
                     if (viewInfo.backgroundColor){
                         $canvasEl.css('background-color', viewInfo.backgroundColor);

@@ -39,12 +39,17 @@ angular.module('angularcmxApp')
         });
 
         $scope.hideOverlay = function(){
+            console.log('hidingoverlay');
             if ($scope.currentView === 'wasFirst'){
                 $scope.currentView = 'firstPanel';
             }
             else if ($scope.currentView === 'wasLast'){
                 $scope.currentView = 'lastPanel';
             }
+        };
+
+        $scope.goToBook = function(bookId){
+            $location.path('/books/' + bookId);
         };
 
         $scope.$watch('selectABook', function (newVal, oldVal){

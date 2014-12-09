@@ -1,14 +1,43 @@
-<ng-include src="'http://roshow.net/captainjonessq/views/partials/topnav.html'"></ng-include>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-init="navbarCollapsed = true" ng-click="navbarCollapsed = !navbarCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CAPTAIN JONES</a>
+    </div>
+    <div class="navbar-collapse collapse" collapse="navbarCollapsed">
+      <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a ng-href="http://pete-lepage.squarespace.com/">Back to Pete\'s</a>
+      </li>
+        <li class="dropdown">
+          <a href class="dropdown-toggle">More Books <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="book in books">
+              <a href="#/books/{{book.id}}">{{book.series.name}} #{{book.issue}}</a>
+            </li>
+          </ul>
+        </li>     
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
 <div class="top-container">
     <div class="book-info">
         <h3 class="cmx-credits">
-            <span class="issue-name">{{bookData.series.name}} #{{bookData.issue}}: {{bookData.title}}</span>
+            <span class="issue-name">#{{bookData.issue}}: {{bookData.title}}</span>
             <br />
             <a ng-repeat="creator in bookData.creators" ng-href="{{creator.url}}"><span ng-if="$middle || $last">, </span>{{creator.credit}}: {{creator.name}}</a>
         </h3>
 
         <ul class="book-style" ng-if="bookData.formats">
-            <li class="btn-format" ng-if="bookData.formats.length > 1" ng-repeat="format in bookData.formats"  ng-class="{ 'current-panel': bookData.view.id === format.view_id }" ng-click="getBook(bookData.id, format.format)">{{format.format}}</li>
+            <li class="btn-format" ng-if="bookData.formats.length > 1" ng-repeat="format in bookData.formats"  ng-class="{ \'current-panel\': bookData.view.id === format.view_id }" ng-click="getBook(bookData.id, format.format)">{{format.format}}</li>
         </ul>
         <div class="clearfix"></div>
 
@@ -18,16 +47,21 @@
         
         <canvasbook book-data="bookData" current-view="currentView" animate-resize></canvasbook>
         
-        <div class="my-elm" ng-show="currentView === 'wasFirst' || currentView === 'wasLast'">
-            <div ng-click="hideOverlay()" class="canvas-overlay" >
-                <div class="calltoaction" ng-show="currentView === 'wasFirst'">
+        <div class="my-elm" ng-show="currentView === \'wasFirst\' || currentView === \'wasLast\'">
+            <div class="canvas-overlay" >
+                <div class="calltoaction" ng-show="currentView === \'wasFirst\'">
                     Previous Issue: {{books[previousBook].series.name}} #{{books[previousBook].issue}}<br />
-                    <a class="btn-format" ng-href="#/books/{{books[previousBook].id}}">read now</a>
+                    <a class="btn-format" ng-click="goToBook(books[previousBook].id);event.stopPropogation();">read now</a>
+                    <br />
+                    <a class="btn-format" ng-click="hideOverlay()">back to this issue</a>
                 </div>
-                <div class="calltoaction" ng-show="currentView === 'wasLast'">
+                <div class="calltoaction" ng-show="currentView === \'wasLast\'">
                     Next Issue: {{books[nextBook].series.name}} #{{books[nextBook].issue}}<br />
-                    <a class="btn-format" ng-href="#/books/{{books[nextBook].id}}">read now</a>
+                    <a class="btn-format" ng-click="goToBook(books[nextBook].id);event.stopPropogation();">read now</a>
+                    <br />
+                    <a class="btn-format" ng-click="hideOverlay()">back to this issue</a>
                 </div>
+
             </div>
         </div>
 
@@ -36,7 +70,7 @@
 
     <!-- <div class="tocDiv">    
         <ul class="cmx-toc">
-            <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in bookData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
+            <li ng-class="{ \'current-panel\': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in bookData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
                 {{$index}}
             </li>
         </ul>
