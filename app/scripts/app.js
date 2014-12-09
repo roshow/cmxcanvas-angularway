@@ -124,6 +124,7 @@ angular.module('angularcmxApp', [
       })
       .when('/books/:bookId', {
         template: templateStrings.main,
+        // templateUrl: 'views/main.html',
         controller: 'CmxCtrl'
       })
       .when('/embed/:bookId', {

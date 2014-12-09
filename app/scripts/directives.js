@@ -11,6 +11,7 @@ angular.module('angularcmxApp')
             bookData: '=',
             currentView: '='
         },
+        // templateUrl: 'http://roshow.net/captainjonessq/views/partials/cmxcanvas.html',
         template: templateStrings.canvas,
         link: function(scope, element, attr){
             
