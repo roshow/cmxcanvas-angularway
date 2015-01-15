@@ -291,7 +291,7 @@ $selected: #dd0000;
   color: #ddd;
 }
 .navbar .container {
-  margin-left: 165px;
+  padding-left: 165px;
   color: white; 
 }
 $ogwidth: 120px;
@@ -328,11 +328,13 @@ $ogwidth: 120px;
     }
   }
   .btn-default {
-    margin: 0;
+    margin-left: 1px;
     padding: 3px 5px;
     border-radius: 0;
     box-sizing: border-box;
     font-size: 15px;
+    height: 30px;
+    width: 53px;
   }
 }
 
@@ -356,7 +358,10 @@ $ogwidth: 120px;
   color: #bbb;
 }
 .arrow-max {
-  // color: #222;
+  // color:
 }
+// html * {
+//   border: 1px solid red;
+// }
 
 
