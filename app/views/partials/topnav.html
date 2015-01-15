@@ -31,17 +31,20 @@
         </div>
         <div class="navbar-collapse collapse" collapse="navbarCollapsed">
           <ul class="nav navbar-nav ">
-          <li>
-            <a href="/#/books/rev01">Creators</a>
+          <li class="dropdown">
+            <a href class="dropdown-toggle">Creators <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-repeat="creator in bookData.creators"><a target="_blank" ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a></li>
+            </ul>
           </li>
-            <li class="dropdown">
-              <a href class="dropdown-toggle">More Books <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="book in books">
-                  <a href="#/books/{{book.id}}">{{book.series.name}} #{{book.issue}}</a>
-                </li>
-              </ul>
-            </li>     
+          <li class="dropdown">
+            <a href class="dropdown-toggle">More Books <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-repeat="book in books">
+                <a href="#/books/{{book.id}}">{{book.series.name}} #{{book.issue}}</a>
+              </li>
+            </ul>
+          </li>     
           </ul>
           <!-- ul class="nav navbar-nav navbar-right">
           </ul> -->
