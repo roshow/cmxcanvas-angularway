@@ -47,7 +47,7 @@ html, body {
     background-color: rgba(200, 200, 200, 0.9);
   }
 }
-@import url(http://fonts.googleapis.com/css?family=Lato:300);
+@import url(http://fonts.googleapis.com/css?family=Contrail+One);
 @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800);
 @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
 body {
@@ -275,12 +275,6 @@ $selected: #dd0000;
     line-height: 24px;
   }
 }
-@import url(http://fonts.googleapis.com/css?family=Walter+Turncoat);
-@import url(http://fonts.googleapis.com/css?family=Condiment);
-@import url(http://fonts.googleapis.com/css?family=Bangers);
-@import url(http://fonts.googleapis.com/css?family=Contrail+One);
-@import url(http://fonts.googleapis.com/css?family=Allan:400,700);
-
 .navbar * {
   // color: white !important;
   position: relative;
@@ -308,6 +302,7 @@ $ogwidth: 120px;
   position: absolute;
   img {
     width: $ogwidth;
+    margin-bottom: 5px;
   }
 }
 
@@ -318,7 +313,6 @@ $ogwidth: 120px;
 .og-details {
   width: $ogwidth;
   text-align: center;
-  margin-top: 5px;
   padding: 0 5px 5px;
   font-size: 14px;
   background: white;
@@ -352,6 +346,17 @@ $ogwidth: 120px;
     display: none;
   }
 }
-
+.arrow-min {
+  font-size: 18px;
+  position: absolute;
+  // left: -30px;
+  right: 5px;
+  top: 5px;
+  z-index: 2222;
+  color: #a7a7a7;
+}
+.arrow-max {
+  // color: #222;
+}
 
 
