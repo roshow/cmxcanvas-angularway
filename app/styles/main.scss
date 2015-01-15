@@ -49,6 +49,7 @@ html, body {
 }
 @import url(http://fonts.googleapis.com/css?family=Lato:300);
 @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800);
+@import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
 body {
   font-weight: normal;
   margin: 0;
@@ -70,7 +71,7 @@ a {
   }
 }
 .top-container {
-  max-width: 700px;
+  // max-width: 700px;
   margin: auto;
 }
 .btn-format {
@@ -95,7 +96,7 @@ a {
 }
 .canvas-wrapper {
   position: relative;
-  max-width: 704px;
+  // max-width: 704px;
   margin: auto;
   .canvas-overlay {
     position: absolute;
@@ -133,7 +134,7 @@ a {
   margin: auto;
   border: 2px solid #ccc;
   vertical-align: bottom;
-  max-width: 700px;
+  // max-width: 700px;
 }
 ul {
   list-style: none;
@@ -168,8 +169,10 @@ ul {
 }
 $selected: #dd0000;
 .current-panel {
-  color: $selected !important;
-  border-color: $selected !important;
+  // color: $selected !important;
+  // border-color: $selected !important;
+  font-weight: 700;
+  border-width: 3px;
 }
 .cmx-toc {
   width: auto;
@@ -272,3 +275,71 @@ $selected: #dd0000;
     line-height: 24px;
   }
 }
+@import url(http://fonts.googleapis.com/css?family=Walter+Turncoat);
+@import url(http://fonts.googleapis.com/css?family=Condiment);
+@import url(http://fonts.googleapis.com/css?family=Bangers);
+@import url(http://fonts.googleapis.com/css?family=Contrail+One);
+@import url(http://fonts.googleapis.com/css?family=Allan:400,700);
+
+.navbar * {
+  // color: white !important;
+  position: relative;
+}
+.navbar-brand  {
+  font-size: 30px;
+  font-family: "Contrail One";
+  span {
+    font-size: 24px;
+  }
+}
+.navbar-inverse .navbar-brand {
+  color: #ddd;
+}
+.navbar .container {
+  margin-left: 165px;
+  color: white; 
+}
+$ogwidth: 120px;
+.og-index {
+  margin-left: 15px;
+  background-color: #222;
+  padding: 7px;
+  position: absolute;
+  img {
+    width: $ogwidth;
+  }
+}
+
+.navbar-nav > li > .dropdown-menu {
+    position: absolute;
+  }
+
+.og-details {
+  width: $ogwidth;
+  text-align: center;
+  margin-top: 5px;
+  padding: 0 5px 5px;
+  font-size: 14px;
+  background: white;
+  h4 {
+    cursor: pointer;
+    font-size: 50px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    line-height: 0.75;
+    sup {
+      font-size: 50%;
+    }
+  }
+  .btn-default {
+    margin: 0;
+    padding: 3px 5px;
+    border-radius: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+  }
+}
+
+
+

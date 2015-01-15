@@ -1,4 +1,13 @@
 <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="og-index" >
+          <img ng-src="/images/oglogo-{{bookData.series.id}}.jpg" ng-hide="detailsMin" />
+          <div class="og-details">
+            <h4 ng-click="detailsMin=!detailsMin;"><sup>#</sup>{{bookData.issue}}</h4>
+            <span ng-hide="detailsMin">{{bookData.title}}<br />
+                <button class="btn btn-default" ng-if="bookData.formats && bookData.formats.length > 1" ng-repeat="format in bookData.formats"  ng-class="{ 'current-panel': bookData.view.id === format.view_id }" ng-click="getBook(bookData.id, format.format)">{{format.format}}</button>
+            </span>
+          </div>
+        </div>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" ng-init="navbarCollapsed = true" ng-click="navbarCollapsed = !navbarCollapsed">
@@ -7,10 +16,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">REVENGER</a>
+          <a class="navbar-brand" href="#">REVENGER<span ng-show="bookData.series.id === 'sov'"> (featuring Sovereign)</span></a>
         </div>
         <div class="navbar-collapse collapse" collapse="navbarCollapsed">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav ">
           <li>
             <a href="/#/books/rev01">New Readers </a>
           </li>

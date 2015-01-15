@@ -8,6 +8,7 @@ angular.module('angularcmxApp')
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
         $scope.bookData = {};
+        $scope.detailsMin = false;
 
         $scope.getBook = function(bookId, format){
             return getABook(bookId, format).then(
