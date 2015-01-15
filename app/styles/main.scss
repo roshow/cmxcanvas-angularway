@@ -293,7 +293,7 @@ $selected: #dd0000;
     font-size: 24px;
   }
 }
-.navbar-inverse .navbar-brand {
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a{
   color: #ddd;
 }
 .navbar .container {
@@ -339,6 +339,17 @@ $ogwidth: 120px;
     border-radius: 0;
     box-sizing: border-box;
     font-size: 15px;
+  }
+}
+
+.topnav-wrapper {
+  max-width: 1200px;
+  margin:auto;
+}
+
+.detailsMin {
+  .hide-min {
+    display: none;
   }
 }
 
