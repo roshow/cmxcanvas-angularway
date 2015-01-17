@@ -9,7 +9,8 @@ angular.module('angularcmxApp')
         restrict: 'E',
         scope: {
             bookData: '=',
-            currentView: '='
+            currentView: '=',
+            open: '&'
         },
         templateUrl: 'views/partials/cmxcanvas.html',
         link: function(scope, element, attr){
@@ -27,7 +28,12 @@ angular.module('angularcmxApp')
                     });
                 }
                 else {
-                    scope.currentView = view; 
+                    scope.currentView = view;
+                }
+                if (view === 'wasFirst' || view === 'wasLast') {
+                    scope.open({
+                        view: view
+                    });
                 }
             };
 

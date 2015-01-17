@@ -134,7 +134,8 @@ a {
   margin: auto;
   border: 2px solid #ccc;
   vertical-align: bottom;
-  // max-width: 700px;
+  max-width: 800px;
+  width: 100%;
 }
 ul {
   list-style: none;
@@ -357,11 +358,26 @@ $ogwidth: 120px;
   z-index: 2222;
   color: #bbb;
 }
-.arrow-max {
-  // color:
+
+.modal-dialog {
+  max-width: 280px;
+  font-family: 'Alegreya Sans';
 }
-// html * {
-//   border: 1px solid red;
-// }
+.modal-header {
+  .bold {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+.modal-body {
+  // font-family: 'Contrail One';
+  font-size: 20px;
+  font-weight: 700;
+  img {
+    width: 250px;
+    margin-bottom: 10px;
+    border: 2px solid #000;
+  }
+}
 
 

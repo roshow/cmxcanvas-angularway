@@ -3,8 +3,32 @@
 angular.module('angularcmxApp')
     .value('bookList', ['rev01', 'rev02', 'sov01', 'rev03', 'rev04']) // Adding this as a value here for ease during development. Should move to app,js eventually.
     // .value('bookList', false)
-    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'myCache', 'GetABook', 'GetLibrary', 'bookList', function ($scope, $routeParams, $location, myCache, getABook, getLibrary, bookList) {
-        
+    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', '$modal', 'myCache', 'GetABook', 'GetLibrary', 'bookList', function ($scope, $routeParams, $location, $modal, myCache, getABook, getLibrary, bookList) {
+        $scope.items = ['item1', 'item2', 'item3'];
+
+        $scope.open = function (view, size) {
+                var bookIdx = view === 'wasLast' ? $scope.nextBook : $scope.previousBook;
+                var book = $scope.books[bookIdx];
+                var modalInstance = $modal.open({
+                  templateUrl: 'myModalContent.html',
+                  controller: 'ModalInstanceCtrl',
+                  size: size,
+                  resolve: {
+                    view: function () {
+                      return view;
+                    },
+                    book: function () {
+                        return book;
+                    }
+                  }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                  $scope.selected = selectedItem;
+                }, function () {
+                  // $log.info('Modal dismissed at: ' + new Date());
+                });
+        };
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
         $scope.bookData = {};
@@ -87,28 +111,6 @@ angular.module('angularcmxApp')
             }
         };
     }])
-    .controller('DevCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
-        $scope.bookId = $routeParams.bookId;
-        $scope.embedWidth = '400';
-        $scope.cmxCanvas = new CmxCanvas();
-        $scope.getUrl = function(bookId){
-            var url;
-            if ($routeParams.api !== "1"){
-                bookId += '.json';
-                url = '/json/';
-            }
-            getABook(bookId, url).then(
-                function(data){
-                    $scope.cmxData = data;
-                },
-                function(error){
-                    console.log(error);
-                    $location.path('/');
-                }
-            );
-        };
-        $scope.getUrl($routeParams.bookId);
-    }])
     .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
         var url;
         $scope.cmxCanvas = new CmxCanvas();
@@ -118,4 +120,21 @@ angular.module('angularcmxApp')
             });
         };
         $scope.getBook('bethforever');
-    }]);
+    }])
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+.controller('ModalInstanceCtrl', function ($scope, $modalInstance, $location, view, book) {
+  $scope.view = view;
+  $scope.book = book;
+
+  $scope.ok = function (id) {
+    $modalInstance.close();
+    $location.path('/books/'+id);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
