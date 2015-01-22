@@ -7,17 +7,16 @@ angular.module('angularcmxApp')
 .directive('canvasbook', [ function (){
     return {
         restrict: 'E',
-        scope: {
-            bookData: '=',
-            currentView: '='
-        },
+        // scope: {
+        //     bookData: '=',
+        //     currentView: '='
+        // },
         templateUrl: 'views/partials/cmxcanvas.html',
         link: function(scope, element, attr){
             
             scope.canvasbook = new CmxCanvas();
-
-            var moving = false;
             scope.changepanel = function(direction){
+                console.log('changepanel');
                 var view = scope.canvasbook[direction]();
                 if (view.then){
                     view.then(function (view){
@@ -27,7 +26,12 @@ angular.module('angularcmxApp')
                     });
                 }
                 else {
-                    scope.currentView = view; 
+                    scope.currentView = view;
+                }
+                if (view === 'wasFirst' || view === 'wasLast') {
+                    console.log('about to open');
+                    console.log(angular.isFunction(scope.open));
+                    scope.open(view);
                 }
             };
 
