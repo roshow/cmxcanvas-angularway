@@ -7,28 +7,27 @@ angular.module('angularcmxApp')
         $scope.items = ['item1', 'item2', 'item3'];
 
         $scope.open = function (view, size) {
-                console.log('open called')
-                var bookIdx = view === 'wasLast' ? $scope.nextBook : $scope.previousBook;
-                var book = $scope.books[bookIdx];
-                var modalInstance = $modal.open({
-                  templateUrl: 'views/partials/myModalContent.html',
-                  controller: 'ModalInstanceCtrl',
-                  size: size,
-                  resolve: {
-                    view: function () {
-                      return view;
-                    },
-                    book: function () {
-                        return book;
-                    }
-                  }
-                });
+            var bookIdx = view === 'wasLast' ? $scope.nextBook : $scope.previousBook;
+            var book = $scope.books[bookIdx];
+            var modalInstance = $modal.open({
+              templateUrl: 'views/partials/myModalContent.html',
+              controller: 'ModalInstanceCtrl',
+              size: size,
+              resolve: {
+                view: function () {
+                  return view;
+                },
+                book: function () {
+                    return book;
+                }
+              }
+            });
 
-                modalInstance.result.then(function (selectedItem) {
-                  $scope.selected = selectedItem;
-                }, function () {
-                  // $log.info('Modal dismissed at: ' + new Date());
-                });
+            modalInstance.result.then(function (selectedItem) {
+              $scope.selected = selectedItem;
+            }, function () {
+              // $log.info('Modal dismissed at: ' + new Date());
+            });
         };
         $scope.bookId = $routeParams.bookId;
         $scope.embedWidth = '400';
