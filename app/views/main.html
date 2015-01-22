@@ -1,23 +1,10 @@
-<script type="text/ng-template" id="myModalContent.html">
-    <div class="modal-header">
-        <h3 class="modal-title"><span class="bold">{{ view === 'wasFirst' ? 'Previously' : 'Next' }}:</span></h3>
-    </div>
-    <div class="modal-body">
-        <img ng-src="{{book.thumb}}" />
-        <div>{{book.series.name}} <sup>#</sup>{{book.issue}}</div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" ng-click="ok(book.id)">Read Now</button>
-        <!--button class="btn" ng-click="cancel()">Cancel</button-->
-    </div>
-</script>
 <div id="wrap">
     <ng-include src="'views/partials/topnav.html'"></ng-include>
     <div class="top-container">
 
         <div class="canvas-wrapper">
             
-            <canvasbook open="open(view)" book-data="bookData" current-view="currentView" animate-resize></canvasbook>
+            <canvasbook book-data="bookData" current-view="currentView" animate-resize></canvasbook>
 
         </div>
 

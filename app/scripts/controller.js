@@ -7,10 +7,11 @@ angular.module('angularcmxApp')
         $scope.items = ['item1', 'item2', 'item3'];
 
         $scope.open = function (view, size) {
+                console.log('open called')
                 var bookIdx = view === 'wasLast' ? $scope.nextBook : $scope.previousBook;
                 var book = $scope.books[bookIdx];
                 var modalInstance = $modal.open({
-                  templateUrl: 'myModalContent.html',
+                  templateUrl: 'views/partials/myModalContent.html',
                   controller: 'ModalInstanceCtrl',
                   size: size,
                   resolve: {
