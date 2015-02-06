@@ -2,88 +2,37 @@
 
 'use strict';
 
-var crazy;
 angular.module('angularcmxApp')
-.directive('canvasbook', [ function (){
+.directive('canvasbook', function (){
     return {
-        restrict: 'E',
-        templateUrl: 'views/partials/cmxcanvas.html',
+        restrict: 'EA',
+        templateUrl: '/views/partials/canvasbook.html',
+        replace: true,
         link: function(scope, element, attr){
             
-            scope.canvasbook = new CmxCanvas();
-            scope.changepanel = function(direction){
-                var view = scope.canvasbook[direction]();
-                if (view.then){
-                    var prev = (scope.currentView || {}).panel || 0;
-                    if (scope.canvasbook.currentView.panel !== prev){
-                        document.querySelector('#wrap').scrollTop = 0;
-                        crazy = element[0];
-                    }
-                    view.then(function (view){
-                        if (view !== 'moving'){
-                            scope.currentView = view;
-                        }
-                    });
+            var canvasEl = element.find('canvas')[0];
+            canvasEl.id = canvasEl.id || 'canvasbook';
+
+            scope.changepanel = function (direction) {
+                var noMore = ( direction === 'next' ) ? scope.bookModel.canvasbook.isLast : scope.bookModel.canvasbook.isFirst;
+                if (!noMore){
+                    scope.bookModel.canvasbook[direction]();
                 }
                 else {
-                    scope.currentView = view;
-                }
-                if (view === 'wasFirst' || view === 'wasLast') {
-                    scope.open(view);
+                    scope.openReadMore(direction);
                 }
             };
 
-            var $canvasEl = element.find('canvas'),
-                canvasEl = $canvasEl[0];
-            
-            canvasEl.id = 'canvasbook';
-
-            scope.$watch('bookData', function (newData, oldData){
-                if (!angular.equals(newData, oldData)){
-                    if (scope.canvasbook.currentView){
-                        /** TODO: Something about currentView.panel not setting TOC buttons correctly on load unless I do it this way **/
-                        scope.canvasbook.currentView.panel = 0;
-                    }
-                    var viewInfo = newData.view || {};
-                    if (attr.$attr.animateResize){
-                        var lenAnim = 400,
-                            height = angular.copy(canvasEl.height),
-                            width = angular.copy(canvasEl.width),
-                            deltaH = (viewInfo.height || 450) - height,
-                            deltaW = (viewInfo.width || 800) - width;
-
-                        roquestAnim(function (timePassed){
-                            var sinPart = Math.sin(timePassed*(Math.PI/2)/lenAnim);
-                            canvasEl.height = height + (deltaH * sinPart);
-                            canvasEl.width = width + (deltaW * sinPart);
-                        }, lenAnim).then(function (){
-                            /** TODO: Use the promise to only have on ,load, not this one AND the one beneath it **/
-                            scope.canvasbook.load(newData, canvasEl.id);
-                        });
-                    }
-                    else {
-                        canvasEl.height = (viewInfo.height || 450);
-                        canvasEl.width = (viewInfo.width || 800);
-                        scope.canvasbook.load(newData, canvasEl.id);
-                    }
-                    crazy = scope.canvasbook;
-                    
-                    if (viewInfo.backgroundColor){
-                        $canvasEl.css('background-color', viewInfo.backgroundColor);
-                    }                 
-                }
+            scope.$on('bookModel:loaded', function (event, bookModel) {
+                canvasEl.height = (bookModel.view.height || 450);
+                canvasEl.width = (bookModel.view.width || 800);
+                bookModel.loadUI(canvasEl.id);
             });
-            scope.changed = {};
-            scope.changed.next = function(){
-                console.log(scope.canvasbook.next());
-            };
-            scope.changed.prev = function(){
-                console.log(scope.canvasbook.prev());
-            };
+
         }
     };
-}])
-.directive('resizeCanvas', ['$window', function($window){
+})
+.directive('resizeCanvas', function($window){
     return {
         restrict: 'A',
         link: function(scope, element, attr){
@@ -118,7 +67,7 @@ angular.module('angularcmxApp')
             }
         }
     };
-}])
+})
  .directive('fbLike', [
         '$window', function($window) {
             return {
@@ -185,8 +134,8 @@ angular.module('angularcmxApp')
                 },
                 link: function(scope, element, attrs) {
                     // wait for twitter api to load and scope data to bind before displaying tweet button
-                    scope.$watch(function() { return !!$window.twttr && !!scope.tweet; },
-                        function(twttrIsReady) {
+                    scope.$watch(function () { return !!$window.twttr && !!scope.tweet; },
+                        function (twttrIsReady) {
                             if (twttrIsReady) {
                                 element.html('<a href="https://twitter.com/share" class="twitter-share-button" data-text="' + scope.tweet + '">Tweet</a>');
                                 $window.twttr.widgets.load(element.parent()[0]);

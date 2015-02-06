@@ -1,20 +1,26 @@
 <div class="navbar navbar-inverse navbar-static-top" role="navigation"><div class="topnav-wrapper">
         <div class="og-index" ng-class="{'detailsMin': detailsMin}">
-           <span 
-                class="glyphicon arrow-min" 
-                ng-class="{ 'arrow-max glyphicon-chevron-down': detailsMin,  'glyphicon-chevron-up': !detailsMin }"
-                ng-click="detailsMin=!detailsMin;"
-                >
-              </span>  
-          <img ng-src="/images/oglogo-{{bookData.series.id}}.jpg" class="hide-min" />
+          <span 
+            class="glyphicon arrow-min" 
+            ng-class="{ 'arrow-max glyphicon-chevron-down': detailsMin,  'glyphicon-chevron-up': !detailsMin }"
+            ng-click="detailsMin=!detailsMin;"
+            >
+          </span>  
+          <img ng-src="/images/oglogo-{{bookModel.series.id}}.jpg" class="hide-min" />
                     
           <div class="og-details">
-            
+            <span class="series-name" ng-if="bookModel.series.id !== 'rev'">{{bookModel.series.name}}</span>
             <h4 ng-click="detailsMin=!detailsMin;">
-              <sup>#</sup>{{bookData.issue}}
+              <sup>#</sup>{{bookModel.issue}}
             </h4>
-            <span class="hide-min">{{bookData.title}}<br />
-                <button class="btn btn-default" ng-if="bookData.formats && bookData.formats.length > 1" ng-repeat="format in bookData.formats"  ng-class="{ 'current-panel': bookData.view.id === format.view_id }" ng-click="getBook(bookData.id, format.format)">{{format.format}}</button>
+            <span class="hide-min">{{bookModel.title}}<br />
+                <button class="btn btn-default"
+                  ng-if="bookModel.formats && bookModel.formats.length > 1" 
+                  ng-repeat="format in bookModel.formats" 
+                  ng-class="{ 'current-panel': bookModel.view.id === format.view_id }" 
+                  ng-click="bookModel.get(bookModel.id, format.format)">
+                  {{format.format}}
+                </button>
             </span>    
         </div>
 
@@ -27,20 +33,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">REVENGER <span ng-show="bookData.series.id === 'sov'"> featuring Sovereign</span></a>
+          <a class="navbar-brand" href="#">REVENGER</a>
         </div>
         <div class="navbar-collapse collapse" collapse="navbarCollapsed">
           <ul class="nav navbar-nav ">
           <li class="dropdown">
             <a href class="dropdown-toggle">Creators <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="creator in bookData.creators"><a target="_blank" ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a></li>
+              <li ng-repeat="creator in bookModel.creators"><a target="_blank" ng-href="{{creator.url}}">{{creator.name}} ({{creator.credit}})</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href class="dropdown-toggle">More Books <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="book in books">
+              <li ng-repeat="book in books.list">
                 <a href="#/books/{{book.id}}">{{book.series.name}} #{{book.issue}}</a>
               </li>
             </ul>

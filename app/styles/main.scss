@@ -318,6 +318,10 @@ $ogwidth: 120px;
   padding: 0 5px 5px;
   font-size: 14px;
   background: white;
+  .series-name {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
   h4 {
     cursor: pointer;
     font-size: 50px;

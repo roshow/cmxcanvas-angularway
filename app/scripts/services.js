@@ -1,13 +1,13 @@
 'use strict';
 
-(function(){
+(function (){
 
 var apiHost;
 apiHost = 'http://canvasbookapi.herokuapp.com';
 // apiHost = 'http://0.0.0.0:5000';
 
 angular.module('angularcmxApp')
-    .factory('GetABook', ['$http', '$q', function($http, $q){
+    .factory('GetABook', ['$http', '$q', function ($http, $q){
 
         return function(bookId, format){
             var def = $q.defer();
@@ -34,7 +34,7 @@ angular.module('angularcmxApp')
             return def.promise;
         };
     }])
-    .factory('GetBooks', ['$http', '$q', 'myCache', function($http, $q, myCache){
+    .factory('GetBooks', ['$http', '$q', 'myCache', function ($http, $q, myCache){
 
         return function(bookList){
             var def = $q.defer();
@@ -65,9 +65,9 @@ angular.module('angularcmxApp')
             return def.promise;
         };
     }])
-    .factory('GetLibrary', ['$q', 'myCache', 'GetBooks', function($q, myCache, getBooks){
+    .factory('GetLibrary', ['$q', 'myCache', 'GetBooks', function ($q, myCache, getBooks){
 
-        return function(bookList){
+        return function (bookList){
             var bookListInfo = myCache.get('bookListData');
             if (!bookListInfo){
                 return getBooks(bookList || false);
