@@ -6,6 +6,8 @@ angular.module('angularcmxApp')
 
     var bookModel = $scope.bookModel = new BookModel();
 
+    $scope.bookId = $routeParams.bookId || 'rev04';
+    $scope.bookFormat = $routeParams.format || 'classic';
     $scope.embedWidth = '400';
     $scope.detailsMin = false;
 
@@ -33,7 +35,7 @@ angular.module('angularcmxApp')
         return $scope.books.list[idx];
     };
 
-    bookModel.get($routeParams.bookId, $routeParams.format).then(function () {
+    bookModel.get($scope.bookId, $scope.bookFormat).then(function () {
         GetLibrary(bookList).then(function (books){
             $scope.books.list = books;
             $scope.books.currentIdx = bookList.indexOf(bookModel.id);

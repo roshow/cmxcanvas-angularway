@@ -13,9 +13,13 @@ angular.module('angularcmxApp', [
   })
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/books', {
-        templateUrl: 'views/library.html',
-        controller: 'LibraryCtrl'
+      // .when('/books', {
+      //   templateUrl: 'views/library.html',
+      //   controller: 'LibraryCtrl'
+      // })
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'BookCtrl'
       })
       .when('/cmx/:bookId', {
         templateUrl: 'views/main.html',
@@ -29,20 +33,7 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/iframe.html',
         controller: 'EmbedCtrl'
       })
-      .when('/beth', {
-        templateUrl: 'views/beth.html',
-        controller: 'BethCtrl'
-      })
-
-      .when('/dev/:bookId', {
-        templateUrl: 'views/main.html',
-        controller: 'DevCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .otherwise({
-        redirectTo: '/books'
+        redirectTo: '/'
       });
   });

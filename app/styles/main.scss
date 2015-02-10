@@ -309,6 +309,7 @@ $ogwidth: 120px;
   background-color: #222;
   padding: 7px;
   position: absolute;
+  z-index: 1001;
   img {
     width: $ogwidth;
     margin-bottom: 5px;

@@ -6,9 +6,13 @@
             ng-click="detailsMin=!detailsMin;"
             >
           </span>  
-          <img ng-src="/images/oglogo-{{bookModel.series.id}}.jpg" class="hide-min" />
+          <img 
+            ng-src="/images/oglogo-{{bookModel.series.id}}.jpg"
+            ng-click="detailsMin=!detailsMin;"
+            class="hide-min" 
+          />
                     
-          <div class="og-details">
+          <div class="og-details" >
             <span class="series-name" ng-if="bookModel.series.id !== 'rev'">{{bookModel.series.name}}</span>
             <h4 ng-click="detailsMin=!detailsMin;">
               <sup>#</sup>{{bookModel.issue}}
