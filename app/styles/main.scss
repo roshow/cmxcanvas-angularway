@@ -163,9 +163,13 @@ ul {
   span {
     top: 50%;
     transform: translateY(-50%);
-  }
-  &:hover {
-    color: springgreen;
+    color: black;
+    opacity: 0.5;
+    font-size: 50px;
+    &:hover {
+      opacity: 1;
+      font-size: 50px;
+    }
   }
 }
 .tocDiv {
