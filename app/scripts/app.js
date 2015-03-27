@@ -2,12 +2,13 @@
   
 angular.module('angularcmxApp', [
   'ngResource',
-  'ngSanitize',
   'ngRoute',
   'ngTouch',
   'ngAnimate',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'rgModels'
 ])
+  .value('bookList', ['rev01', 'rev02', 'sov01', 'rev03', 'rev04'])
   .factory('myCache', function($cacheFactory) {
     return $cacheFactory('myData');
   })
