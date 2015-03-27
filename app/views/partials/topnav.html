@@ -22,9 +22,7 @@
                   ng-if="bookModel.formats && bookModel.formats.length > 1" 
                   ng-repeat="format in bookModel.formats" 
                   ng-class="{ 'current-panel': bookModel.view.id === format.view_id }" 
-                  ng-click="loadBook(format.format)">
-                  {{format.format}}
-                </button>
+                  ng-click="loadBook(format.format)">{{format.format}}</button>
             </span>    
         </div>
 

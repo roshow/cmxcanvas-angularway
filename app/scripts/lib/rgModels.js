@@ -24,8 +24,9 @@
 
 	        $http(angular.extend(reqObj, options || {}))
 	            .success(function (res) {
-	            	that.set(that.parseResponse(res));
-	                deferred.resolve(res);
+	            	var parsed = that.parseResponse(res);
+	            	that.set(parsed);
+	                deferred.resolve(parsed);
 	            }).
 	            error(function (data) {
 	                deferred.reject(data);
