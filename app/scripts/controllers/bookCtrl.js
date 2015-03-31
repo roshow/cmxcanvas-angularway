@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('angularcmxApp')
-.controller('BookCtrl', function ($scope, $rootScope, $routeParams, $location, $modal, BookModel, BookList, libList, myCache) {
+
+.controller('BookCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$modal', 'BookModel', 'BookList', 'libList', 'myCache', 
+    function ($scope, $rootScope, $routeParams, $location, $modal, BookModel, BookList, libList, myCache) {
 
     $scope.bookModel = new BookModel();
     $scope.books = new BookList();
@@ -20,7 +22,7 @@ angular.module('angularcmxApp')
         });
         $scope.readMoreModal.result.then(function (id) {
             if (id) {
-                $location.path('/books/'+id);
+                $location.path('/issues/'+id);
             }
         });
     };
@@ -52,4 +54,4 @@ angular.module('angularcmxApp')
     $scope.loadBook();
     $scope.loadBookList();
 
-});
+}]);

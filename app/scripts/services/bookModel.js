@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
-.factory('BookModel', function (rgModel) {
+.factory('BookModel', [ 'rgModel', function (rgModel) {
 
 	function BookModel (data) {
         this.id = '';
@@ -15,4 +15,4 @@ angular.module('angularcmxApp')
 
 	rgModel.extend(BookModel);
     return BookModel;
-});
+}]);

@@ -1,4 +1,4 @@
-// Generated on 2015-01-22 using generator-angular 0.10.0
+// Generated on 2015-03-31 using generator-angular 0.10.0
 'use strict';
 
 // # Globbing
@@ -207,7 +207,7 @@ module.exports = function (grunt) {
         src: [
           '<%= yeoman.dist %>/scripts/{,*/}*.js',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
-          // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
         ]
       }

@@ -12,12 +12,9 @@ angular.module('angularcmxApp', [
   .factory('myCache', function($cacheFactory) {
     return $cacheFactory('myData');
   })
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
     $routeProvider
-      // .when('/books', {
-      //   templateUrl: 'views/library.html',
-      //   controller: 'LibraryCtrl'
-      // })
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'BookCtrl'
@@ -26,13 +23,21 @@ angular.module('angularcmxApp', [
         templateUrl: 'views/main.html',
         controller: 'BookCtrl'
       })
-      .when('/books/:bookId', {
+      .when('/issues/:bookId', {
         templateUrl: 'views/main.html',
         controller: 'BookCtrl'
       })
       .when('/embed/:bookId', {
         templateUrl: 'views/iframe.html',
         controller: 'EmbedCtrl'
+      })
+      // .when('/books', {
+      //   templateUrl: 'views/library.html',
+      //   controller: 'LibraryCtrl'
+      // })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'

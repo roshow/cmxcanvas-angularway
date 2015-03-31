@@ -1,7 +1,7 @@
 'use strict';
 ( function () {
 	var app = angular.module('rgModels', []);
-	app.factory('rgModel', function ($rootScope, $http, $q) {
+	app.factory('rgModel', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
 		var rgmodel = {};
 		rgmodel.set = function (data, value) {
 	        if (typeof data === 'string') {
@@ -40,6 +40,6 @@
 	    	model.prototype = angular.extend({}, this, model.prototype);
 	    };
 		return rgmodel;
-	});
+	}]);
 
 } () );

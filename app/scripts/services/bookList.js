@@ -1,6 +1,6 @@
 'use strict';
 angular.module('angularcmxApp')
-.factory('BookList', function ($http, $q, myCache, rgModel) {
+.factory('BookList', ['$http', '$q', 'myCache', 'rgModel', function ($http, $q, myCache, rgModel) {
 
 	function BookList (data) {
 		this.id = '';
@@ -29,4 +29,4 @@ angular.module('angularcmxApp')
     rgModel.extend(BookList);
 
     return BookList;
-});
+}]);

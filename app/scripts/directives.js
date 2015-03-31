@@ -39,7 +39,7 @@ angular.module('angularcmxApp')
         }
     };
 })
-.directive('resizeCanvas', function ($window){
+.directive('resizeCanvas', [ '$window', function ($window){
     return {
         restrict: 'A',
         link: function(scope, element, attr){
@@ -74,4 +74,4 @@ angular.module('angularcmxApp')
             }
         }
     };
-});
+}]);
