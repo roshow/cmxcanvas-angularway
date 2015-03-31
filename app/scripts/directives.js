@@ -8,32 +8,39 @@ angular.module('angularcmxApp')
         restrict: 'EA',
         templateUrl: '/views/partials/canvasbook.html',
         replace: true,
+        scope: {
+            viewModel: '=',
+            onEnd: '&'
+        },
         link: function(scope, element){
             
             var canvasEl = element.find('canvas')[0],
                 canvasbook = new Canvasbook();
-            canvasEl.id = canvasEl.id || 'canvasbook';
 
             scope.changepanel = function (direction) {
                 var noMore = ( direction === 'next' ) ? canvasbook.isLast : canvasbook.isFirst;
                 if (!noMore){
                     canvasbook[direction]();
                 }
-                else {
-                    scope.openReadMore(direction);
+                else if (typeof scope.onEnd === 'function') {
+                    scope.onEnd({
+                        direction: direction
+                    });
                 }
             };
 
-            scope.$on('bookModel:loaded', function (event, bookModel) {
-                canvasEl.height = (bookModel.view.height || 450);
-                canvasEl.width = (bookModel.view.width || 800);
-                canvasbook.load(bookModel, canvasEl.id);
+            scope.$watch('viewModel', function (newVal) {
+                if (newVal) {
+                    canvasEl.height = (newVal.height || 450);
+                    canvasEl.width = (newVal.width || 800);
+                    canvasbook.load(newVal, canvasEl);
+                }
             });
 
         }
     };
 })
-.directive('resizeCanvas', function($window){
+.directive('resizeCanvas', function ($window){
     return {
         restrict: 'A',
         link: function(scope, element, attr){

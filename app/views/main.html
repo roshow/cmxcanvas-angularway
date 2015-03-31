@@ -1,7 +1,7 @@
 <div id="wrap">
     <ng-include src="'views/partials/topnav.html'"></ng-include>
     <div class="top-container">
-        <canvasbook></canvasbook>
+        <canvasbook view-model="bookModel.view" on-end="onEnd(direction)"></canvasbook>
     </div>
 </div>
 
