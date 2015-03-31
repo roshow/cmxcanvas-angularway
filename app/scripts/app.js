@@ -8,7 +8,7 @@ angular.module('angularcmxApp', [
   'ui.bootstrap',
   'rgModels'
 ])
-  .value('bookList', ['rev01', 'rev02', 'sov01', 'rev03', 'rev04'])
+  .value('libList', ['rev01', 'rev02', 'sov01', 'rev03', 'rev04'])
   .factory('myCache', function($cacheFactory) {
     return $cacheFactory('myData');
   })

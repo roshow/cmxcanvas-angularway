@@ -36,7 +36,6 @@ angular.module('angularcmxApp')
                     canvasbook.load(newVal, canvasEl);
                 }
             });
-
         }
     };
 })

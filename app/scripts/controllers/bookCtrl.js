@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularcmxApp')
-.controller('BookCtrl', function ($scope, $rootScope, $routeParams, $location, $modal, bookList, BookModel, BookList, myCache) {
+.controller('BookCtrl', function ($scope, $rootScope, $routeParams, $location, $modal, BookModel, BookList, libList, myCache) {
 
     $scope.bookModel = new BookModel();
     $scope.books = new BookList();
@@ -37,12 +37,12 @@ angular.module('angularcmxApp')
         var books = $scope.books;
         books.set({
             list: myCache.get('bookListData'),
-            currentIdx: bookList.indexOf($scope.bookId)
+            currentIdx: libList.indexOf($scope.bookId)
         });
         if (!books.list) {
             books
                 .fetch({
-                    params: { ids: bookList.join(',') }
+                    params: { ids: libList.join(',') }
                 }).then(function () {
                     myCache.put('bookListData', books.list);
                 });
