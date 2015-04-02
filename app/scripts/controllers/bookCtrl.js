@@ -2,8 +2,7 @@
 
 angular.module('angularcmxApp')
 
-.controller('BookCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$modal', 'BookModel', 'BookList', 'libList', 'myCache', 
-    function ($scope, $rootScope, $routeParams, $location, $modal, BookModel, BookList, libList, myCache) {
+.controller('BookCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$modal', 'BookModel', 'BookList', 'libList', 'myCache',  function ($scope, $rootScope, $routeParams, $location, $modal, BookModel, BookList, libList, myCache) {
 
     $scope.bookModel = new BookModel();
     $scope.books = new BookList();
@@ -13,26 +12,43 @@ angular.module('angularcmxApp')
     $scope.embedWidth = '400';
     $scope.detailsMin = false;
 
+    $scope.modalOpen = false;
     $scope.onEnd = function (direction) {
-        $scope.readMore = $scope.books[direction]();
-        $scope.readMore.direction = direction;
-        $scope.readMoreModal = $modal.open({
-            templateUrl: 'views/partials/readMoreModal.html',
-            scope: $scope
-        });
-        $scope.readMoreModal.result.then(function (id) {
-            if (id) {
-                $location.path('/issues/'+id);
-            }
-        });
+        if ($scope.modalOpen === false) {
+            $scope.readMore = $scope.books[direction]();
+            $scope.readMore.direction = direction;
+            $scope.readMoreModal = $modal.open({
+                templateUrl: 'views/partials/readMoreModal.html',
+                scope: $scope
+            });
+            $scope.modalOpen = true;            
+            $scope.hotkeys = false;
+            console.log($scope.readMoreModal.result);
+            $scope.readMoreModal.result.then(function (id) {
+                
+                $scope.modalOpen = false;
+                $scope.hotkeys = true;
+
+                if (id) {
+                    $location.path('/issues/'+id);
+                }
+                
+            }).finally(function () {
+                $scope.modalOpen = false;
+                $scope.hotkeys = true;
+            });
+        }
     };
 
     $scope.loadBook = function (format) {
+        var fetchOptions = {
+            params: {
+                format: format || $scope.bookFormat
+            }
+        };
         $scope.bookModel
             .set('id', $scope.bookId)
-            .fetch({
-                params: { format: format || $scope.bookFormat }
-            });
+            .fetch(fetchOptions);
     };
 
     $scope.loadBookList = function () {
@@ -53,5 +69,14 @@ angular.module('angularcmxApp')
     
     $scope.loadBook();
     $scope.loadBookList();
+
+    $scope.$on('canvasbook:changepanel', function (event, data) {
+        if ($scope.modalOpen === true) {
+            $scope.readMoreModal.dismiss();;
+        }
+    });
+    $scope.$on('canvasbook:end', function (event, data) {
+        $scope.onEnd(data.direction);
+    });
 
 }]);

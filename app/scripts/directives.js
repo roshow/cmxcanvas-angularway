@@ -3,30 +3,33 @@
 'use strict';
 
 angular.module('angularcmxApp')
-.directive('canvasbook', function (){
+.directive('canvasbook', function ($rootScope, $document, $window){
     return {
         restrict: 'EA',
         templateUrl: '/views/partials/canvasbook.html',
         replace: true,
         scope: {
-            viewModel: '=',
-            onEnd: '&'
+            viewModel: '='
         },
-        link: function(scope, element){
+        link: function(scope, element, attrs){
             
             var canvasEl = element.find('canvas')[0],
                 canvasbook = new Canvasbook();
 
+            // console.log(element.getBoundingClientRect());
+
             scope.changepanel = function (direction) {
                 var noMore = ( direction === 'next' ) ? canvasbook.isLast : canvasbook.isFirst;
+                var eventName = 'canvasbook:';
                 if (!noMore){
                     canvasbook[direction]();
+                    canvasEl.scrollIntoView();
+                    eventName += 'changepanel';
                 }
-                else if (typeof scope.onEnd === 'function') {
-                    scope.onEnd({
-                        direction: direction
-                    });
+                else {
+                    eventName += 'end';
                 }
+                $rootScope.$broadcast(eventName, { direction: direction });
             };
 
             scope.$watch('viewModel', function (newVal) {
@@ -36,6 +39,21 @@ angular.module('angularcmxApp')
                     canvasbook.load(newVal, canvasEl);
                 }
             });
+
+            if (attrs.$attr.hotkeys) {
+                $document.on('keydown', function (e) {
+                    if (attrs.hotkeys !== 'false') {
+                        switch (e.keyCode) {
+                            case 39:
+                                scope.changepanel('next');
+                                break;
+                            case 37:
+                                scope.changepanel('previous');
+                                break;
+                        }
+                    }
+                });
+            }
         }
     };
 })

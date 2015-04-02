@@ -17,12 +17,12 @@
 		rgmodel.fetch = function (options) {
 	        var deferred = $q.defer(),
 	        	that = this,
-	        	reqObj = {
+	        	reqObj = angular.extend({
 		            url:  (this.uri + this.id),
 		            method: 'GET'
-		        };
+		        }, options || {});
 
-	        $http(angular.extend(reqObj, options || {}))
+	        $http(reqObj)
 	            .success(function (res) {
 	            	var parsed = that.parseResponse(res);
 	            	that.set(parsed);

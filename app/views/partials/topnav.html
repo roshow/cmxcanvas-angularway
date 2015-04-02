@@ -49,14 +49,14 @@
             <a href class="dropdown-toggle">More Books <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="book in books.list">
-                <a href="#/books/{{book.id}}">{{book.series.name}} #{{book.issue}}</a>
+                <a href="#/issues/{{book.id}}">{{book.series.name}} #{{book.issue}}</a>
               </li>
             </ul>
           </li>     
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="#/books/rev01">New? Start Here</a>
+              <a href="#/issues/rev01">New? Start Here</a>
             </li>
           </ul>
         </div><!--/.nav-collapse -->
