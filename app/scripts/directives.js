@@ -23,7 +23,7 @@ angular.module('angularcmxApp')
                 var eventName = 'canvasbook:';
                 if (!noMore){
                     canvasbook[direction]();
-                    canvasEl.scrollIntoView();
+                    document.querySelector('.navbar').scrollIntoView();
                     eventName += 'changepanel';
                 }
                 else {

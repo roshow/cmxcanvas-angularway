@@ -4,8 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>canvas book</title>
-    <meta name="description" content="">
+    
+    <!-- @ifdef staticmeta -->
+    <title>Revenger Comics</title>
+    <meta property="og:title" content="Revenger Comics" />
+    <meta property="og:description" content="a comic by Michael Powell and Rolando Garcia" />
+    <meta property="og:image" content="http://roshow.net/images/rev04/rev04_thumb.jpg" />
+    <!-- @endif -->
+
+    <!-- @ifdef handlebars -->
+    {{> meta}}
+    
+    <!--@endif -->
+
+
     <!-- build:css(./) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />

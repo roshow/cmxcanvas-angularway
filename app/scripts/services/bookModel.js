@@ -5,7 +5,7 @@ angular.module('angularcmxApp')
 
 	function BookModel (data) {
         this.id = '';
-        this.uri = 'http://canvasbookapi.herokuapp.com/books/';
+        this.uri = '//canvasbookapi.herokuapp.com/books/';
 		this.set(data);
 	}
 

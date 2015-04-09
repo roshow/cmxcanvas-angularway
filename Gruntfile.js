@@ -342,7 +342,7 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'fonts/{,*/}*.*',
-            'images/{,*/}*.*'
+            'local/{,*/}*.*'
           ]
         }, {
           expand: true,
@@ -374,7 +374,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        // 'imagemin',
+        'imagemin',
         'svgmin'
       ]
     },
@@ -392,6 +392,27 @@ module.exports = function (grunt) {
         options: {
           project: 'dist/',
           domain: 'canvasbook.surge.sh'
+        }
+      }
+    },
+    preprocess : {
+      options: {},
+      handlebars : {
+        src : 'dist/index.html',
+        dest : 'dist/static.handlebars',
+        options: {
+          context: {
+            handlebars: true
+          }
+        }
+      },
+      index : {
+        src : 'dist/index.html',
+        dest : 'dist/index.html',
+        options: {
+          context: {
+            staticmeta: true
+          }
         }
       }
     }
@@ -440,6 +461,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
+    'preprocess:handlebars',
+    'preprocess:index',
     'htmlmin'
   ]);
 

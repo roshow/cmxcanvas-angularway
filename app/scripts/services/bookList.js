@@ -6,7 +6,7 @@ angular.module('angularcmxApp')
 		this.id = '';
 		this.list = [];
 		this.currentIdx = 0;
-		this.uri = 'http://canvasbookapi.herokuapp.com/books';
+		this.uri = '//canvasbookapi.herokuapp.com/books';
 		this.set(data);
 	}
 
