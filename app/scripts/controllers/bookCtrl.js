@@ -4,39 +4,48 @@ angular.module('angularcmxApp')
 
 .controller('BookCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$modal', 'BookModel', 'BookList', 'libList', 'myCache',  function ($scope, $rootScope, $routeParams, $location, $modal, BookModel, BookList, libList, myCache) {
 
-    $scope.bookModel = new BookModel();
-    $scope.books = new BookList();
+    angular.extend($scope, {
+        bookModel: new BookModel(),
+        books: new BookList(),
+        bookId: $routeParams.bookId || 'rev04',
+        bookFormat: $routeParams.format || 'classic',
+        startIndex: $routeParams.startIndex || 0,
+        embedWidth: '400',
+        detailsMin: false,
+        modalOpen: false
+    });
 
-    $scope.bookId = $routeParams.bookId || 'rev04';
-    $scope.bookFormat = $routeParams.format || 'classic';
-    $scope.embedWidth = '400';
-    $scope.detailsMin = false;
+    function openModal () {
+        var modal = $modal.open({
+            templateUrl: 'views/partials/readMoreModal.html',
+            scope: $scope
+        });
 
-    $scope.modalOpen = false;
+        $scope.modalOpen = true;            
+        $scope.hotkeys = false;
+
+        modal.result.then(function (id) {
+            $scope.modalOpen = false;
+            $scope.hotkeys = true;
+
+            if (id) {
+                $location.path('/issues/'+id);
+            }
+            
+        }).finally(function () {
+            $scope.modalOpen = false;
+            $scope.hotkeys = true;
+        });
+
+        $scope.readMoreModal = modal;
+        return  $scope.readMoreModal;
+    }
+
     $scope.onEnd = function (direction) {
         if ($scope.modalOpen === false) {
             $scope.readMore = $scope.books[direction]();
             $scope.readMore.direction = direction;
-            $scope.readMoreModal = $modal.open({
-                templateUrl: 'views/partials/readMoreModal.html',
-                scope: $scope
-            });
-            $scope.modalOpen = true;            
-            $scope.hotkeys = false;
-            console.log($scope.readMoreModal.result);
-            $scope.readMoreModal.result.then(function (id) {
-                
-                $scope.modalOpen = false;
-                $scope.hotkeys = true;
-
-                if (id) {
-                    $location.path('/issues/'+id);
-                }
-                
-            }).finally(function () {
-                $scope.modalOpen = false;
-                $scope.hotkeys = true;
-            });
+            openModal();
         }
     };
 
@@ -50,7 +59,7 @@ angular.module('angularcmxApp')
             .set('id', $scope.bookId)
             .fetch(fetchOptions)
             .then(function () {
-                $scope.bookModel.view.startIndex = parseInt($routeParams.startIndex || 0, 10);
+                $scope.bookModel.view.startIndex = parseInt($scope.startIndex, 10);
             });
     };
 
@@ -73,7 +82,7 @@ angular.module('angularcmxApp')
     $scope.loadBook();
     $scope.loadBookList();
 
-    $scope.$on('canvasbook:changepanel', function (event, data) {
+    $scope.$on('canvasbook:changepanel', function () {
         if ($scope.modalOpen === true) {
             $scope.readMoreModal.dismiss();;
         }
