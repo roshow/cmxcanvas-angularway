@@ -414,6 +414,15 @@ module.exports = function (grunt) {
             staticmeta: true
           }
         }
+      },
+      dev : {
+        src : 'app/index.html',
+        dest : 'app/dev/index.html',
+        options: {
+          context: {
+            staticmeta: true
+          }
+        }
       }
     }
   });
@@ -429,6 +438,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer',
+      'preprocess:dev',
       'connect:livereload',
       'watch'
     ]);

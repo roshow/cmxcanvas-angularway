@@ -29,7 +29,7 @@ angular.module('angularcmxApp')
                 else {
                     eventName += 'end';
                 }
-                $rootScope.$broadcast(eventName, { direction: direction });
+                $rootScope.$broadcast(eventName, { direction: direction, currentIndex: canvasbook.currentIndex });
             };
 
             scope.$watch('viewModel', function (newVal) {

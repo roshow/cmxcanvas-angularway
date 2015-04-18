@@ -48,7 +48,10 @@ angular.module('angularcmxApp')
         };
         $scope.bookModel
             .set('id', $scope.bookId)
-            .fetch(fetchOptions);
+            .fetch(fetchOptions)
+            .then(function () {
+                $scope.bookModel.view.startIndex = parseInt($routeParams.startIndex || 0, 10);
+            });
     };
 
     $scope.loadBookList = function () {

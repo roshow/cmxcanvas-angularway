@@ -8,12 +8,19 @@ angular.module('angularcmxApp', [
   'ui.bootstrap',
   'rgModels'
 ])
+  
   .value('libList', ['rev01', 'rev02', 'sov01', 'rev03', 'rev04'])
+
   .factory('myCache', function($cacheFactory) {
     return $cacheFactory('myData');
   })
   .config(function ($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
+    var html5Mode = false;
+
+    // html5Mode = true;
+
+    $locationProvider.html5Mode(html5Mode);
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -24,6 +31,10 @@ angular.module('angularcmxApp', [
         controller: 'BookCtrl'
       })
       .when('/issues/:bookId', {
+        templateUrl: 'views/main.html',
+        controller: 'BookCtrl'
+      })
+      .when('/issues/:bookId/:startIndex', {
         templateUrl: 'views/main.html',
         controller: 'BookCtrl'
       })
