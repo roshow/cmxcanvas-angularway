@@ -15,7 +15,7 @@ angular.module('angularcmxApp')
         modalOpen: false
     });
 
-    function openModal () {
+    function openModal () { // TODO: move this to a directive that shares scope and listens to $scope.modalOpen = true/false
         var modal = $modal.open({
             templateUrl: 'views/partials/readMoreModal.html',
             scope: $scope
@@ -82,11 +82,15 @@ angular.module('angularcmxApp')
     $scope.loadBook();
     $scope.loadBookList();
 
+
+    /* Listeners */
+
     $scope.$on('canvasbook:changepanel', function () {
         if ($scope.modalOpen === true) {
             $scope.readMoreModal.dismiss();;
         }
     });
+
     $scope.$on('canvasbook:end', function (event, data) {
         $scope.onEnd(data.direction);
     });

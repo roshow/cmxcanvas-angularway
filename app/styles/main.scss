@@ -11,18 +11,18 @@ html, body {
   margin-left: 5px;
 }
 
-.appcontainer {
-  height: 100%;
-}
-#wrap {
-  height: 100%;
-  // height: 100vh;
-  padding-bottom: 70px;
-  overflow: scroll;
-  .top-container {
-    // margin-top: 30px;
-  }
-}
+// .appcontainer {
+//   // height: 100%;
+// }
+// #wrap {
+//   height: 100%;
+//   // height: 100vh;
+//   padding-bottom: 70px;
+//   overflow: scroll;
+//   .top-container {
+//     // margin-top: 30px;
+//   }
+// }
 #footer {
   /*height: 60px;*/
   
@@ -51,6 +51,8 @@ html, body {
 @import url(http://fonts.googleapis.com/css?family=Contrail+One);
 @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800);
 @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(http://fonts.googleapis.com/css?family=Bowlby+One);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
 body {
   font-weight: normal;
   margin: 0;
@@ -59,7 +61,7 @@ body {
   clear: both;
 }
 .appcontainer {
-  font-family: "Alegreya Sans";
+  font-family: "Oswald";
   .navbar {
     margin-bottom: 0;
   }
@@ -288,23 +290,11 @@ $selected: #dd0000;
     line-height: 24px;
   }
 }
-.navbar * {
-  // color: white !important;
-  position: relative;
-}
-.navbar-brand  {
-  font-size: 30px;
-  font-family: "Contrail One";
-  font-weight: 700;
-  span {
-    font-size: 24px;
-  }
-}
+
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a{
-  color: #ddd;
+  color: #fff;
 }
 .navbar .container {
-  padding-left: 165px;
   color: white; 
 }
 $ogwidth: 120px;
@@ -396,5 +386,28 @@ $ogwidth: 120px;
     border: 2px solid #000;
   }
 }
+
+.topper {
+  h1 {
+    font-family: 'Bowlby One';
+    text-align: center;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .topper {
+    h1 {
+      font-size: 65px;
+      transform: translateX(-15%);
+    }
+  }  
+}
+
+.top-img {
+  width: 30%;
+}
+
+.canvas-view .container { padding: 0; }
 
 

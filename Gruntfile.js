@@ -438,7 +438,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer',
-      'preprocess:dev',
+      // 'preprocess:dev',
       'connect:livereload',
       'watch'
     ]);
@@ -471,8 +471,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'preprocess:handlebars',
-    'preprocess:index',
+    // 'preprocess:handlebars',
+    // 'preprocess:index',
     'htmlmin'
   ]);
 
