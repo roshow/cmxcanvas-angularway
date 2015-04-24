@@ -176,16 +176,12 @@ ul {
 }
 .tocDiv {
   width: 100%;
-  // overflow-x: scroll;
-  // white-space: nowrap;
 }
 .clear {
   clear: both;
 }
 $selected: #dd0000;
 .current-panel {
-  // color: $selected !important;
-  // border-color: $selected !important;
   font-weight: 700;
   border-width: 3px;
 }
@@ -260,17 +256,6 @@ $selected: #dd0000;
     float: right;
   }
 }
-.my-elm {
-  -webkit-transition: 0.25s linear all;
-  transition: 0.25s linear all;
-  opacity: 1;
-}
-.my-elm.ng-hide {
-  opacity: 0;
-}
-.my-elm.ng-hide-add, .my-elm.ng-hide-remove {
-  display: block!important;
-}
 .topnav {
   background-color: #000;
   color: #fff;
@@ -297,6 +282,10 @@ $selected: #dd0000;
 .navbar .container {
   color: white; 
 }
+.navbar-nav > li > .dropdown-menu {
+  position: absolute;
+}
+
 $ogwidth: 120px;
 .og-index {
   margin-left: 15px;
@@ -309,11 +298,6 @@ $ogwidth: 120px;
     margin-bottom: 5px;
   }
 }
-
-.navbar-nav > li > .dropdown-menu {
-    position: absolute;
-  }
-
 .og-details {
   width: $ogwidth;
   text-align: center;
@@ -408,6 +392,33 @@ $ogwidth: 120px;
   width: 30%;
 }
 
-.canvas-view .container { padding: 0; }
+.canvas-view {
+  &.jumbotron { 
+    margin-bottom: 0;
+  }
+  .container { padding: 0; }
+}
 
+@media (min-width: 992px) {
+  .navbar .container-fluid {
+    width: 970px;
+  }
+}
+
+.social-share {
+  transform: translateY(25%);
+}
+
+.canvas-wrapper {
+  .glyphicon {
+    position: fixed;
+  }
+  .glyphicon-chevron-left {
+    left: 10px;
+  }
+  .glyphicon-chevron-right {
+    right: 10px;
+  }
+
+}
 

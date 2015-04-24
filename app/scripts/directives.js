@@ -92,4 +92,45 @@ angular.module('angularcmxApp')
             }
         }
     };
-}]);
+}])
+.directive('socialShare', function ($location) {
+    return {
+        restrict: 'AC',
+        link: function (scope, element) {
+            var el = element[0];
+
+            scope.$watch('bookModel.view', function (newVal, oldVal) {
+                
+                if (newVal !== oldVal) {
+
+                    element.empty();
+
+                    var model = scope.bookModel,
+                        // url = 'http://roshow.net/issues/'+ model.id,
+                        url = 'http://canvasbook.surge.sh',
+                        fullTitle = model.series.name + ' ' + model.issue + ': ' + model.title,
+                        thumb = model.thumb;
+
+                    stWidget.addEntry({
+                        service:'twitter',
+                        element: el,
+                        url: url,
+                        title: fullTitle,
+                        type:'large',
+                        image: thumb
+                    });
+                    stWidget.addEntry({
+                        service:'facebook',
+                        element: el,
+                        url: url,
+                        title: fullTitle,
+                        type:'large',
+                        image: thumb
+                    });
+                }
+            });
+            
+        }
+    }
+})
+;
