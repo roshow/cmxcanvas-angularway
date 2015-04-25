@@ -15,11 +15,8 @@ angular.module('angularcmxApp', [
     return $cacheFactory('myData');
   })
   .config(function ($routeProvider, $locationProvider) {
-    var html5Mode = false;
 
-    // html5Mode = true;
-
-    $locationProvider.html5Mode(html5Mode);
+    $locationProvider.html5Mode(true);
 
     $routeProvider
       .when('/', {

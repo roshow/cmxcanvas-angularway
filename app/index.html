@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- @ifdef staticmeta -->
-    <title>Revenger Comics</title>
+    <!-- <title>Revenger Comics</title>
     <meta property="og:title" content="Revenger Comics" />
     <meta property="og:description" content="a comic by Michael Powell and Rolando Garcia" />
-    <meta property="og:image" content="/images/social-fb.jpg" />
+    <meta property="og:image" content="/images/social-fb.jpg" /> -->
     <!-- @endif -->
 
-    <!-- @ifdef handlebars -->
-    <!-- {{> meta}} -->
-    <!--@endif -->
-
+    <!-- 
+        Currently deploying to an apache server, so using php to generate metatags for that.
+    -->
+    <?php include 'metatags.php' ?>
 
     <!-- build:css(./) styles/vendor.css -->
     <!-- bower:css -->
@@ -37,6 +37,9 @@
 
   <body ng-app="angularcmxApp">
 
+    <script type="text/javascript">
+        if ( Date.now()%2 === 1 ) { document.querySelector('body').className += ' alt'; }
+    </script>
     
     <div class="appcontainer" ng-view=""></div>
 
