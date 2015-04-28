@@ -1,23 +1,12 @@
-<div id="wrap">
-    <ng-include src="'views/partials/topnav.html'"></ng-include>
-    <div class="top-container">
-
-        <div class="canvas-wrapper">
-            
-            <canvasbook book-data="bookData" current-view="currentView" animate-resize></canvasbook>
-
-        </div>
-
-
-        <!-- <div class="tocDiv">    
-            <ul class="cmx-toc">
-                <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in bookData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
-                    {{$index}}
-                </li>
-            </ul>
-        </div> -->
+<section class="topper">
+	<div class="container">
+		<h1><a ng-href="/"><img class="top-img" src="/images/rev-banner.png" />REVENGER</a></h1>
+	</div>
+</section>
+<ng-include src="'views/partials/topnav.html'"></ng-include>
+<section class="jumbotron canvas-view">
+	<div class="container">
+	    <canvasbook view-model="bookModel.view" book-id="bookId" book-format="bookFormat" hotkeys="{{hotkeys}}"></canvasbook>
     </div>
-</div>
-<!-- <ng-include src="'views/partials/footer.html'"></ng-include> -->
-
+</section>
 

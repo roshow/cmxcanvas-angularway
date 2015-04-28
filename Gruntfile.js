@@ -1,4 +1,4 @@
-// Generated on 2015-01-22 using generator-angular 0.10.0
+// Generated on 2015-03-31 using generator-angular 0.10.0
 'use strict';
 
 // # Globbing
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/**/*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -119,7 +119,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/scripts/**/*.js'
         ]
       },
       test: {
@@ -139,6 +139,14 @@ module.exports = function (grunt) {
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
             '!<%= yeoman.dist %>/.git{,*/}*'
+          ]
+        }]
+      },
+      public: {
+        files: [{
+          dot: true,
+          src: [
+            '~/vagrant/public/**/*',
           ]
         }]
       },
@@ -205,9 +213,9 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
+          '<%= yeoman.dist %>/scripts/**/*.js',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
-          // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
         ]
       }
@@ -341,7 +349,9 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'fonts/{,*/}*.*'
+            'fonts/{,*/}*.*',
+            'local/{,*/}*.*',
+            '*.php',
           ]
         }, {
           expand: true,
@@ -350,7 +360,7 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'bower_components/bootstrap/dist',
+          cwd: 'bower_components/bootstrap-css-only',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]
@@ -384,6 +394,45 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    surge: {
+      canvasbook: {
+        options: {
+          project: 'dist/',
+          domain: 'canvasbook.surge.sh'
+        }
+      }
+    },
+    preprocess : {
+      options: {},
+      index : {
+        src : 'dist/index.html',
+        dest : 'dist/index.html',
+        options: {
+          context: {
+            staticmeta: true
+          }
+        }
+      },
+      php : {
+        src : 'dist/index.html',
+        dest : 'dist/index.php',
+        options: {
+          context: {
+            php: true
+          }
+        }
+      },
+      handlebars : {
+        src : 'dist/index.html',
+        dest : 'dist/static.handlebars',
+        options: {
+          context: {
+            handlebars: true
+          }
+        }
+      }
     }
   });
 
@@ -398,6 +447,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer',
+      // 'preprocess:dev',
       'connect:livereload',
       'watch'
     ]);
@@ -425,11 +475,13 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
+    // 'cdnify',
     'cssmin',
     'uglify',
     'filerev',
     'usemin',
+    'preprocess:php',
+    'preprocess:index',
     'htmlmin'
   ]);
 

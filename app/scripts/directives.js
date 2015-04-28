@@ -1,89 +1,65 @@
-/*globals CmxCanvas, roquestAnim */
+/*globals Canvasbook */
 
 'use strict';
 
-var crazy;
 angular.module('angularcmxApp')
-.directive('canvasbook', [ function (){
+.directive('canvasbook', function ($rootScope, $document){
     return {
-        restrict: 'E',
-        templateUrl: 'views/partials/cmxcanvas.html',
-        link: function(scope, element, attr){
+        restrict: 'EA',
+        templateUrl: '/views/partials/canvasbook.html',
+        replace: true,
+        scope: {
+            viewModel: '=',
+            bookId: '=',
+            bookFormat: '='
+        },
+        link: function(scope, element, attrs){
             
-            scope.canvasbook = new CmxCanvas();
-            scope.changepanel = function(direction){
-                var view = scope.canvasbook[direction]();
-                if (view.then){
-                    var prev = (scope.currentView || {}).panel || 0;
-                    if (scope.canvasbook.currentView.panel !== prev){
-                        document.querySelector('#wrap').scrollTop = 0;
-                        crazy = element[0];
-                    }
-                    view.then(function (view){
-                        if (view !== 'moving'){
-                            scope.currentView = view;
-                        }
-                    });
+            var canvasEl = element.find('canvas')[0],
+                canvasbook = scope.canvasbook = Canvasbook();
+
+            // console.log(element.getBoundingClientRect());
+
+            scope.changepanel = function (direction) {
+                var noMore = ( direction === 'next' ) ? canvasbook.isLast : canvasbook.isFirst;
+                var eventName = 'canvasbook:';
+                if (!noMore){
+                    canvasbook[direction]();
+                    document.querySelector('body').scrollIntoView();
+                    eventName += 'changepanel';
                 }
                 else {
-                    scope.currentView = view;
+                    eventName += 'end';
                 }
-                if (view === 'wasFirst' || view === 'wasLast') {
-                    scope.open(view);
-                }
+                $rootScope.$broadcast(eventName, { direction: direction, currentIndex: canvasbook.currentIndex });
             };
 
-            var $canvasEl = element.find('canvas'),
-                canvasEl = $canvasEl[0];
-            
-            canvasEl.id = 'canvasbook';
-
-            scope.$watch('bookData', function (newData, oldData){
-                if (!angular.equals(newData, oldData)){
-                    if (scope.canvasbook.currentView){
-                        /** TODO: Something about currentView.panel not setting TOC buttons correctly on load unless I do it this way **/
-                        scope.canvasbook.currentView.panel = 0;
-                    }
-                    var viewInfo = newData.view || {};
-                    if (attr.$attr.animateResize){
-                        var lenAnim = 400,
-                            height = angular.copy(canvasEl.height),
-                            width = angular.copy(canvasEl.width),
-                            deltaH = (viewInfo.height || 450) - height,
-                            deltaW = (viewInfo.width || 800) - width;
-
-                        roquestAnim(function (timePassed){
-                            var sinPart = Math.sin(timePassed*(Math.PI/2)/lenAnim);
-                            canvasEl.height = height + (deltaH * sinPart);
-                            canvasEl.width = width + (deltaW * sinPart);
-                        }, lenAnim).then(function (){
-                            /** TODO: Use the promise to only have on ,load, not this one AND the one beneath it **/
-                            scope.canvasbook.load(newData, canvasEl.id);
-                        });
-                    }
-                    else {
-                        canvasEl.height = (viewInfo.height || 450);
-                        canvasEl.width = (viewInfo.width || 800);
-                        scope.canvasbook.load(newData, canvasEl.id);
-                    }
-                    crazy = scope.canvasbook;
-                    
-                    if (viewInfo.backgroundColor){
-                        $canvasEl.css('background-color', viewInfo.backgroundColor);
-                    }                 
+            scope.$watch('viewModel', function (newVal) {
+                if (newVal) {
+                    canvasEl.height = (newVal.height || 450);
+                    canvasEl.width = (newVal.width || 800);
+                    canvasbook.load(newVal, canvasEl);
                 }
             });
-            scope.changed = {};
-            scope.changed.next = function(){
-                console.log(scope.canvasbook.next());
-            };
-            scope.changed.prev = function(){
-                console.log(scope.canvasbook.prev());
-            };
+
+            if (attrs.$attr.hotkeys) {
+                $document.on('keydown', function (e) {
+                    if (attrs.hotkeys !== 'false') {
+                        switch (e.keyCode) {
+                            case 39:
+                                document.querySelector('.forward').click();
+                                break;
+                            case 37:
+                                document.querySelector('.backward').click();
+                                break;
+                        }
+                    }
+                });
+            }
         }
     };
-}])
-.directive('resizeCanvas', ['$window', function($window){
+})
+.directive('resizeCanvas', [ '$window', function ($window){
     return {
         restrict: 'A',
         link: function(scope, element, attr){
@@ -119,80 +95,45 @@ angular.module('angularcmxApp')
         }
     };
 }])
- .directive('fbLike', [
-        '$window', function($window) {
-            return {
-                restrict: 'A',
-                link: function(scope, element, attrs) {
-                    // wait for facebook api to load before displaying like button
-                    scope.$watch(function() { return !!$window.FB; },
-                        function(fbIsReady) {
-                            if (fbIsReady) {
-                                element.html('<div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>');
-                                $window.FB.XFBML.parse(element.parent()[0]);
-                            }
-                        });
+.directive('socialShare', function ($window) {
+    return {
+        restrict: 'AC',
+        link: function (scope, element) {
+            var el = element[0];
+
+            scope.$watch('bookModel.view', function (newVal, oldVal) {
+                
+                if (newVal !== oldVal) {
+
+                    element.empty();
+
+                    var model = scope.bookModel,
+                        url = 'http://revengercomic.com/issues/' + model.id,
+                        // url = 'http://roshow.net/issues/'+ model.id,
+                        // url = 'http://canvasbook.surge.sh',
+                        fullTitle = model.series.name + ' ' + model.issue + ': ' + model.title,
+                        thumb = model.thumb;
+
+                    $window.stWidget.addEntry({
+                        service:'twitter',
+                        element: el,
+                        url: url,
+                        title: fullTitle,
+                        type:'large',
+                        image: thumb
+                    });
+                    $window.stWidget.addEntry({
+                        service:'facebook',
+                        element: el,
+                        url: url,
+                        title: fullTitle,
+                        type:'large',
+                        image: thumb
+                    });
                 }
-            };
+            });
+            
         }
-    ])
-    .directive('googlePlus', [
-        '$window', function($window) {
-            return {
-                restrict: 'A',
-                link: function(scope, element, attrs) {
-                    // wait for google api to load before displaying plus button
-                    scope.$watch(function() { return !!$window.gapi; },
-                        function(gapiIsReady) {
-                            if (gapiIsReady) {
-                                element.html('<div class="g-plusone" data-size="medium"></div>');
-                                $window.gapi.plusone.go(element.parent()[0]);
-                            }
-                        });
-                }
-            };
-        }
-    ])
-    .directive('pinIt', [
-        '$window', '$location',
-        function($window, $location) {
-            return {
-                restrict: 'A',
-                scope: {
-                    pinIt: '=',
-                    pinItImage: '='
-                },
-                link: function(scope, element, attrs) {
-                    // wait for pinterest api to load and scope data to bind before displaying pin it button
-                    scope.$watch(function() { return !!$window.parsePins && !!scope.pinIt; },
-                        function(pinterestIsReady) {
-                            if (pinterestIsReady) {
-                                scope.pinItUrl = $location.absUrl();
-                                element.html('<a href="//www.pinterest.com/pin/create/button/?url=' + scope.pinItUrl + '&media=' + scope.pinItImage + '&description=' + scope.pinIt + '" data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>');
-                                $window.parsePins(element.parent()[0]);
-                            }
-                        });
-                }
-            };
-        }
-    ])
-    .directive('tweet', [
-        '$window', function($window) {
-            return {
-                restrict: 'A',
-                scope: {
-                    tweet: '='
-                },
-                link: function(scope, element, attrs) {
-                    // wait for twitter api to load and scope data to bind before displaying tweet button
-                    scope.$watch(function() { return !!$window.twttr && !!scope.tweet; },
-                        function(twttrIsReady) {
-                            if (twttrIsReady) {
-                                element.html('<a href="https://twitter.com/share" class="twitter-share-button" data-text="' + scope.tweet + '">Tweet</a>');
-                                $window.twttr.widgets.load(element.parent()[0]);
-                            }
-                        });
-                }
-            };
-        }
-    ]);
+    }
+})
+;
