@@ -2,8 +2,15 @@
     <div id="cmx-container" ng-swipe-right="changepanel('previous')" ng-swipe-left="changepanel('next')">
         <canvas height="450" width="800"></canvas>
         <ul class="buttons">
-            <li class="book-prev" ng-click="changepanel('previous')"><span class="glyphicon glyphicon-chevron-left"></span></li>
-            <li class="book-next" ng-click="changepanel('next')"><span class="glyphicon glyphicon-chevron-right"></span></li>
+            <li class="book-prev" ng-click="changepanel('previous')"><span class="glyphicon backward glyphicon-step-backward"></span></li>
+            <li class="book-next" ng-click="changepanel('next')"><span class="glyphicon forward glyphicon-step-forward"></span></li>
         </ul>
     </div> 
+   	<div class="btn-group" role="group">
+	  <a class="btn btn-default"
+	  	ng-repeat="panel in viewModel.panels" 
+	  	ng-class="{ active: canvasbook.currentIndex[0] === $index }" 
+	  	ng-href="/issues/{{bookId}}/{{$index + 1}}?format={{bookFormat}}"
+	  >{{$index + 1}}</a>
+	</div>
 </div>

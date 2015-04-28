@@ -142,6 +142,14 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      public: {
+        files: [{
+          dot: true,
+          src: [
+            '~/vagrant/public/**/*',
+          ]
+        }]
+      },
       server: '.tmp'
     },
 
@@ -342,7 +350,8 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'fonts/{,*/}*.*',
-            'local/{,*/}*.*'
+            'local/{,*/}*.*',
+            '*.php',
           ]
         }, {
           expand: true,
@@ -397,15 +406,6 @@ module.exports = function (grunt) {
     },
     preprocess : {
       options: {},
-      handlebars : {
-        src : 'dist/index.html',
-        dest : 'dist/static.handlebars',
-        options: {
-          context: {
-            handlebars: true
-          }
-        }
-      },
       index : {
         src : 'dist/index.html',
         dest : 'dist/index.html',
@@ -415,12 +415,21 @@ module.exports = function (grunt) {
           }
         }
       },
-      dev : {
-        src : 'app/index.html',
-        dest : 'app/dev/index.html',
+      php : {
+        src : 'dist/index.html',
+        dest : 'dist/index.php',
         options: {
           context: {
-            staticmeta: true
+            php: true
+          }
+        }
+      },
+      handlebars : {
+        src : 'dist/index.html',
+        dest : 'dist/static.handlebars',
+        options: {
+          context: {
+            handlebars: true
           }
         }
       }
@@ -471,8 +480,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    // 'preprocess:handlebars',
-    // 'preprocess:index',
+    'preprocess:php',
+    'preprocess:index',
     'htmlmin'
   ]);
 

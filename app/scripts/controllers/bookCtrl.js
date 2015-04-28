@@ -9,7 +9,7 @@ angular.module('angularcmxApp')
         books: new BookList(),
         bookId: $routeParams.bookId || 'rev04',
         bookFormat: $routeParams.format || 'classic',
-        startIndex: $routeParams.startIndex || 0,
+        startIndex: $routeParams.startIndex ? ($routeParams.startIndex - 1) : 0,
         embedWidth: '400',
         detailsMin: false,
         modalOpen: false
@@ -29,7 +29,7 @@ angular.module('angularcmxApp')
             $scope.hotkeys = true;
 
             if (id) {
-                $location.path('/issues/'+id);
+                $location.url('/issues/'+id);
             }
             
         }).finally(function () {

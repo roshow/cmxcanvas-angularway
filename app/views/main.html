@@ -1,12 +1,12 @@
 <section class="topper">
 	<div class="container">
-		<h1><img class="top-img" src="/images/rev-banner.png" />REVENGER</h1>
+		<h1><a ng-href="/"><img class="top-img" src="/images/rev-banner.png" />REVENGER</a></h1>
 	</div>
 </section>
 <ng-include src="'views/partials/topnav.html'"></ng-include>
 <section class="jumbotron canvas-view">
 	<div class="container">
-	    <canvasbook view-model="bookModel.view" hotkeys="{{hotkeys}}"></canvasbook>
+	    <canvasbook view-model="bookModel.view" book-id="bookId" book-format="bookFormat" hotkeys="{{hotkeys}}"></canvasbook>
     </div>
 </section>
 

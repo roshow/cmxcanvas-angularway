@@ -3,18 +3,20 @@
 'use strict';
 
 angular.module('angularcmxApp')
-.directive('canvasbook', function ($rootScope, $document, $window){
+.directive('canvasbook', function ($rootScope, $document){
     return {
         restrict: 'EA',
         templateUrl: '/views/partials/canvasbook.html',
         replace: true,
         scope: {
-            viewModel: '='
+            viewModel: '=',
+            bookId: '=',
+            bookFormat: '='
         },
         link: function(scope, element, attrs){
             
             var canvasEl = element.find('canvas')[0],
-                canvasbook = new Canvasbook();
+                canvasbook = scope.canvasbook = Canvasbook();
 
             // console.log(element.getBoundingClientRect());
 
@@ -23,7 +25,7 @@ angular.module('angularcmxApp')
                 var eventName = 'canvasbook:';
                 if (!noMore){
                     canvasbook[direction]();
-                    document.querySelector('.navbar').scrollIntoView();
+                    document.querySelector('body').scrollIntoView();
                     eventName += 'changepanel';
                 }
                 else {
@@ -45,10 +47,10 @@ angular.module('angularcmxApp')
                     if (attrs.hotkeys !== 'false') {
                         switch (e.keyCode) {
                             case 39:
-                                scope.changepanel('next');
+                                document.querySelector('.forward').click();
                                 break;
                             case 37:
-                                scope.changepanel('previous');
+                                document.querySelector('.backward').click();
                                 break;
                         }
                     }
@@ -93,7 +95,7 @@ angular.module('angularcmxApp')
         }
     };
 }])
-.directive('socialShare', function ($location) {
+.directive('socialShare', function ($window) {
     return {
         restrict: 'AC',
         link: function (scope, element) {
@@ -106,12 +108,13 @@ angular.module('angularcmxApp')
                     element.empty();
 
                     var model = scope.bookModel,
+                        url = 'http://revengercomic.com/issues/' + model.id,
                         // url = 'http://roshow.net/issues/'+ model.id,
-                        url = 'http://canvasbook.surge.sh',
+                        // url = 'http://canvasbook.surge.sh',
                         fullTitle = model.series.name + ' ' + model.issue + ': ' + model.title,
                         thumb = model.thumb;
 
-                    stWidget.addEntry({
+                    $window.stWidget.addEntry({
                         service:'twitter',
                         element: el,
                         url: url,
@@ -119,7 +122,7 @@ angular.module('angularcmxApp')
                         type:'large',
                         image: thumb
                     });
-                    stWidget.addEntry({
+                    $window.stWidget.addEntry({
                         service:'facebook',
                         element: el,
                         url: url,
