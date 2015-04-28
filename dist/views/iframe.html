@@ -1,0 +1,7 @@
+<link rel="stylesheet" href="styles/embed.css"> <div class="embed-head"> <h3>{{bookData.series.name}} #{{bookData.issue || '0'}}: <!--
+            -->{{bookData.title}} <br>by <!--
+            --><span ng-repeat="creator in bookData.creators"><!--
+            --><span ng-if="$middle">, </span><!--
+            --><span ng-if="$last"> &amp; </span><!--
+            --><a ng-href="{{creator.url}}" target="_blank">{{creator.name}} ({{creator.credit}})</a><!--
+            --></span></h3> <h3 ng-hide="true"><a ng-click="getUrl(urls[1])">sov01</a> | <a ng-click="getUrl(urls[2])">rev03og</a></h3> </div> <canvasbook class="embed" book-data="bookData" current-view="currentView" resize-canvas="responsive"></canvasbook> <div class="embed-foot"> <ul class="buttons"> <li class="book-prev" ng-click="cmxCanvas.prev()" ng-show="!angular.equals(cmxCanvas.currentIndex, [0,-1])"><h3>backward |</h3></li> <li class="book-next" ng-click="cmxCanvas.next()"><h3>forward</h3></li> </ul> </div>
