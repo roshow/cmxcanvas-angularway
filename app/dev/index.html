@@ -12,10 +12,10 @@
     <meta property="og:image" content="/images/social-fb.jpg" />
     <!-- @endif -->
 
-    <!-- Currently deploying to an apache server, so using php to generate metatags for that.-->
-    <!-- @ifdef php -->
-    <?php include 'metatags.php' ?>
-    <!-- @endif -->
+    <!-- @ifdef handlebars -->
+    {{> meta}}
+    <!--@endif -->
+
 
     <!-- build:css(./) styles/vendor.css -->
     <!-- bower:css -->
@@ -36,12 +36,11 @@
   </head>
 
   <body ng-app="angularcmxApp">
-    <script type="text/javascript">
-        // Good old fashion javascript for a random body class.
-        if ( Date.now()%2 === 1 ) { document.querySelector('body').className += ' alt'; }
-    </script>
+
     
     <div class="appcontainer" ng-view=""></div>
+    </div>
+
 
 
     <!-- build:js(./) scripts/vendor.js -->
@@ -73,6 +72,31 @@
     <script src="scripts/directives.js"></script>
     <!-- endbuild -->
 
+    <span class='social-share-btns'>
+    </span>
+
+    <script type="text/javascript">
+    stWidget.addEntry({
+        service:'twitter',
+        element:document.querySelector('.social-share-btns'),
+        url:'http://canvasbook.surge.sh/#/issue/rev01',
+        title:'revenger.',
+        type:'large',
+        text:'Revenger comic' ,
+        image:'/images/social-fb.jpg',
+        summary:'some stuff about the comic'   
+    });
+    stWidget.addEntry({
+        service:'facebook',
+        element:document.querySelector('.social-share-btns'),
+        url:'http://canvasbook.surge.sh',
+        title:'revenger.',
+        type:'large',
+        text:'Revenger comic' ,
+        image:'/images/social-fb.jpg',
+        summary:'some stuff about the comic'   
+    });
+    </script>
 
 </body>
 </html>
