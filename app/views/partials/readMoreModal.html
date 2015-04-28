@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h3 class="modal-title"><span class="bold">{{ readMore.direction.toLowerCase() === 'previous' ? 'PREVIOUSLY' : 'NEXT' }}!</span></h3>
+</div>
+<div class="modal-body">
+    <img ng-src="{{readMore.thumb}}" />
+    <div>{{readMore.series.name}} <sup>#</sup>{{readMore.issue}}</div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="readMoreModal.close(readMore.id)">READ NOW</button>
+    <button class="btn" ng-click="readMoreModal.close()">Cancel</button>
+</div>

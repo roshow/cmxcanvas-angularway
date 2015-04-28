@@ -1,64 +1,37 @@
 'use strict';
 
 angular.module('angularcmxApp')
-    .controller('CmxCtrl', ['$scope', '$routeParams', '$location', 'GetABook', function ($scope, $routeParams, $location, getABook) {
-        
-        $scope.bookId = $routeParams.bookId;
-        $scope.embedWidth = '400';
-        $scope.cmxCanvas = new CmxCanvas();
-        $scope.getBook = function(bookId, format){
-            getABook(bookId, format).then(
-                function (data){
-                    $scope.cmxData = data;
-                },
-                function (error){
-                    $location.path('/');
-                }
-            );
-        };
+.controller('LibraryCtrl', ['$scope','GetBooks','bookList', function ($scope, getBooks, bookList){
+    getBooks(bookList || false).then(function (data){
+        $scope.books = data;
+    });
+}])
+.controller('EmbedCtrl', ['$scope', '$routeParams', '$location', 'GetABook', function ($scope, $routeParams, $location, GetABook) {
+    
+    $scope.bookId = $routeParams.bookId;
+    $scope.embedWidth = '400';
 
-        $scope.getBook($routeParams.bookId, $routeParams.format);
-
-    }])
-    .controller('LibraryCtrl', ['$scope', 'GetBooks', function ($scope, GetBooks){
-        GetBooks.then(function (data){
-            console.log(data);
-            $scope.books = data;
-        });
-    }])
-    .controller('DevCtrl', ['$scope', '$routeParams', '$location', 'getABook', function ($scope, $routeParams, $location, getABook) {
-        $scope.bookId = $routeParams.bookId;
-        $scope.embedWidth = '400';
-        $scope.cmxCanvas = new CmxCanvas();
-        $scope.getUrl = function(bookId){
-            var url;
-            if ($routeParams.api !== "1"){
-                bookId += '.json';
-                url = '/json/';
+    $scope.getBook = function(bookId, format){
+        GetABook(bookId, format).then(
+            function (data){
+                $scope.bookData = data;
+            },
+            function (error){
+                $location.path('/');
             }
-            getABook(bookId, url).then(
-                function(data){
-                    $scope.cmxData = data;
-                },
-                function(error){
-                    console.log(error);
-                    $location.path('/');
-                }
-            );
-        };
-        $scope.getUrl($routeParams.bookId);
+        );
+    };
 
-    }])
-    .controller('BethCtrl', ['$scope', 'getABook', function ($scope, getABook) {
-        var url;
-        $scope.cmxCanvas = new CmxCanvas();
-        $scope.getBook = function(bookId){
-            // var url = '/json/';
-            // bookId += '.json';
-            getABook(bookId, url).then(function (data){
-                $scope.cmxData = data;
-            });
-        };
-        $scope.getBook('bethforever');
 
-    }]);
+    $scope.getBook($routeParams.bookId, $routeParams.format);
+
+    $scope.hideOverlay = function(){
+        if ($scope.currentView === 'wasFirst'){
+            $scope.currentView = 'firstPanel';
+        }
+        else if ($scope.currentView === 'wasLast'){
+            $scope.currentView = 'lastPanel';
+        }
+    };
+}]);
+

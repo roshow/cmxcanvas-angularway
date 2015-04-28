@@ -2,8 +2,8 @@ node_modules
 dist
 .tmp
 .sass-cache
-app/bower_components
-.DS_Store
+bower_components
 images/
 *.sublime-project
 *.sublime-workspace
+.DS_Store

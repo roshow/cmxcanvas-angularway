@@ -1,78 +1,77 @@
-/*globals CmxCanvas, roquestAnim */
+/*globals Canvasbook */
 
 'use strict';
 
 angular.module('angularcmxApp')
-.directive('cmxcanvas', [ function (){
+.directive('canvasbook', function ($rootScope, $document){
+    return {
+        restrict: 'EA',
+        templateUrl: '/views/partials/canvasbook.html',
+        replace: true,
+        scope: {
+            viewModel: '=',
+            bookId: '=',
+            bookFormat: '='
+        },
+        link: function(scope, element, attrs){
+            
+            var canvasEl = element.find('canvas')[0],
+                canvasbook = scope.canvasbook = Canvasbook();
+
+            // console.log(element.getBoundingClientRect());
+
+            scope.changepanel = function (direction) {
+                var noMore = ( direction === 'next' ) ? canvasbook.isLast : canvasbook.isFirst;
+                var eventName = 'canvasbook:';
+                if (!noMore){
+                    canvasbook[direction]();
+                    document.querySelector('body').scrollIntoView();
+                    eventName += 'changepanel';
+                }
+                else {
+                    eventName += 'end';
+                }
+                $rootScope.$broadcast(eventName, { direction: direction, currentIndex: canvasbook.currentIndex });
+            };
+
+            scope.$watch('viewModel', function (newVal) {
+                if (newVal) {
+                    canvasEl.height = (newVal.height || 450);
+                    canvasEl.width = (newVal.width || 800);
+                    canvasbook.load(newVal, canvasEl);
+                }
+            });
+
+            if (attrs.$attr.hotkeys) {
+                $document.on('keydown', function (e) {
+                    if (attrs.hotkeys !== 'false') {
+                        switch (e.keyCode) {
+                            case 39:
+                                document.querySelector('.forward').click();
+                                break;
+                            case 37:
+                                document.querySelector('.backward').click();
+                                break;
+                        }
+                    }
+                });
+            }
+        }
+    };
+})
+.directive('resizeCanvas', [ '$window', function ($window){
     return {
         restrict: 'A',
-        scope: {
-            cmxcanvas: '=',
-            cmxBook: '='
-        },
-        templateUrl: 'views/partials/cmxcanvas.html',
         link: function(scope, element, attr){
 
             var $canvasEl = element.find('canvas'),
                 canvasEl = $canvasEl[0];
             
-            canvasEl.id = 'cmxcanvas';
-
-            scope.$watch('cmxBook', function (newData, oldData){
-                if (!angular.equals(newData, oldData)){
-                    if (scope.cmxcanvas.currentView){
-                        /** TODO: Something about currentView.panel not setting TOC buttons correctly on load unless I do it this way **/
-                        scope.cmxcanvas.currentView.panel = 0;
-                    }
-                    var viewInfo = newData.view || {};
-                    if (attr.$attr.animateResize){
-                        var lenAnim = 400,
-                            height = angular.copy(canvasEl.height),
-                            width = angular.copy(canvasEl.width),
-                            deltaH = (viewInfo.height || 450) - height,
-                            deltaW = (viewInfo.width || 800) - width;
-
-                        roquestAnim(function (timePassed){
-                            var sinPart = Math.sin(timePassed*(Math.PI/2)/lenAnim);
-                            canvasEl.height = height + (deltaH * sinPart);
-                            canvasEl.width = width + (deltaW * sinPart);
-                        }, lenAnim).then(function (){
-                            /** TODO: Use the promise to only have on ,load, not this one AND the one beneath it **/
-                            scope.cmxcanvas.load(newData, canvasEl.id);
-                        });
-                    }
-                    else {
-                        canvasEl.height = (viewInfo.height || 450);
-                        canvasEl.width = (viewInfo.width || 800);
-                        scope.cmxcanvas.load(newData, canvasEl.id);
-                    }
-                    
-                    if (viewInfo.backgroundColor){
-                        $canvasEl.css('background-color', viewInfo.backgroundColor);
-                    }                 
-                }
-            });
-            scope.changed = {};
-            scope.changed.next = function(){
-                console.log(scope.cmxcanvas.next());
-            };
-            scope.changed.prev = function(){
-                console.log(scope.cmxcanvas.prev());
-            };
-        }
-    };
-}])
-.directive('resizeCanvas', ['$window', function($window){
-    return {
-        restrict: 'A',
-        link: function(scope, element, attr){
-
-            var $canvasEl = element.find('canvas'),
-                canvasEl = $canvasEl[0];
             var heightDiff = 109;
             var widthDiff = 2;
             var thisHeight = $window.innerHeight - heightDiff;
             var thisWidth = $window.innerWidth - widthDiff;
+
             if (thisWidth/thisHeight >= 16/9){
                 canvasEl.style.zoom = thisHeight/canvasEl.height;
             }
@@ -95,4 +94,46 @@ angular.module('angularcmxApp')
             }
         }
     };
-}]);
+}])
+.directive('socialShare', function ($window) {
+    return {
+        restrict: 'AC',
+        link: function (scope, element) {
+            var el = element[0];
+
+            scope.$watch('bookModel.view', function (newVal, oldVal) {
+                
+                if (newVal !== oldVal) {
+
+                    element.empty();
+
+                    var model = scope.bookModel,
+                        url = 'http://revengercomic.com/issues/' + model.id,
+                        // url = 'http://roshow.net/issues/'+ model.id,
+                        // url = 'http://canvasbook.surge.sh',
+                        fullTitle = model.series.name + ' ' + model.issue + ': ' + model.title,
+                        thumb = model.thumb;
+
+                    $window.stWidget.addEntry({
+                        service:'twitter',
+                        element: el,
+                        url: url,
+                        title: fullTitle,
+                        type:'large',
+                        image: thumb
+                    });
+                    $window.stWidget.addEntry({
+                        service:'facebook',
+                        element: el,
+                        url: url,
+                        title: fullTitle,
+                        type:'large',
+                        image: thumb
+                    });
+                }
+            });
+            
+        }
+    }
+})
+;

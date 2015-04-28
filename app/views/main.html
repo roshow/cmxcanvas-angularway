@@ -1,28 +1,12 @@
-<div class="top-container">
-<div class="book-info">
-    <h3 class="cmx-credits">{{cmxData.series.name}} #{{cmxData.issue}}: <!--
-            -->{{cmxData.title}} <br /><!--
-            --><span ng-repeat="creator in cmxData.creators"><!--
-                --><a ng-href="{{creator.url}}">{{creator.credit}}: {{creator.name}}</a><!--
-                --><span ng-if="$first">,  </span><!--
-                --><span ng-if="$middle">,  </span><!--
-            --></span></h3>
+<section class="topper">
+	<div class="container">
+		<h1><a ng-href="/"><img class="top-img" src="/images/rev-banner.png" />REVENGER</a></h1>
+	</div>
+</section>
+<ng-include src="'views/partials/topnav.html'"></ng-include>
+<section class="jumbotron canvas-view">
+	<div class="container">
+	    <canvasbook view-model="bookModel.view" book-id="bookId" book-format="bookFormat" hotkeys="{{hotkeys}}"></canvasbook>
+    </div>
+</section>
 
-    <ul class="book-style" ng-if="cmxData.formats">
-        <li class="btn-format" ng-if="cmxData.formats.length > 1" ng-repeat="format in cmxData.formats"  ng-class="{ 'current-panel': cmxData.view.id === format.view_id }" ng-click="getBook(cmxData.id, format.format)">{{format.format}}</li>
-    </ul>
-    <div style="clear:both;"></div>
-</div>
-
-<div cmx-book="cmxData" cmxcanvas="cmxCanvas" animate-resize></div>
-
-
-<!-- <div class="tocDiv">    
-    <ul class="cmx-toc">
-        <li ng-class="{ 'current-panel': cmxCanvas.currentView.panel == $index }" ng-repeat="panel in cmxData.view.panels" ng-click="cmxCanvas.goTo($index,0)">
-            {{$index}}
-        </li>
-    </ul>
-</div> -->
-
-</div>
