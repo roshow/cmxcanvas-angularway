@@ -43,14 +43,15 @@ angular.module('angularcmxApp')
             });
 
             if (attrs.$attr.hotkeys) {
+                $document.off('keydown');
                 $document.on('keydown', function (e) {
                     if (attrs.hotkeys !== 'false') {
                         switch (e.keyCode) {
-                            case 39:
-                                document.querySelector('.forward').click();
-                                break;
                             case 37:
-                                document.querySelector('.backward').click();
+                                scope.changepanel('previous');
+                                break;
+                            case 39:
+                                scope.changepanel('next');
                                 break;
                         }
                     }

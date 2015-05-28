@@ -12,7 +12,8 @@ angular.module('angularcmxApp')
         startIndex: $routeParams.startIndex ? ($routeParams.startIndex - 1) : 0,
         embedWidth: '400',
         detailsMin: false,
-        modalOpen: false
+        modalOpen: false,
+        hotkeys: true
     });
 
     function openModal () { // TODO: move this to a directive that shares scope and listens to $scope.modalOpen = true/false
@@ -87,7 +88,7 @@ angular.module('angularcmxApp')
 
     $scope.$on('canvasbook:changepanel', function () {
         if ($scope.modalOpen === true) {
-            $scope.readMoreModal.dismiss();;
+            $scope.readMoreModal.dismiss();
         }
     });
 
