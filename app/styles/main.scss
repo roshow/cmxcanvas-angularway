@@ -12,6 +12,7 @@ html, body {
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 
 body {
+  background-color: #eee;
   font-family: "Oswald";
   font-weight: normal;
   margin: 0;
@@ -28,30 +29,6 @@ a {
 .canvas-wrapper {
   position: relative;
   margin: auto;
-  .canvas-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    color: #fff;
-    background: #000;
-    opacity: 0.85;
-    .calltoaction {
-      margin-top: 100px;
-      font-size: 24px;
-      font-weight: bold;
-      .btn-format {
-        color: #fff;
-        border: 3px solid #fff;
-        font-size: 22px;
-        a, a:hover {
-          color: #fff;
-        }
-      }
-    }
-  }
   text-align: center;
 }
 #cmx-container {
@@ -62,8 +39,9 @@ a {
   user-select: none;
 }
 #cmx-container canvas {
+  background-color: #fff;
   margin: auto;
-  border: 2px solid #ccc;
+  // border: 2px solid #ccc;
   vertical-align: bottom;
   max-width: 800px;
   width: 100%;
@@ -178,6 +156,7 @@ ul {
 }
 
 .topper {
+  background-color: #fff;
   a, a:hover {
     color: inherit;
     text-decoration: none;
