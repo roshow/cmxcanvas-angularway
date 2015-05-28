@@ -9,11 +9,11 @@
     <?php include 'metatags.php' ?>
     <link rel="stylesheet" href="styles/vendor.20833e0b.css">
     
-    <link rel="stylesheet" href="styles/main.69d3bd7b.css">
+    <link rel="stylesheet" href="styles/main.ea472ff3.css">
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({
-        publisher: "06ea2066-6c1c-4ec3-8a42-64b3a3399360",
+        publisher: '06ea2066-6c1c-4ec3-8a42-64b3a3399360',
         shorten:false
     });
     </script>
@@ -31,7 +31,7 @@
     <script src="scripts/vendor.189dac8d.js"></script>
 
     <script src="scripts/canvasbook.4b9e23b2.js"></script>
-    <script src="scripts/scripts.b0998df9.js"></script>
+    <script src="scripts/scripts.c4577896.js"></script>
 
 
 </body>

@@ -209,9 +209,7 @@ AddDefaultCharset utf-8
 # http://www.rackspace.com/knowledge_center/frequently-asked-question/why-is-mod-rewrite-not-working-on-my-site
 
 <IfModule mod_rewrite.c>
-# For security reasons, Option followsymlinks cannot be overridden.
-#    Options +FollowSymlinks
-    Options +SymLinksIfOwnerMatch
+    Options +FollowSymlinks
   # Options +SymLinksIfOwnerMatch
     RewriteEngine On
   # RewriteBase /
