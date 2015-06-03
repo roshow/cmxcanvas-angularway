@@ -25,7 +25,9 @@ angular.module('angularcmxApp')
                 var eventName = 'canvasbook:';
                 if (!noMore){
                     canvasbook[direction]();
-                    // document.querySelector('body').scrollIntoView();
+                    if (scope.bookFormat !== 'digital') {
+                        document.querySelector('body').scrollIntoView();
+                    }
                     eventName += 'changepanel';
                 }
                 else {
