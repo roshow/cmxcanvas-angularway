@@ -1,1 +1,0 @@
-<div id="library"> <ul> <li ng-repeat="book in books | filter: { published: true } | orderBy:['series.name','issue']"> <a ng-href="#/books/{{book.id}}"> <img class="library-thumb" ng-src="{{book.thumb}}"> </a> <div class="book-title">{{book.series.name}}<span ng-if="book.issue > 0"> #{{book.issue}}</span>:<br>{{book.title}}</div> <div class="clearfix"></div> </li> </ul> </div>
