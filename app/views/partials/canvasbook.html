@@ -6,6 +6,7 @@
             <li class="book-next" ng-click="changepanel('next')"><span class="glyphicon forward glyphicon-step-forward"></span></li>
         </ul>
     </div> 
+
    	<div class="btn-group" role="group">
 	  <a class="btn btn-default"
 	  	ng-repeat="panel in viewModel.panels" 
@@ -13,4 +14,5 @@
 	  	ng-href="/issues/{{bookId}}/{{$index + 1}}?format={{bookFormat}}"
 	  >{{$index + 1}}</a>
 	</div>
+    
 </div>

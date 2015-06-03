@@ -167,7 +167,19 @@ ul {
     margin: 0;
     border: 0;
   }
+  div {
+    position: relative;
+  }
+  
 }
+
+.start-here-top {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  display: none;
+}
+
 
 
 
@@ -229,6 +241,12 @@ ul {
       font-size: 65px;
       transform: translateX(-15%);
     }
+  }
+  .start-here-top {
+    display: block;
+  }
+  .start-here-nav {
+    display: none !important;
   }
 }
 
