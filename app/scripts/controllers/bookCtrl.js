@@ -13,7 +13,10 @@ angular.module('angularcmxApp')
         embedWidth: '400',
         detailsMin: false,
         modalOpen: false,
-        hotkeys: true
+        hotkeys: true,
+        randomBinary: function () {
+            return Date.now()%2;
+        }
     });
 
     function openModal () { // TODO: move this to a directive that shares scope and listens to $scope.modalOpen = true/false

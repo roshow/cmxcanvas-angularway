@@ -105,7 +105,7 @@ angular.module('angularcmxApp')
             scope.$watch('bookModel.view', function (newVal, oldVal) {
                 
                 if (newVal !== oldVal) {
-
+                    // console.log('emptying element first');
                     element.empty();
 
                     var model = scope.bookModel,
