@@ -25,7 +25,7 @@ angular.module('angularcmxApp')
                 var eventName = 'canvasbook:';
                 if (!noMore){
                     canvasbook[direction]();
-                    document.querySelector('body').scrollIntoView();
+                    // document.querySelector('body').scrollIntoView();
                     eventName += 'changepanel';
                 }
                 else {
@@ -49,9 +49,11 @@ angular.module('angularcmxApp')
                         switch (e.keyCode) {
                             case 37:
                                 scope.changepanel('previous');
+                                scope.$apply();
                                 break;
                             case 39:
                                 scope.changepanel('next');
+                                scope.$apply();
                                 break;
                         }
                     }
